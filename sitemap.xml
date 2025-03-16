@@ -1,35 +1,16 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
-<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
-  xmlns:xhtml="http://www.w3.org/1999/xhtml">
-  <url>
-    <loc>https://example.com/posts/2/</loc>
-    <lastmod>2025-03-16T03:24:55+08:00</lastmod>
-  </url><url>
-    <loc>https://example.com/posts/3/</loc>
-    <lastmod>2025-03-16T03:24:55+08:00</lastmod>
-  </url><url>
-    <loc>https://example.com/categories/</loc>
-    <lastmod>2025-03-16T03:24:55+08:00</lastmod>
-  </url><url>
-    <loc>https://example.com/categories/category1/</loc>
-    <lastmod>2025-03-16T03:24:55+08:00</lastmod>
-  </url><url>
-    <loc>https://example.com/</loc>
-    <lastmod>2025-03-16T03:24:55+08:00</lastmod>
-  </url><url>
-    <loc>https://example.com/posts/</loc>
-    <lastmod>2025-03-16T03:24:55+08:00</lastmod>
-  </url><url>
-    <loc>https://example.com/tags/tag1/</loc>
-    <lastmod>2025-03-16T03:24:55+08:00</lastmod>
-  </url><url>
-    <loc>https://example.com/tags/tag2/</loc>
-    <lastmod>2025-03-16T03:24:55+08:00</lastmod>
-  </url><url>
-    <loc>https://example.com/tags/</loc>
-    <lastmod>2025-03-16T03:24:55+08:00</lastmod>
-  </url><url>
-    <loc>https://example.com/posts/1/</loc>
-    <lastmod>2024-12-26T12:19:32-05:00</lastmod>
-  </url>
-</urlset>
+<sitemapindex xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+  
+  <sitemap>
+    <loc>https://example.com/zh-cn/sitemap.xml</loc>
+    
+      <lastmod>2025-03-16T13:45:04+08:00</lastmod>
+    
+  </sitemap>
+  
+  <sitemap>
+    <loc>https://example.com/en/sitemap.xml</loc>
+    
+  </sitemap>
+  
+</sitemapindex>

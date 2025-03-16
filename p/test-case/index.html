@@ -1,0 +1,1075 @@
+<!DOCTYPE html>
+<html lang="zh-cn" dir="ltr">
+    <head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script><meta charset='utf-8'>
+<meta name='viewport' content='width=device-width, initial-scale=1'><meta name='description' content="简单测试">
+<title>Google Gemini-2.0-Flash-Exp Test</title>
+
+<link rel='canonical' href='http://localhost:1313/p/test-case/'>
+
+<link rel="stylesheet" href="/scss/style.min.b9c8156d464c343bdacaf14a871581fb94cbbdb9dd5cbce4ba017361187cc930.css"><meta property='og:title' content="Google Gemini-2.0-Flash-Exp Test">
+<meta property='og:description' content="简单测试">
+<meta property='og:url' content='http://localhost:1313/p/test-case/'>
+<meta property='og:site_name' content='一些记录'>
+<meta property='og:type' content='article'><meta property='article:section' content='Post' /><meta property='article:published_time' content='2025-03-16T00:00:00&#43;00:00'/><meta property='article:modified_time' content='2025-03-16T00:00:00&#43;00:00'/><meta property='og:image' content='http://localhost:1313/p/test-case/GeneratedImageMarch172025-12_46AM.png' />
+<meta name="twitter:title" content="Google Gemini-2.0-Flash-Exp Test">
+<meta name="twitter:description" content="简单测试"><meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:image" content='http://localhost:1313/p/test-case/GeneratedImageMarch172025-12_46AM.png' />
+    <link rel="shortcut icon" href="/favicon.ico" />
+
+    </head>
+    <body class="
+    article-page
+    ">
+    <script>
+        (function() {
+            const colorSchemeKey = 'StackColorScheme';
+            if(!localStorage.getItem(colorSchemeKey)){
+                localStorage.setItem(colorSchemeKey, "auto");
+            }
+        })();
+    </script><script>
+    (function() {
+        const colorSchemeKey = 'StackColorScheme';
+        const colorSchemeItem = localStorage.getItem(colorSchemeKey);
+        const supportDarkMode = window.matchMedia('(prefers-color-scheme: dark)').matches === true;
+
+        if (colorSchemeItem == 'dark' || colorSchemeItem === 'auto' && supportDarkMode) {
+            
+
+            document.documentElement.dataset.scheme = 'dark';
+        } else {
+            document.documentElement.dataset.scheme = 'light';
+        }
+    })();
+</script>
+<div class="container main-container flex on-phone--column extended"><aside class="sidebar left-sidebar sticky ">
+    <button class="hamburger hamburger--spin" type="button" id="toggle-menu" aria-label="切换菜单">
+        <span class="hamburger-box">
+            <span class="hamburger-inner"></span>
+        </span>
+    </button>
+
+    <header>
+        
+            
+            <figure class="site-avatar">
+                <a href="/">
+                
+                    
+                    
+                    
+                        
+                        <img src="/img/avatar_hu_eca03cccf3fd19ef.png" width="300"
+                            height="300" class="site-logo" loading="lazy" alt="Avatar">
+                    
+                
+                </a>
+                
+                    <span class="emoji">🙃</span>
+                
+            </figure>
+            
+        
+        
+        <div class="site-meta">
+            <h1 class="site-name"><a href="/">一些记录</a></h1>
+            <h2 class="site-description">Yeqing17个人记录</h2>
+        </div>
+    </header><ol class="menu-social">
+            
+                <li>
+                    <a 
+                        href='https://github.com/CaiJimmy/hugo-theme-stack'
+                        target="_blank"
+                        title="GitHub"
+                        rel="me"
+                    >
+                        
+                        
+                            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-brand-github" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+  <path d="M9 19c-4.3 1.4 -4.3 -2.5 -6 -3m12 5v-3.5c0 -1 .1 -1.4 -.5 -2c2.8 -.3 5.5 -1.4 5.5 -6a4.6 4.6 0 0 0 -1.3 -3.2a4.2 4.2 0 0 0 -.1 -3.2s-1.1 -.3 -3.5 1.3a12.3 12.3 0 0 0 -6.2 0c-2.4 -1.6 -3.5 -1.3 -3.5 -1.3a4.2 4.2 0 0 0 -.1 3.2a4.6 4.6 0 0 0 -1.3 3.2c0 4.6 2.7 5.7 5.5 6c-.6 .6 -.6 1.2 -.5 2v3.5" />
+</svg>
+
+
+
+                        
+                    </a>
+                </li>
+            
+                <li>
+                    <a 
+                        href='https://twitter.com'
+                        target="_blank"
+                        title="Twitter"
+                        rel="me"
+                    >
+                        
+                        
+                            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-brand-twitter" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+  <path d="M22 4.01c-1 .49 -1.98 .689 -3 .99c-1.121 -1.265 -2.783 -1.335 -4.38 -.737s-2.643 2.06 -2.62 3.737v1c-3.245 .083 -6.135 -1.395 -8 -4c0 0 -4.182 7.433 4 11c-1.872 1.247 -3.739 2.088 -6 2c3.308 1.803 6.913 2.423 10.034 1.517c3.58 -1.04 6.522 -3.723 7.651 -7.742a13.84 13.84 0 0 0 .497 -3.753c-.002 -.249 1.51 -2.772 1.818 -4.013z" />
+</svg>
+
+
+
+                        
+                    </a>
+                </li>
+            
+        </ol><ol class="menu" id="main-menu">
+        
+        
+        
+        <li >
+            <a href='/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-home" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <polyline points="5 12 3 12 12 3 21 12 19 12" />
+  <path d="M5 12v7a2 2 0 0 0 2 2h10a2 2 0 0 0 2 -2v-7" />
+  <path d="M9 21v-6a2 2 0 0 1 2 -2h2a2 2 0 0 1 2 2v6" />
+</svg>
+
+
+
+                
+                <span>主页</span>
+            </a>
+        </li>
+        
+        
+        <li >
+            <a href='/%E5%85%B3%E4%BA%8E/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-user" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="12" cy="7" r="4" />
+  <path d="M6 21v-2a4 4 0 0 1 4 -4h4a4 4 0 0 1 4 4v2" />
+</svg>
+
+
+
+                
+                <span>关于</span>
+            </a>
+        </li>
+        
+        
+        <li >
+            <a href='/archives/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-archive" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <rect x="3" y="4" width="18" height="4" rx="2" />
+  <path d="M5 8v10a2 2 0 0 0 2 2h10a2 2 0 0 0 2 -2v-10" />
+  <line x1="10" y1="12" x2="14" y2="12" />
+</svg>
+
+
+
+                
+                <span>Archives</span>
+            </a>
+        </li>
+        
+        
+        <li >
+            <a href='/search/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-search" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="10" cy="10" r="7" />
+  <line x1="21" y1="21" x2="15" y2="15" />
+</svg>
+
+
+
+                
+                <span>Search</span>
+            </a>
+        </li>
+        
+        
+        <li >
+            <a href='/links/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-link" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <path d="M10 14a3.5 3.5 0 0 0 5 0l4 -4a3.5 3.5 0 0 0 -5 -5l-.5 .5" />
+  <path d="M14 10a3.5 3.5 0 0 0 -5 0l-4 4a3.5 3.5 0 0 0 5 5l.5 -.5" />
+</svg>
+
+
+
+                
+                <span>Links</span>
+            </a>
+        </li>
+        
+        <li class="menu-bottom-section">
+            <ol class="menu">
+                    
+                        <li id="i18n-switch">  
+                            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-language" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+  <path d="M4 5h7" />
+  <path d="M9 3v2c0 4.418 -2.239 8 -5 8" />
+  <path d="M5 9c-.003 2.144 2.952 3.908 6.7 4" />
+  <path d="M12 20l4 -9l4 9" />
+  <path d="M19.1 18h-6.2" />
+</svg>
+
+
+
+                            <select name="language" title="language" onchange="window.location.href = this.selectedOptions[0].value">
+                                
+                                    <option value="http://localhost:1313/en/" >English</option>
+                                
+                                    <option value="http://localhost:1313/" selected>简体中文</option>
+                                
+                            </select>
+                        </li>
+                    
+                
+
+                
+                    <li id="dark-mode-toggle">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-toggle-left" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="8" cy="12" r="2" />
+  <rect x="2" y="6" width="20" height="12" rx="6" />
+</svg>
+
+
+
+                        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-toggle-right" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="16" cy="12" r="2" />
+  <rect x="2" y="6" width="20" height="12" rx="6" />
+</svg>
+
+
+
+                        <span>暗色模式</span>
+                    </li>
+                
+            </ol>
+        </li>
+    </ol>
+</aside>
+
+    <aside class="sidebar right-sidebar sticky">
+        
+            
+                
+    <section class="widget archives">
+        <div class="widget-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-hash" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <line x1="5" y1="9" x2="19" y2="9" />
+  <line x1="5" y1="15" x2="19" y2="15" />
+  <line x1="11" y1="4" x2="7" y2="20" />
+  <line x1="17" y1="4" x2="13" y2="20" />
+</svg>
+
+
+
+        </div>
+        <h2 class="widget-title section-title">目录</h2>
+        
+        <div class="widget--toc">
+            <nav id="TableOfContents">
+  <ol>
+    <li><a href="#使用方法费用">使用方法&amp;费用</a>
+      <ol>
+        <li><a href="#google-ai-studio在线使用">Google AI Studio在线使用</a></li>
+        <li><a href="#配置gemini-api调用">配置Gemini API调用</a></li>
+        <li><a href="#费用">费用</a></li>
+      </ol>
+    </li>
+    <li><a href="#记录">记录</a>
+      <ol>
+        <li><a href="#图片编辑-红烧肉食谱">图片编辑-红烧肉食谱</a></li>
+        <li><a href="#视觉故事-小老虎冒险故事">视觉故事-小老虎冒险故事</a></li>
+        <li><a href="#生日卡片-中英文效果">生日卡片-中英文效果</a></li>
+        <li><a href="#扩展-人物一致性-换装物体">扩展-人物一致性-换装、物体</a></li>
+        <li><a href="#扩展-动物-一致性测试">扩展-动物-一致性测试</a></li>
+      </ol>
+    </li>
+    <li><a href="#总结">总结</a></li>
+  </ol>
+</nav>
+        </div>
+    </section>
+
+            
+        
+    </aside>
+
+
+            <main class="main full-width">
+    <article class="has-image main-article">
+    <header class="article-header">
+        <div class="article-image">
+            <a href="/p/test-case/">
+                <img src="/p/test-case/GeneratedImageMarch172025-12_46AM_hu_ad446284528533c4.png"
+                        srcset="/p/test-case/GeneratedImageMarch172025-12_46AM_hu_ad446284528533c4.png 800w, /p/test-case/GeneratedImageMarch172025-12_46AM_hu_5520fbef255776d7.png 1600w"
+                        width="800" 
+                        height="341" 
+                        loading="lazy"
+                        alt="Featured image of post Google Gemini-2.0-Flash-Exp Test" />
+                
+            </a>
+        </div>
+    
+
+    <div class="article-details">
+    
+    <header class="article-category">
+        
+            <a href="/categories/gemini/" >
+                Gemini
+            </a>
+        
+            <a href="/categories/test/" style="background-color: #2a9d8f; color: #fff;">
+                Test
+            </a>
+        
+    </header>
+    
+
+    <div class="article-title-wrapper">
+        <h2 class="article-title">
+            <a href="/p/test-case/">Google Gemini-2.0-Flash-Exp Test</a>
+        </h2>
+    
+        
+        <h3 class="article-subtitle">
+            简单测试
+        </h3>
+        
+    </div>
+
+    
+    
+    
+    
+    <footer class="article-time">
+        
+            <div>
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-calendar-time" width="56" height="56" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <path d="M11.795 21h-6.795a2 2 0 0 1 -2 -2v-12a2 2 0 0 1 2 -2h12a2 2 0 0 1 2 2v4" />
+  <circle cx="18" cy="18" r="4" />
+  <path d="M15 3v4" />
+  <path d="M7 3v4" />
+  <path d="M3 11h16" />
+  <path d="M18 16.496v1.504l1 1" />
+</svg>
+                <time class="article-time--published">Mar 16, 2025</time>
+            </div>
+        
+
+        
+            <div>
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-clock" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="12" cy="12" r="9" />
+  <polyline points="12 7 12 12 15 15" />
+</svg>
+
+
+
+                <time class="article-time--reading">
+                    阅读时长: 3 分钟
+                </time>
+            </div>
+        
+    </footer>
+    
+
+    
+</div>
+
+</header>
+
+    <section class="article-content">
+    
+    
+    <h1 id="google-gemini-20-flash-exp">Google Gemini-2.0-Flash-Exp
+</h1><p>2025 年 3 月 12 日，谷歌正式发布 Gemini 2.0 Flash Exp 全模态图像生成器，支持原生图像生成功能，所有开发者都可以通过 Gemini API 和 Google AI Studio 中的实验版本使用 Gemini 2.0 Flash 进行原生图像生成。</p>
+<p><img src="/p/test-case/GoogleGemini.assets/image-20250316193351777.png"
+	width="994"
+	height="525"
+	srcset="/p/test-case/GoogleGemini.assets/image-20250316193351777_hu_fae24dc841c6c7e1.png 480w, /p/test-case/GoogleGemini.assets/image-20250316193351777_hu_1ae34a631c0d041f.png 1024w"
+	loading="lazy"
+	
+		alt="image-20250316193351777"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="189"
+		data-flex-basis="454px"
+	
+></p>
+<h2 id="使用方法费用">使用方法&amp;费用
+</h2><h3 id="google-ai-studio在线使用">Google AI Studio在线使用
+</h3><p><a class="link" href="https://aistudio.google.com"  target="_blank" rel="noopener"
+    >Google AI Studio</a></p>
+<ul>
+<li>按下图所示，右侧选择模型Model为<code>Gemini 2.0 Flash(Image Generation) Experimental</code></li>
+<li>Output format选择为Images and text，左侧Create Prompt开始使用</li>
+<li>可以先点击3种官方给出的提示词测试看下提示词怎么写</li>
+</ul>
+<p><img src="/p/test-case/GoogleGemini.assets/%E9%A6%96%E9%A1%B5.png"
+	width="1916"
+	height="941"
+	srcset="/p/test-case/GoogleGemini.assets/%E9%A6%96%E9%A1%B5_hu_8e154d03c248dbec.png 480w, /p/test-case/GoogleGemini.assets/%E9%A6%96%E9%A1%B5_hu_48b62d37c7adbc3b.png 1024w"
+	loading="lazy"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="203"
+		data-flex-basis="488px"
+	
+></p>
+<p>这个翻译插件【沉浸式翻译】比较好用，如下图所示网页上能中英对照等等功能，免费功能够用。
+<img src="/p/test-case/GoogleGemini.assets/%E9%A6%96%E9%A1%B5-%E6%8F%92%E4%BB%B6%E7%BF%BB%E8%AF%91.png"
+	width="1911"
+	height="943"
+	srcset="/p/test-case/GoogleGemini.assets/%E9%A6%96%E9%A1%B5-%E6%8F%92%E4%BB%B6%E7%BF%BB%E8%AF%91_hu_a75c2bffe0193b17.png 480w, /p/test-case/GoogleGemini.assets/%E9%A6%96%E9%A1%B5-%E6%8F%92%E4%BB%B6%E7%BF%BB%E8%AF%91_hu_e2617832cd47dca.png 1024w"
+	loading="lazy"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="202"
+		data-flex-basis="486px"
+	
+></p>
+<h3 id="配置gemini-api调用">配置Gemini API调用
+</h3><p>按照以下官网几个说明文档</p>
+<ul>
+<li>
+<p><a class="link" href="https://ai.google.dev/gemini-api/docs/image-generation?hl=zh-cn"  target="_blank" rel="noopener"
+    >生成图片  | Gemini API  | Google AI for Developers</a></p>
+</li>
+<li>
+<p><a class="link" href="https://github.com/google-gemini/cookbook/blob/main/quickstarts/Image_out.ipynb"  target="_blank" rel="noopener"
+    >cookbook/quickstarts/Image_out.ipynb at main · google-gemini/cookbook</a></p>
+</li>
+<li>
+<p><a class="link" href="https://ai.google.dev/gemini-api/docs/models/experimental-models?hl=zh-cn#gemini-api"  target="_blank" rel="noopener"
+    >https://ai.google.dev/gemini-api/docs/models/experimental-models?hl=zh-cn#gemini-api</a></p>
+</li>
+</ul>
+<p>用AI IDE trae调试了一个脚本，测试成功。</p>
+<ul>
+<li>关键需要装的是这个库<code>pip install google-generativeai</code></li>
+<li>图片数据的处理
+<img src="/p/test-case/GoogleGemini.assets/gemini_image_20250316_230648.png"
+	width="1024"
+	height="557"
+	srcset="/p/test-case/GoogleGemini.assets/gemini_image_20250316_230648_hu_db51d42effc4b812.png 480w, /p/test-case/GoogleGemini.assets/gemini_image_20250316_230648_hu_2f9ac06019e38080.png 1024w"
+	loading="lazy"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="183"
+		data-flex-basis="441px"
+	
+></li>
+</ul>
+<p>脚本如下：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span><span class="lnt">26
+</span><span class="lnt">27
+</span><span class="lnt">28
+</span><span class="lnt">29
+</span><span class="lnt">30
+</span><span class="lnt">31
+</span><span class="lnt">32
+</span><span class="lnt">33
+</span><span class="lnt">34
+</span><span class="lnt">35
+</span><span class="lnt">36
+</span><span class="lnt">37
+</span><span class="lnt">38
+</span><span class="lnt">39
+</span><span class="lnt">40
+</span><span class="lnt">41
+</span><span class="lnt">42
+</span><span class="lnt">43
+</span><span class="lnt">44
+</span><span class="lnt">45
+</span><span class="lnt">46
+</span><span class="lnt">47
+</span><span class="lnt">48
+</span><span class="lnt">49
+</span><span class="lnt">50
+</span><span class="lnt">51
+</span><span class="lnt">52
+</span><span class="lnt">53
+</span><span class="lnt">54
+</span><span class="lnt">55
+</span><span class="lnt">56
+</span><span class="lnt">57
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="kn">from</span> <span class="nn">google</span> <span class="kn">import</span> <span class="n">genai</span>
+</span></span><span class="line"><span class="cl"><span class="kn">from</span> <span class="nn">google.genai</span> <span class="kn">import</span> <span class="n">types</span>
+</span></span><span class="line"><span class="cl"><span class="kn">from</span> <span class="nn">PIL</span> <span class="kn">import</span> <span class="n">Image</span>
+</span></span><span class="line"><span class="cl"><span class="kn">from</span> <span class="nn">io</span> <span class="kn">import</span> <span class="n">BytesIO</span>
+</span></span><span class="line"><span class="cl"><span class="kn">import</span> <span class="nn">base64</span>
+</span></span><span class="line"><span class="cl"><span class="kn">import</span> <span class="nn">os</span>
+</span></span><span class="line"><span class="cl"><span class="kn">from</span> <span class="nn">datetime</span> <span class="kn">import</span> <span class="n">datetime</span>
+</span></span><span class="line"><span class="cl"><span class="kn">from</span> <span class="nn">dotenv</span> <span class="kn">import</span> <span class="n">load_dotenv</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1"># 加载环境变量</span>
+</span></span><span class="line"><span class="cl"><span class="n">load_dotenv</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1"># 从环境变量获取API密钥，修改.env.example文件为.env文件并填写YOUR_API_KEY</span>
+</span></span><span class="line"><span class="cl"><span class="n">api_key</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">getenv</span><span class="p">(</span><span class="s2">&#34;GEMINI_API_KEY&#34;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="k">if</span> <span class="ow">not</span> <span class="n">api_key</span><span class="p">:</span>
+</span></span><span class="line"><span class="cl">    <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">&#34;请设置环境变量GEMINI_API_KEY或创建.env文件&#34;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1"># 初始化客户端</span>
+</span></span><span class="line"><span class="cl"><span class="n">client</span> <span class="o">=</span> <span class="n">genai</span><span class="o">.</span><span class="n">Client</span><span class="p">(</span><span class="n">api_key</span><span class="o">=</span><span class="n">api_key</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1"># 设置文本提示</span>
+</span></span><span class="line"><span class="cl"><span class="n">contents</span> <span class="o">=</span> <span class="p">(</span><span class="s1">&#39;Hi, can you create a 3d rendered image of a pig &#39;</span>
+</span></span><span class="line"><span class="cl">            <span class="s1">&#39;with wings and a top hat flying over a happy &#39;</span> 
+</span></span><span class="line"><span class="cl">            <span class="s1">&#39;futuristic scifi city with lots of greenery?&#39;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1"># 生成内容，注意模型名称</span>
+</span></span><span class="line"><span class="cl"><span class="n">response</span> <span class="o">=</span> <span class="n">client</span><span class="o">.</span><span class="n">models</span><span class="o">.</span><span class="n">generate_content</span><span class="p">(</span>
+</span></span><span class="line"><span class="cl">    <span class="n">model</span><span class="o">=</span><span class="s2">&#34;models/gemini-2.0-flash-exp&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">    <span class="n">contents</span><span class="o">=</span><span class="n">contents</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">    <span class="n">config</span><span class="o">=</span><span class="n">types</span><span class="o">.</span><span class="n">GenerateContentConfig</span><span class="p">(</span><span class="n">response_modalities</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;Text&#39;</span><span class="p">,</span> <span class="s1">&#39;Image&#39;</span><span class="p">])</span>
+</span></span><span class="line"><span class="cl"><span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1"># 保存生成的图像</span>
+</span></span><span class="line"><span class="cl"><span class="n">save_dir</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">dirname</span><span class="p">(</span><span class="vm">__file__</span><span class="p">),</span> <span class="s1">&#39;GeminiFlash2.0Exp&#39;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="n">os</span><span class="o">.</span><span class="n">makedirs</span><span class="p">(</span><span class="n">save_dir</span><span class="p">,</span> <span class="n">exist_ok</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="k">for</span> <span class="n">part</span> <span class="ow">in</span> <span class="n">response</span><span class="o">.</span><span class="n">candidates</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">content</span><span class="o">.</span><span class="n">parts</span><span class="p">:</span>
+</span></span><span class="line"><span class="cl">    <span class="k">if</span> <span class="n">part</span><span class="o">.</span><span class="n">text</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+</span></span><span class="line"><span class="cl">        <span class="nb">print</span><span class="p">(</span><span class="n">part</span><span class="o">.</span><span class="n">text</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="k">elif</span> <span class="n">part</span><span class="o">.</span><span class="n">inline_data</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+</span></span><span class="line"><span class="cl">        <span class="k">try</span><span class="p">:</span>
+</span></span><span class="line"><span class="cl">            <span class="n">image_data</span> <span class="o">=</span> <span class="n">base64</span><span class="o">.</span><span class="n">b64decode</span><span class="p">(</span><span class="n">part</span><span class="o">.</span><span class="n">inline_data</span><span class="o">.</span><span class="n">data</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">            <span class="n">image</span> <span class="o">=</span> <span class="n">Image</span><span class="o">.</span><span class="n">open</span><span class="p">(</span><span class="n">BytesIO</span><span class="p">(</span><span class="n">image_data</span><span class="p">))</span>
+</span></span><span class="line"><span class="cl">            
+</span></span><span class="line"><span class="cl">            <span class="c1"># 生成带时间戳的文件名</span>
+</span></span><span class="line"><span class="cl">            <span class="n">timestamp</span> <span class="o">=</span> <span class="n">datetime</span><span class="o">.</span><span class="n">now</span><span class="p">()</span><span class="o">.</span><span class="n">strftime</span><span class="p">(</span><span class="s1">&#39;%Y%m</span><span class="si">%d</span><span class="s1">_%H%M%S&#39;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">            <span class="n">image_path</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">save_dir</span><span class="p">,</span> <span class="sa">f</span><span class="s1">&#39;gemini_image_</span><span class="si">{</span><span class="n">timestamp</span><span class="si">}</span><span class="s1">.png&#39;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">            
+</span></span><span class="line"><span class="cl">            <span class="c1"># 保存图片</span>
+</span></span><span class="line"><span class="cl">            <span class="n">image</span><span class="o">.</span><span class="n">save</span><span class="p">(</span><span class="n">image_path</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">            <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;图片已保存至: </span><span class="si">{</span><span class="n">image_path</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">            
+</span></span><span class="line"><span class="cl">            <span class="c1"># 显示图片</span>
+</span></span><span class="line"><span class="cl">            <span class="n">image</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl">        <span class="k">except</span> <span class="ne">Exception</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
+</span></span><span class="line"><span class="cl">            <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&#34;无法处理图像数据: </span><span class="si">{</span><span class="n">e</span><span class="si">}</span><span class="s2">&#34;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">            <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&#34;数据类型: </span><span class="si">{</span><span class="nb">type</span><span class="p">(</span><span class="n">part</span><span class="o">.</span><span class="n">inline_data</span><span class="o">.</span><span class="n">data</span><span class="p">)</span><span class="si">}</span><span class="s2">&#34;</span><span class="p">)</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h3 id="费用">费用
+</h3><p>Gemini 2.0 Flash(Image Generation) Exp免费可用，每天免费请求次数1500次。</p>
+<p><img src="/p/test-case/GoogleGemini.assets/image-20250316204651101.png"
+	width="430"
+	height="480"
+	srcset="/p/test-case/GoogleGemini.assets/image-20250316204651101_hu_96a0f4c7adec8b41.png 480w, /p/test-case/GoogleGemini.assets/image-20250316204651101_hu_8eda07904c55fd47.png 1024w"
+	loading="lazy"
+	
+		alt="image-20250316204651101"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="89"
+		data-flex-basis="215px"
+	
+></p>
+<h2 id="记录">记录
+</h2><p>官方提供3种处理样例：</p>
+<ul>
+<li>图片编辑</li>
+<li>视觉故事</li>
+<li>生日卡片</li>
+</ul>
+<p>根据官方的三种样例，结合一些网上视频加了扩展用法做了以下测试</p>
+<h3 id="图片编辑-红烧肉食谱">图片编辑-红烧肉食谱
+</h3><p><img src="/p/test-case/GoogleGemini.assets/PixPin_2025-03-16_22-01-29.png"
+	width="1390"
+	height="7114"
+	srcset="/p/test-case/GoogleGemini.assets/PixPin_2025-03-16_22-01-29_hu_71279938ac24c0bf.png 480w, /p/test-case/GoogleGemini.assets/PixPin_2025-03-16_22-01-29_hu_41a884690060b8a2.png 1024w"
+	loading="lazy"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="19"
+		data-flex-basis="46px"
+	
+></p>
+<h3 id="视觉故事-小老虎冒险故事">视觉故事-小老虎冒险故事
+</h3><p><img src="/p/test-case/GoogleGemini.assets/%E5%9B%BE%E6%96%87%E6%95%85%E4%BA%8B.png"
+	width="1402"
+	height="3064"
+	srcset="/p/test-case/GoogleGemini.assets/%E5%9B%BE%E6%96%87%E6%95%85%E4%BA%8B_hu_8ee449128f862e76.png 480w, /p/test-case/GoogleGemini.assets/%E5%9B%BE%E6%96%87%E6%95%85%E4%BA%8B_hu_db8654823eb6bc7a.png 1024w"
+	loading="lazy"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="45"
+		data-flex-basis="109px"
+	
+></p>
+<h3 id="生日卡片-中英文效果">生日卡片-中英文效果
+</h3><p><img src="/p/test-case/GoogleGemini.assets/%E7%94%9F%E6%97%A5%E5%8D%A1%E7%89%87.png"
+	width="1403"
+	height="1094"
+	srcset="/p/test-case/GoogleGemini.assets/%E7%94%9F%E6%97%A5%E5%8D%A1%E7%89%87_hu_e6f7fc5def9f336d.png 480w, /p/test-case/GoogleGemini.assets/%E7%94%9F%E6%97%A5%E5%8D%A1%E7%89%87_hu_77129f6f01905368.png 1024w"
+	loading="lazy"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="128"
+		data-flex-basis="307px"
+	
+></p>
+<h3 id="扩展-人物一致性-换装物体">扩展-人物一致性-换装、物体
+</h3><p><img src="/p/test-case/GoogleGemini.assets/%E6%8D%A2%E8%A3%85-17421337612151.png"
+	width="1389"
+	height="4175"
+	srcset="/p/test-case/GoogleGemini.assets/%E6%8D%A2%E8%A3%85-17421337612151_hu_da9c1ec73f821e45.png 480w, /p/test-case/GoogleGemini.assets/%E6%8D%A2%E8%A3%85-17421337612151_hu_6fde83c968c73812.png 1024w"
+	loading="lazy"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="33"
+		data-flex-basis="79px"
+	
+></p>
+<p><strong>这是两张原图</strong></p>
+<p><img src="/p/test-case/GoogleGemini.assets/PixPin_2025-03-16_20-41-55.png"
+	width="507"
+	height="536"
+	srcset="/p/test-case/GoogleGemini.assets/PixPin_2025-03-16_20-41-55_hu_eae6f963a30afd2.png 480w, /p/test-case/GoogleGemini.assets/PixPin_2025-03-16_20-41-55_hu_c9204860b8c2bbbc.png 1024w"
+	loading="lazy"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="94"
+		data-flex-basis="227px"
+	
+></p>
+<p><img src="/p/test-case/GoogleGemini.assets/PixPin_2025-03-16_20-43-31.png"
+	width="392"
+	height="499"
+	srcset="/p/test-case/GoogleGemini.assets/PixPin_2025-03-16_20-43-31_hu_ed634e3e71aee5a6.png 480w, /p/test-case/GoogleGemini.assets/PixPin_2025-03-16_20-43-31_hu_dd5c1c96f55ad1d0.png 1024w"
+	loading="lazy"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="78"
+		data-flex-basis="188px"
+	
+></p>
+<p><strong>以下两张是Gemini 生成（有一个Gemini AI生成的标识）</strong><img src="/p/test-case/GoogleGemini.assets/image-20250316212232411.png"
+	width="43"
+	height="43"
+	srcset="/p/test-case/GoogleGemini.assets/image-20250316212232411_hu_81d2db87708f997.png 480w, /p/test-case/GoogleGemini.assets/image-20250316212232411_hu_d25ae94569177c03.png 1024w"
+	loading="lazy"
+	
+		alt="image-20250316212232411"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="100"
+		data-flex-basis="240px"
+	
+></p>
+<p><img src="/p/test-case/GoogleGemini.assets/GeneratedImageMarch9_16PM.png"
+	width="966"
+	height="1024"
+	srcset="/p/test-case/GoogleGemini.assets/GeneratedImageMarch9_16PM_hu_f897e3009c3c3d3e.png 480w, /p/test-case/GoogleGemini.assets/GeneratedImageMarch9_16PM_hu_fdba50a88b215dc3.png 1024w"
+	loading="lazy"
+	
+		alt="点开查看衣服错的那张，人脸有一致性"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="94"
+		data-flex-basis="226px"
+	
+></p>
+<ul>
+<li>这是更换蓝色T恤成功的</li>
+</ul>
+<p><img src="/p/test-case/GoogleGemini.assets/GeneratedImage9_16PM.png"
+	width="801"
+	height="1024"
+	srcset="/p/test-case/GoogleGemini.assets/GeneratedImage9_16PM_hu_5935d19624e14f1b.png 480w, /p/test-case/GoogleGemini.assets/GeneratedImage9_16PM_hu_da29e2ea88d5e83d.png 1024w"
+	loading="lazy"
+	
+		alt="GeneratedImage9_16PM.png"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="78"
+		data-flex-basis="187px"
+	
+></p>
+<blockquote>
+<p>Google的AI生图一向是有意避免生成人脸的；换一个动物来测试下</p></blockquote>
+<h3 id="扩展-动物-一致性测试">扩展-动物-一致性测试
+</h3><p><img src="/p/test-case/GoogleGemini.assets/PixPin_2025-03-16_21-57-30.png"
+	width="1374"
+	height="2833"
+	srcset="/p/test-case/GoogleGemini.assets/PixPin_2025-03-16_21-57-30_hu_21cf9674fd2f18fe.png 480w, /p/test-case/GoogleGemini.assets/PixPin_2025-03-16_21-57-30_hu_75f92bf393d12da8.png 1024w"
+	loading="lazy"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="48"
+		data-flex-basis="116px"
+	
+></p>
+<p><img src="/p/test-case/GoogleGemini.assets/d4628535e5dde7115e505be077d470169c1661eb.webp"
+	width="640"
+	height="853"
+	srcset="/p/test-case/GoogleGemini.assets/d4628535e5dde7115e505be077d470169c1661eb_hu_dc50aa12d76386f3.webp 480w, /p/test-case/GoogleGemini.assets/d4628535e5dde7115e505be077d470169c1661eb_hu_98dfbd21fd2ae971.webp 1024w"
+	loading="lazy"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="75"
+		data-flex-basis="180px"
+	
+></p>
+<p><img src="/p/test-case/GoogleGemini.assets/GeneratedImage9_55PM.png"
+	width="762"
+	height="1024"
+	srcset="/p/test-case/GoogleGemini.assets/GeneratedImage9_55PM_hu_7d31c8745330d37b.png 480w, /p/test-case/GoogleGemini.assets/GeneratedImage9_55PM_hu_ed28612aec9de62a.png 1024w"
+	loading="lazy"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="74"
+		data-flex-basis="178px"
+	
+></p>
+<h2 id="总结">总结
+</h2><ol>
+<li>Google 的 Gemini 2.0 Flash Exp可以实现免费完成图片编辑、生图功能，保持上下文这一点很强，可以解决一些日常基础需求</li>
+<li>Stable Diffusion 的WebUI和Comfyui开源免费，当然能更好的实现换装、生图等等，使用门槛太高。</li>
+</ol>
+
+</section>
+
+
+    <footer class="article-footer">
+    
+
+    
+    <section class="article-copyright">
+        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-copyright" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="12" cy="12" r="9" />
+  <path d="M14.5 9a3.5 4 0 1 0 0 6" />
+</svg>
+
+
+
+        <span>Licensed under CC BY-NC-SA 4.0</span>
+    </section>
+    </footer>
+
+
+    
+</article>
+
+    
+
+    
+
+<aside class="related-content--wrapper">
+    <h2 class="section-title">相关文章</h2>
+    <div class="related-content">
+        <div class="flex article-list--tile">
+            
+                
+<article class="has-image">
+    <a href="/p/test-chinese/">
+        
+        
+            <div class="article-image">
+                <img src="/p/test-chinese/helena-hertz-wWZzXlDpMog-unsplash.46f61e8ea6a2df8fc5bf1d24a17c44a6_hu_57b7cab9514860c.jpg" 
+                        width="250" 
+                        height="150" 
+                        loading="lazy"
+                        alt="Featured image of post Chinese Test"
+                        data-key="test-chinese" 
+                        data-hash="md5-RvYejqai34/Fvx0koXxEpg==">
+                
+            </div>
+        
+
+        <div class="article-details">
+            <h2 class="article-title">Chinese Test</h2>
+        </div>
+    </a>
+</article>
+
+            
+                
+<article class="has-image">
+    <a href="/p/placeholder-text/">
+        
+        
+            <div class="article-image">
+                <img src="/p/placeholder-text/matt-le-SJSpo9hQf7s-unsplash.8eae06664ddfb3e8dc6e000756cb703b_hu_cc847465c05fc251.jpg" 
+                        width="250" 
+                        height="150" 
+                        loading="lazy"
+                        alt="Featured image of post Placeholder Text"
+                        
+                        data-hash="md5-jq4GZk3fs&#43;jcbgAHVstwOw==">
+                
+            </div>
+        
+
+        <div class="article-details">
+            <h2 class="article-title">Placeholder Text</h2>
+        </div>
+    </a>
+</article>
+
+            
+                
+<article class="has-image">
+    <a href="/p/emoji-support/">
+        
+        
+            <div class="article-image">
+                <img src="/p/emoji-support/the-creative-exchange-d2zvqp3fpro-unsplash.60116b1ccfc8632e9a65f7d51df3efc2_hu_c1cfd6b8275d624a.jpg" 
+                        width="250" 
+                        height="150" 
+                        loading="lazy"
+                        alt="Featured image of post Emoji Support"
+                        
+                        data-hash="md5-YBFrHM/IYy6aZffVHfPvwg==">
+                
+            </div>
+        
+
+        <div class="article-details">
+            <h2 class="article-title">Emoji Support</h2>
+        </div>
+    </a>
+</article>
+
+            
+        </div>
+    </div>
+</aside>
+
+     
+    
+        
+    <div class="disqus-container">
+    <div id="disqus_thread"></div>
+<script>
+    window.disqus_config = function () {
+    
+    
+    
+    };
+    (function() {
+        if (["localhost", "127.0.0.1"].indexOf(window.location.hostname) != -1) {
+            document.getElementById('disqus_thread').innerHTML = 'Disqus comments not available by default when the website is previewed locally.';
+            return;
+        }
+        var d = document, s = d.createElement('script'); s.async = true;
+        s.src = '//' + "hugo-theme-stack" + '.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="https://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+</div>
+
+<style>
+    .disqus-container {
+        background-color: var(--card-background);
+        border-radius: var(--card-border-radius);
+        box-shadow: var(--shadow-l1);
+        padding: var(--card-padding);
+    }
+</style>
+
+<script>
+    window.addEventListener('onColorSchemeChange', (e) => {
+        if (typeof DISQUS == 'object') {
+            DISQUS.reset({
+                reload: true
+            });
+        }
+    })
+</script>
+
+    
+
+    <footer class="site-footer">
+    <section class="copyright">
+        &copy; 
+        
+            2024 - 
+        
+        2025 Yeqing17
+    </section>
+    
+    <section class="powerby">
+        使用 <a href="https://gohugo.io/" target="_blank" rel="noopener">Hugo</a> 构建 <br />
+        主题 <b><a href="https://github.com/CaiJimmy/hugo-theme-stack" target="_blank" rel="noopener" data-version="3.30.0">Stack</a></b> 由 <a href="https://jimmycai.com" target="_blank" rel="noopener">Jimmy</a> 设计
+    </section>
+</footer>
+
+
+    
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+
+    
+    <div class="pswp__bg"></div>
+
+    
+    <div class="pswp__scroll-wrap">
+
+        
+        <div class="pswp__container">
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+        </div>
+
+        
+        <div class="pswp__ui pswp__ui--hidden">
+
+            <div class="pswp__top-bar">
+
+                
+
+                <div class="pswp__counter"></div>
+
+                <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+
+                <button class="pswp__button pswp__button--share" title="Share"></button>
+
+                <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+
+                <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+
+                
+                
+                <div class="pswp__preloader">
+                    <div class="pswp__preloader__icn">
+                        <div class="pswp__preloader__cut">
+                            <div class="pswp__preloader__donut"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+                <div class="pswp__share-tooltip"></div>
+            </div>
+
+            <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+            </button>
+
+            <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+            </button>
+
+            <div class="pswp__caption">
+                <div class="pswp__caption__center"></div>
+            </div>
+
+        </div>
+
+    </div>
+
+</div><script 
+                src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.min.js"integrity="sha256-ePwmChbbvXbsO02lbM3HoHbSHTHFAeChekF1xKJdleo="crossorigin="anonymous"
+                defer
+                >
+            </script><script 
+                src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe-ui-default.min.js"integrity="sha256-UKkzOn/w1mBxRmLLGrSeyB4e1xbrp4xylgAWb3M42pU="crossorigin="anonymous"
+                defer
+                >
+            </script><link 
+                rel="stylesheet" 
+                href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/default-skin/default-skin.min.css"crossorigin="anonymous"
+            ><link 
+                rel="stylesheet" 
+                href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.min.css"crossorigin="anonymous"
+            >
+
+            </main>
+        </div>
+        <script 
+                src="https://cdn.jsdelivr.net/npm/node-vibrant@3.1.6/dist/vibrant.min.js"integrity="sha256-awcR2jno4kI5X0zL8ex0vi2z&#43;KMkF24hUW8WePSA9HM="crossorigin="anonymous"
+                
+                >
+            </script><script type="text/javascript" src="/ts/main.399f6a5fbafc0fcb37b5d7890ca781a6243e2c3ea5c25ab565e2275341305794.js" defer></script>
+<script>
+    (function () {
+        const customFont = document.createElement('link');
+        customFont.href = "https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&display=swap";
+
+        customFont.type = "text/css";
+        customFont.rel = "stylesheet";
+
+        document.head.appendChild(customFont);
+    }());
+</script>
+
+    </body>
+</html>

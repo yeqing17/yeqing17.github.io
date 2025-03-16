@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>格式规范 on 一些记录</title>
+    <link>https://example.com/tags/%E6%A0%BC%E5%BC%8F%E8%A7%84%E8%8C%83/</link>
+    <description>Recent content in 格式规范 on 一些记录</description>
+    <generator>Hugo</generator>
+    <language>zh-cn</language>
+    <copyright>Yeqing17</copyright>
+    <lastBuildDate>Thu, 26 Dec 2024 12:19:32 -0500</lastBuildDate>
+    <atom:link href="https://example.com/tags/%E6%A0%BC%E5%BC%8F%E8%A7%84%E8%8C%83/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>草稿：书写注意</title>
+      <link>https://example.com/posts/1/</link>
+      <pubDate>Thu, 26 Dec 2024 12:19:32 -0500</pubDate>
+      <guid>https://example.com/posts/1/</guid>
+      <description>&lt;p&gt;自用书写注意&lt;/p&gt;</description>
+    </item>
+  </channel>
+</rss>
