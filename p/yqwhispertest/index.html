@@ -1,0 +1,1236 @@
+<!DOCTYPE html>
+<html lang="zh-cn" dir="ltr">
+    <head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script><meta charset='utf-8'>
+<meta name='viewport' content='width=device-width, initial-scale=1'><meta name='description' content="Whisper音视频转文字">
+<title>AI-Whisper音视频转文字&#43;LLM总结&#43;RAG&#43;工作流.md</title>
+
+<link rel='canonical' href='http://localhost:1313/p/yqwhispertest/'>
+
+<link rel="stylesheet" href="/scss/style.min.b9c8156d464c343bdacaf14a871581fb94cbbdb9dd5cbce4ba017361187cc930.css"><meta property='og:title' content="AI-Whisper音视频转文字+LLM总结+RAG+工作流.md">
+<meta property='og:description' content="Whisper音视频转文字">
+<meta property='og:url' content='http://localhost:1313/p/yqwhispertest/'>
+<meta property='og:site_name' content='一些记录'>
+<meta property='og:type' content='article'><meta property='article:section' content='Post' /><meta property='article:tag' content='Whisper' /><meta property='article:tag' content='音视频' /><meta property='article:tag' content='文字' /><meta property='article:tag' content='Openai' /><meta property='article:published_time' content='2025-01-01T00:00:00&#43;00:00'/><meta property='article:modified_time' content='2025-01-01T00:00:00&#43;00:00'/><meta property='og:image' content='http://localhost:1313/p/yqwhispertest/page.png' />
+<meta name="twitter:title" content="AI-Whisper音视频转文字+LLM总结+RAG+工作流.md">
+<meta name="twitter:description" content="Whisper音视频转文字"><meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:image" content='http://localhost:1313/p/yqwhispertest/page.png' />
+    <link rel="shortcut icon" href="/favicon.ico" />
+
+    </head>
+    <body class="
+    article-page
+    ">
+    <script>
+        (function() {
+            const colorSchemeKey = 'StackColorScheme';
+            if(!localStorage.getItem(colorSchemeKey)){
+                localStorage.setItem(colorSchemeKey, "auto");
+            }
+        })();
+    </script><script>
+    (function() {
+        const colorSchemeKey = 'StackColorScheme';
+        const colorSchemeItem = localStorage.getItem(colorSchemeKey);
+        const supportDarkMode = window.matchMedia('(prefers-color-scheme: dark)').matches === true;
+
+        if (colorSchemeItem == 'dark' || colorSchemeItem === 'auto' && supportDarkMode) {
+            
+
+            document.documentElement.dataset.scheme = 'dark';
+        } else {
+            document.documentElement.dataset.scheme = 'light';
+        }
+    })();
+</script>
+<div class="container main-container flex on-phone--column extended"><aside class="sidebar left-sidebar sticky ">
+    <button class="hamburger hamburger--spin" type="button" id="toggle-menu" aria-label="切换菜单">
+        <span class="hamburger-box">
+            <span class="hamburger-inner"></span>
+        </span>
+    </button>
+
+    <header>
+        
+            
+            <figure class="site-avatar">
+                <a href="/">
+                
+                    
+                    
+                    
+                        
+                        <img src="/img/avatar_hu_eca03cccf3fd19ef.png" width="300"
+                            height="300" class="site-logo" loading="lazy" alt="Avatar">
+                    
+                
+                </a>
+                
+                    <span class="emoji">🙃</span>
+                
+            </figure>
+            
+        
+        
+        <div class="site-meta">
+            <h1 class="site-name"><a href="/">一些记录</a></h1>
+            <h2 class="site-description">Yeqing17个人记录</h2>
+        </div>
+    </header><ol class="menu-social">
+            
+                <li>
+                    <a 
+                        href='https://github.com/CaiJimmy/hugo-theme-stack'
+                        target="_blank"
+                        title="GitHub"
+                        rel="me"
+                    >
+                        
+                        
+                            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-brand-github" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+  <path d="M9 19c-4.3 1.4 -4.3 -2.5 -6 -3m12 5v-3.5c0 -1 .1 -1.4 -.5 -2c2.8 -.3 5.5 -1.4 5.5 -6a4.6 4.6 0 0 0 -1.3 -3.2a4.2 4.2 0 0 0 -.1 -3.2s-1.1 -.3 -3.5 1.3a12.3 12.3 0 0 0 -6.2 0c-2.4 -1.6 -3.5 -1.3 -3.5 -1.3a4.2 4.2 0 0 0 -.1 3.2a4.6 4.6 0 0 0 -1.3 3.2c0 4.6 2.7 5.7 5.5 6c-.6 .6 -.6 1.2 -.5 2v3.5" />
+</svg>
+
+
+
+                        
+                    </a>
+                </li>
+            
+                <li>
+                    <a 
+                        href='https://twitter.com'
+                        target="_blank"
+                        title="Twitter"
+                        rel="me"
+                    >
+                        
+                        
+                            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-brand-twitter" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+  <path d="M22 4.01c-1 .49 -1.98 .689 -3 .99c-1.121 -1.265 -2.783 -1.335 -4.38 -.737s-2.643 2.06 -2.62 3.737v1c-3.245 .083 -6.135 -1.395 -8 -4c0 0 -4.182 7.433 4 11c-1.872 1.247 -3.739 2.088 -6 2c3.308 1.803 6.913 2.423 10.034 1.517c3.58 -1.04 6.522 -3.723 7.651 -7.742a13.84 13.84 0 0 0 .497 -3.753c-.002 -.249 1.51 -2.772 1.818 -4.013z" />
+</svg>
+
+
+
+                        
+                    </a>
+                </li>
+            
+        </ol><ol class="menu" id="main-menu">
+        
+        
+        
+        <li >
+            <a href='/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-home" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <polyline points="5 12 3 12 12 3 21 12 19 12" />
+  <path d="M5 12v7a2 2 0 0 0 2 2h10a2 2 0 0 0 2 -2v-7" />
+  <path d="M9 21v-6a2 2 0 0 1 2 -2h2a2 2 0 0 1 2 2v6" />
+</svg>
+
+
+
+                
+                <span>主页</span>
+            </a>
+        </li>
+        
+        
+        <li >
+            <a href='/%E5%85%B3%E4%BA%8E/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-user" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="12" cy="7" r="4" />
+  <path d="M6 21v-2a4 4 0 0 1 4 -4h4a4 4 0 0 1 4 4v2" />
+</svg>
+
+
+
+                
+                <span>关于</span>
+            </a>
+        </li>
+        
+        
+        <li >
+            <a href='/archives/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-archive" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <rect x="3" y="4" width="18" height="4" rx="2" />
+  <path d="M5 8v10a2 2 0 0 0 2 2h10a2 2 0 0 0 2 -2v-10" />
+  <line x1="10" y1="12" x2="14" y2="12" />
+</svg>
+
+
+
+                
+                <span>Archives</span>
+            </a>
+        </li>
+        
+        
+        <li >
+            <a href='/search/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-search" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="10" cy="10" r="7" />
+  <line x1="21" y1="21" x2="15" y2="15" />
+</svg>
+
+
+
+                
+                <span>Search</span>
+            </a>
+        </li>
+        
+        
+        <li >
+            <a href='/links/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-link" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <path d="M10 14a3.5 3.5 0 0 0 5 0l4 -4a3.5 3.5 0 0 0 -5 -5l-.5 .5" />
+  <path d="M14 10a3.5 3.5 0 0 0 -5 0l-4 4a3.5 3.5 0 0 0 5 5l.5 -.5" />
+</svg>
+
+
+
+                
+                <span>Links</span>
+            </a>
+        </li>
+        
+        <li class="menu-bottom-section">
+            <ol class="menu">
+                    
+                        <li id="i18n-switch">  
+                            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-language" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+  <path d="M4 5h7" />
+  <path d="M9 3v2c0 4.418 -2.239 8 -5 8" />
+  <path d="M5 9c-.003 2.144 2.952 3.908 6.7 4" />
+  <path d="M12 20l4 -9l4 9" />
+  <path d="M19.1 18h-6.2" />
+</svg>
+
+
+
+                            <select name="language" title="language" onchange="window.location.href = this.selectedOptions[0].value">
+                                
+                                    <option value="http://localhost:1313/en/" >English</option>
+                                
+                                    <option value="http://localhost:1313/" selected>简体中文</option>
+                                
+                            </select>
+                        </li>
+                    
+                
+
+                
+                    <li id="dark-mode-toggle">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-toggle-left" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="8" cy="12" r="2" />
+  <rect x="2" y="6" width="20" height="12" rx="6" />
+</svg>
+
+
+
+                        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-toggle-right" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="16" cy="12" r="2" />
+  <rect x="2" y="6" width="20" height="12" rx="6" />
+</svg>
+
+
+
+                        <span>暗色模式</span>
+                    </li>
+                
+            </ol>
+        </li>
+    </ol>
+</aside>
+
+    <aside class="sidebar right-sidebar sticky">
+        
+            
+                
+    <section class="widget archives">
+        <div class="widget-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-hash" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <line x1="5" y1="9" x2="19" y2="9" />
+  <line x1="5" y1="15" x2="19" y2="15" />
+  <line x1="11" y1="4" x2="7" y2="20" />
+  <line x1="17" y1="4" x2="13" y2="20" />
+</svg>
+
+
+
+        </div>
+        <h2 class="widget-title section-title">目录</h2>
+        
+        <div class="widget--toc">
+            <nav id="TableOfContents">
+  <ol>
+    <li><a href="#目标">目标</a></li>
+    <li><a href="#whisper部署">Whisper部署</a>
+      <ol>
+        <li><a href="#ffmpeg安装">FFmpeg安装</a>
+          <ol>
+            <li><a href="#下载安装">下载安装</a></li>
+            <li><a href="#配置环境变量">配置环境变量</a></li>
+            <li><a href="#测试验证">测试验证</a></li>
+          </ol>
+        </li>
+        <li><a href="#nvidia-cuda工具包">NVIDIA CUDA工具包</a></li>
+        <li><a href="#whisper安装">Whisper安装</a>
+          <ol>
+            <li><a href="#信息">信息</a></li>
+            <li><a href="#模型表">模型表</a></li>
+            <li><a href="#安装使用">安装使用</a></li>
+            <li><a href="#需pytorch才能跑gpu">需PyTorch才能跑GPU</a></li>
+            <li><a href="#测试验证-1">测试验证</a></li>
+          </ol>
+        </li>
+        <li><a href="#whispergpu测试">Whisper+GPU测试</a>
+          <ol>
+            <li><a href="#音频测试">音频测试</a></li>
+            <li><a href="#视频测试">视频测试</a></li>
+          </ol>
+        </li>
+      </ol>
+    </li>
+    <li><a href="#llm总结内容">LLM总结内容</a>
+      <ol>
+        <li><a href="#gui工具">GUI工具</a></li>
+      </ol>
+    </li>
+    <li><a href="#工作流">工作流</a></li>
+  </ol>
+</nav>
+        </div>
+    </section>
+
+            
+        
+    </aside>
+
+
+            <main class="main full-width">
+    <article class="has-image main-article">
+    <header class="article-header">
+        <div class="article-image">
+            <a href="/p/yqwhispertest/">
+                <img src="/p/yqwhispertest/page_hu_a5534df0b328cee5.png"
+                        srcset="/p/yqwhispertest/page_hu_a5534df0b328cee5.png 800w, /p/yqwhispertest/page_hu_b737f55dddc7e228.png 1600w"
+                        width="800" 
+                        height="341" 
+                        loading="lazy"
+                        alt="Featured image of post AI-Whisper音视频转文字&#43;LLM总结&#43;RAG&#43;工作流.md" />
+                
+            </a>
+        </div>
+    
+
+    <div class="article-details">
+    
+    <header class="article-category">
+        
+            <a href="/categories/ai/" >
+                AI
+            </a>
+        
+            <a href="/categories/%E9%9F%B3%E8%A7%86%E9%A2%91/" >
+                音视频
+            </a>
+        
+    </header>
+    
+
+    <div class="article-title-wrapper">
+        <h2 class="article-title">
+            <a href="/p/yqwhispertest/">AI-Whisper音视频转文字&#43;LLM总结&#43;RAG&#43;工作流.md</a>
+        </h2>
+    
+        
+        <h3 class="article-subtitle">
+            Whisper音视频转文字
+        </h3>
+        
+    </div>
+
+    
+    
+    
+    
+    <footer class="article-time">
+        
+            <div>
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-calendar-time" width="56" height="56" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <path d="M11.795 21h-6.795a2 2 0 0 1 -2 -2v-12a2 2 0 0 1 2 -2h12a2 2 0 0 1 2 2v4" />
+  <circle cx="18" cy="18" r="4" />
+  <path d="M15 3v4" />
+  <path d="M7 3v4" />
+  <path d="M3 11h16" />
+  <path d="M18 16.496v1.504l1 1" />
+</svg>
+                <time class="article-time--published">Jan 01, 2025</time>
+            </div>
+        
+
+        
+            <div>
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-clock" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="12" cy="12" r="9" />
+  <polyline points="12 7 12 12 15 15" />
+</svg>
+
+
+
+                <time class="article-time--reading">
+                    阅读时长: 4 分钟
+                </time>
+            </div>
+        
+    </footer>
+    
+
+    
+</div>
+
+</header>
+
+    <section class="article-content">
+    
+    
+    <p>[TOC]{float}</p>
+<h1 id="音视频转录文字llm总结rag工作流自动化">音视频转录文字+LLM总结+RAG+工作流自动化
+</h1><blockquote>
+<ol>
+<li>Win10   8G 显存GPU</li>
+<li>为什么使用md格式，了解到向量模型在分段切割时，是对md格式比较友好的，如果是纯txt或者word、PDF格式的文档，切割、分段（块）的效果不好</li>
+<li>最终目标，尝试用Dify或其他工具建立工作流，自动化处理音视频转录文字+AI总结+生成文档+保存RAG知识库全套流程</li>
+</ol></blockquote>
+<h2 id="目标">目标
+</h2><p>视频资料的文本提取-&gt;AI总结&gt;知识入库</p>
+<p>对以上进行工作流自动化配置，输入文件&mdash;》最终将核心内容输入知识库（md格式）分块处理，chat问答验证</p>
+<ul>
+<li>OpenAI的whisper开源项目，FFmpge</li>
+<li>Ollama本地大模型总结/在线大模型API</li>
+<li>工作流&mdash;借助Dify或其他工具</li>
+</ul>
+<h2 id="whisper部署">Whisper部署
+</h2><p>前置要安装FFmpeg，N卡走GPU需要装CUDA和PyTorch</p>
+<h3 id="ffmpeg安装">FFmpeg安装
+</h3><h4 id="下载安装">下载安装
+</h4><p><a class="link" href="https://ffmpeg.org/download.html"  target="_blank" rel="noopener"
+    >官网-下载页面Download FFmpeg</a></p>
+<img src="音视频语音转录文字+LLM处理+RAG+工作流.assets/image-20250216161409118.png" alt="image-20250216161409118"  />
+<p>选择对应的系统，比如Windows安装，选择其中一个链接，以Whindow builds by BtbN为例，进入后是Github项目的releases页面；</p>
+<p>下载适合本机的Windows后找目录解压即可使用</p>
+<p><img src="/p/yqwhispertest/%E9%9F%B3%E8%A7%86%E9%A2%91%E8%AF%AD%E9%9F%B3%E8%BD%AC%E5%BD%95%E6%96%87%E5%AD%97&#43;LLM%E5%A4%84%E7%90%86&#43;RAG&#43;%E5%B7%A5%E4%BD%9C%E6%B5%81.assets/image-20250216162214906.png"
+	width="1914"
+	height="947"
+	srcset="/p/yqwhispertest/%E9%9F%B3%E8%A7%86%E9%A2%91%E8%AF%AD%E9%9F%B3%E8%BD%AC%E5%BD%95%E6%96%87%E5%AD%97&#43;LLM%E5%A4%84%E7%90%86&#43;RAG&#43;%E5%B7%A5%E4%BD%9C%E6%B5%81.assets/image-20250216162214906_hu_ed589c29f5e07c07.png 480w, /p/yqwhispertest/%E9%9F%B3%E8%A7%86%E9%A2%91%E8%AF%AD%E9%9F%B3%E8%BD%AC%E5%BD%95%E6%96%87%E5%AD%97&#43;LLM%E5%A4%84%E7%90%86&#43;RAG&#43;%E5%B7%A5%E4%BD%9C%E6%B5%81.assets/image-20250216162214906_hu_b454d08d370616b2.png 1024w"
+	loading="lazy"
+	
+		alt="image-20250216162214906"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="202"
+		data-flex-basis="485px"
+	
+></p>
+<h4 id="配置环境变量">配置环境变量
+</h4><p>配置好环境变量方便使用，把bin目录的绝对路径，添加到系统变量的Path里</p>
+<p><img src="/p/yqwhispertest/%E9%9F%B3%E8%A7%86%E9%A2%91%E8%AF%AD%E9%9F%B3%E8%BD%AC%E5%BD%95%E6%96%87%E5%AD%97&#43;LLM%E5%A4%84%E7%90%86&#43;RAG&#43;%E5%B7%A5%E4%BD%9C%E6%B5%81.assets/image-20250216165102416.png"
+	width="1143"
+	height="651"
+	srcset="/p/yqwhispertest/%E9%9F%B3%E8%A7%86%E9%A2%91%E8%AF%AD%E9%9F%B3%E8%BD%AC%E5%BD%95%E6%96%87%E5%AD%97&#43;LLM%E5%A4%84%E7%90%86&#43;RAG&#43;%E5%B7%A5%E4%BD%9C%E6%B5%81.assets/image-20250216165102416_hu_dfaff189b19e87d5.png 480w, /p/yqwhispertest/%E9%9F%B3%E8%A7%86%E9%A2%91%E8%AF%AD%E9%9F%B3%E8%BD%AC%E5%BD%95%E6%96%87%E5%AD%97&#43;LLM%E5%A4%84%E7%90%86&#43;RAG&#43;%E5%B7%A5%E4%BD%9C%E6%B5%81.assets/image-20250216165102416_hu_a6bdd66bdf4774ef.png 1024w"
+	loading="lazy"
+	
+		alt="image-20250216165102416"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="175"
+		data-flex-basis="421px"
+	
+></p>
+<h4 id="测试验证">测试验证
+</h4><p>检查环境变量配置是否正常，ffmpeg命令有输出说明配置正常，无输出返回上一步检查，<code>bin</code>后有无带<code>\</code>之类的。</p>
+<p><img src="/p/yqwhispertest/%E9%9F%B3%E8%A7%86%E9%A2%91%E8%AF%AD%E9%9F%B3%E8%BD%AC%E5%BD%95%E6%96%87%E5%AD%97&#43;LLM%E5%A4%84%E7%90%86&#43;RAG&#43;%E5%B7%A5%E4%BD%9C%E6%B5%81.assets/image-20250216164937397.png"
+	width="960"
+	height="480"
+	srcset="/p/yqwhispertest/%E9%9F%B3%E8%A7%86%E9%A2%91%E8%AF%AD%E9%9F%B3%E8%BD%AC%E5%BD%95%E6%96%87%E5%AD%97&#43;LLM%E5%A4%84%E7%90%86&#43;RAG&#43;%E5%B7%A5%E4%BD%9C%E6%B5%81.assets/image-20250216164937397_hu_858903583c432c20.png 480w, /p/yqwhispertest/%E9%9F%B3%E8%A7%86%E9%A2%91%E8%AF%AD%E9%9F%B3%E8%BD%AC%E5%BD%95%E6%96%87%E5%AD%97&#43;LLM%E5%A4%84%E7%90%86&#43;RAG&#43;%E5%B7%A5%E4%BD%9C%E6%B5%81.assets/image-20250216164937397_hu_9b1ce8d8527d44a5.png 1024w"
+	loading="lazy"
+	
+		alt="image-20250216164937397"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="200"
+		data-flex-basis="480px"
+	
+></p>
+<h3 id="nvidia-cuda工具包">NVIDIA CUDA工具包
+</h3><p>如果是N卡可以支持GPU方式跑Whisper，需要安装它的CUDA开发工具包</p>
+<ul>
+<li>先检查显卡信息，确认支持CUDA</li>
+</ul>
+<p><img src="/p/yqwhispertest/%E9%9F%B3%E8%A7%86%E9%A2%91%E8%AF%AD%E9%9F%B3%E8%BD%AC%E5%BD%95%E6%96%87%E5%AD%97&#43;LLM%E5%A4%84%E7%90%86&#43;RAG&#43;%E5%B7%A5%E4%BD%9C%E6%B5%81.assets/image-20250216165846383.png"
+	width="947"
+	height="701"
+	srcset="/p/yqwhispertest/%E9%9F%B3%E8%A7%86%E9%A2%91%E8%AF%AD%E9%9F%B3%E8%BD%AC%E5%BD%95%E6%96%87%E5%AD%97&#43;LLM%E5%A4%84%E7%90%86&#43;RAG&#43;%E5%B7%A5%E4%BD%9C%E6%B5%81.assets/image-20250216165846383_hu_9e07a9422280652b.png 480w, /p/yqwhispertest/%E9%9F%B3%E8%A7%86%E9%A2%91%E8%AF%AD%E9%9F%B3%E8%BD%AC%E5%BD%95%E6%96%87%E5%AD%97&#43;LLM%E5%A4%84%E7%90%86&#43;RAG&#43;%E5%B7%A5%E4%BD%9C%E6%B5%81.assets/image-20250216165846383_hu_a9fe3c67de8ce537.png 1024w"
+	loading="lazy"
+	
+		alt="image-20250216165846383"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="135"
+		data-flex-basis="324px"
+	
+></p>
+<ul>
+<li>然后去官网安装CUDA开发者工具包，去官网下载安装，<a class="link" href="https://developer.nvidia.com/cuda-downloads"  target="_blank" rel="noopener"
+    >CUDA Toolkit 12.8 Downloads | NVIDIA Developer</a>
+选择适合系统的以及安装方式，安装方式&mdash;&gt; local本地安装要下载整个包比较大，network是通过网络安装下载到本地的包小。</li>
+</ul>
+<p><img src="/p/yqwhispertest/%E9%9F%B3%E8%A7%86%E9%A2%91%E8%AF%AD%E9%9F%B3%E8%BD%AC%E5%BD%95%E6%96%87%E5%AD%97&#43;LLM%E5%A4%84%E7%90%86&#43;RAG&#43;%E5%B7%A5%E4%BD%9C%E6%B5%81.assets/image-20250216180108875.png"
+	width="1696"
+	height="984"
+	srcset="/p/yqwhispertest/%E9%9F%B3%E8%A7%86%E9%A2%91%E8%AF%AD%E9%9F%B3%E8%BD%AC%E5%BD%95%E6%96%87%E5%AD%97&#43;LLM%E5%A4%84%E7%90%86&#43;RAG&#43;%E5%B7%A5%E4%BD%9C%E6%B5%81.assets/image-20250216180108875_hu_57b335eeba9bc413.png 480w, /p/yqwhispertest/%E9%9F%B3%E8%A7%86%E9%A2%91%E8%AF%AD%E9%9F%B3%E8%BD%AC%E5%BD%95%E6%96%87%E5%AD%97&#43;LLM%E5%A4%84%E7%90%86&#43;RAG&#43;%E5%B7%A5%E4%BD%9C%E6%B5%81.assets/image-20250216180108875_hu_ef67e584c27e6c6b.png 1024w"
+	loading="lazy"
+	
+		alt="image-20250216180108875"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="172"
+		data-flex-basis="413px"
+	
+></p>
+<ul>
+<li>下载完毕后进行安装，然后在命令行输入<code>nvcc --version</code>查看是否正常安装了。
+有坑，要选择自定义安装，指定装CUDA工具包的路径，不然开始指定的是不对CUDA组件这些生效的还是会被装到C盘去
+<img src="/p/yqwhispertest/%E9%9F%B3%E8%A7%86%E9%A2%91%E8%AF%AD%E9%9F%B3%E8%BD%AC%E5%BD%95%E6%96%87%E5%AD%97&#43;LLM%E5%A4%84%E7%90%86&#43;RAG&#43;%E5%B7%A5%E4%BD%9C%E6%B5%81.assets/image-20250216185013518.png"
+	width="594"
+	height="444"
+	srcset="/p/yqwhispertest/%E9%9F%B3%E8%A7%86%E9%A2%91%E8%AF%AD%E9%9F%B3%E8%BD%AC%E5%BD%95%E6%96%87%E5%AD%97&#43;LLM%E5%A4%84%E7%90%86&#43;RAG&#43;%E5%B7%A5%E4%BD%9C%E6%B5%81.assets/image-20250216185013518_hu_67a17d121957ca8f.png 480w, /p/yqwhispertest/%E9%9F%B3%E8%A7%86%E9%A2%91%E8%AF%AD%E9%9F%B3%E8%BD%AC%E5%BD%95%E6%96%87%E5%AD%97&#43;LLM%E5%A4%84%E7%90%86&#43;RAG&#43;%E5%B7%A5%E4%BD%9C%E6%B5%81.assets/image-20250216185013518_hu_5c7bc71b49810438.png 1024w"
+	loading="lazy"
+	
+		alt="image-20250216185013518"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="133"
+		data-flex-basis="321px"
+	
+>
+<img src="/p/yqwhispertest/%E9%9F%B3%E8%A7%86%E9%A2%91%E8%AF%AD%E9%9F%B3%E8%BD%AC%E5%BD%95%E6%96%87%E5%AD%97&#43;LLM%E5%A4%84%E7%90%86&#43;RAG&#43;%E5%B7%A5%E4%BD%9C%E6%B5%81.assets/image-20250216184947806.png"
+	width="590"
+	height="440"
+	srcset="/p/yqwhispertest/%E9%9F%B3%E8%A7%86%E9%A2%91%E8%AF%AD%E9%9F%B3%E8%BD%AC%E5%BD%95%E6%96%87%E5%AD%97&#43;LLM%E5%A4%84%E7%90%86&#43;RAG&#43;%E5%B7%A5%E4%BD%9C%E6%B5%81.assets/image-20250216184947806_hu_ea25902be03a1310.png 480w, /p/yqwhispertest/%E9%9F%B3%E8%A7%86%E9%A2%91%E8%AF%AD%E9%9F%B3%E8%BD%AC%E5%BD%95%E6%96%87%E5%AD%97&#43;LLM%E5%A4%84%E7%90%86&#43;RAG&#43;%E5%B7%A5%E4%BD%9C%E6%B5%81.assets/image-20250216184947806_hu_314f7a3c243419e8.png 1024w"
+	loading="lazy"
+	
+		alt="image-20250216184947806"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="134"
+		data-flex-basis="321px"
+	
+></li>
+</ul>
+<p>安装完毕
+<img src="/p/yqwhispertest/%E9%9F%B3%E8%A7%86%E9%A2%91%E8%AF%AD%E9%9F%B3%E8%BD%AC%E5%BD%95%E6%96%87%E5%AD%97&#43;LLM%E5%A4%84%E7%90%86&#43;RAG&#43;%E5%B7%A5%E4%BD%9C%E6%B5%81.assets/image-20250216185209607.png"
+	width="594"
+	height="444"
+	srcset="/p/yqwhispertest/%E9%9F%B3%E8%A7%86%E9%A2%91%E8%AF%AD%E9%9F%B3%E8%BD%AC%E5%BD%95%E6%96%87%E5%AD%97&#43;LLM%E5%A4%84%E7%90%86&#43;RAG&#43;%E5%B7%A5%E4%BD%9C%E6%B5%81.assets/image-20250216185209607_hu_6bb11ff877edec93.png 480w, /p/yqwhispertest/%E9%9F%B3%E8%A7%86%E9%A2%91%E8%AF%AD%E9%9F%B3%E8%BD%AC%E5%BD%95%E6%96%87%E5%AD%97&#43;LLM%E5%A4%84%E7%90%86&#43;RAG&#43;%E5%B7%A5%E4%BD%9C%E6%B5%81.assets/image-20250216185209607_hu_53420bbc55cdb781.png 1024w"
+	loading="lazy"
+	
+		alt="image-20250216185209607"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="133"
+		data-flex-basis="321px"
+	
+></p>
+<p>命令行检查</p>
+<p><img src="/p/yqwhispertest/%E9%9F%B3%E8%A7%86%E9%A2%91%E8%AF%AD%E9%9F%B3%E8%BD%AC%E5%BD%95%E6%96%87%E5%AD%97&#43;LLM%E5%A4%84%E7%90%86&#43;RAG&#43;%E5%B7%A5%E4%BD%9C%E6%B5%81.assets/image-20250216185643005.png"
+	width="976"
+	height="215"
+	srcset="/p/yqwhispertest/%E9%9F%B3%E8%A7%86%E9%A2%91%E8%AF%AD%E9%9F%B3%E8%BD%AC%E5%BD%95%E6%96%87%E5%AD%97&#43;LLM%E5%A4%84%E7%90%86&#43;RAG&#43;%E5%B7%A5%E4%BD%9C%E6%B5%81.assets/image-20250216185643005_hu_fd0c5ea7eee18168.png 480w, /p/yqwhispertest/%E9%9F%B3%E8%A7%86%E9%A2%91%E8%AF%AD%E9%9F%B3%E8%BD%AC%E5%BD%95%E6%96%87%E5%AD%97&#43;LLM%E5%A4%84%E7%90%86&#43;RAG&#43;%E5%B7%A5%E4%BD%9C%E6%B5%81.assets/image-20250216185643005_hu_1a4b4a97466f776c.png 1024w"
+	loading="lazy"
+	
+		alt="image-20250216185643005"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="453"
+		data-flex-basis="1089px"
+	
+></p>
+<h3 id="whisper安装">Whisper安装
+</h3><h4 id="信息">信息
+</h4><p>官网<a class="link" href="https://openai.com/index/whisper/"  target="_blank" rel="noopener"
+    >Introducing Whisper | OpenAI</a></p>
+<p>Github地址<a class="link" href="https://github.com/openai/whisper.git"  target="_blank" rel="noopener"
+    >https://github.com/openai/whisper.git</a></p>
+<p><a class="link" href="https://huggingface.co/openai"  target="_blank" rel="noopener"
+    >Hugging Face Whisper项目-右侧)</a></p>
+<p><a class="link" href="https://huggingface.co/spaces/openai/whisper"  target="_blank" rel="noopener"
+    >Hugging Face Space在线演示-Whisper</a></p>
+<blockquote>
+<p>麦克风，音频文件，Youtube视频地址三种方式的演示环境</p></blockquote>
+<p><img src="/p/yqwhispertest/%E9%9F%B3%E8%A7%86%E9%A2%91%E8%AF%AD%E9%9F%B3%E8%BD%AC%E5%BD%95%E6%96%87%E5%AD%97&#43;LLM%E5%A4%84%E7%90%86&#43;RAG&#43;%E5%B7%A5%E4%BD%9C%E6%B5%81.assets/image-20250216162033059.png"
+	width="1904"
+	height="506"
+	srcset="/p/yqwhispertest/%E9%9F%B3%E8%A7%86%E9%A2%91%E8%AF%AD%E9%9F%B3%E8%BD%AC%E5%BD%95%E6%96%87%E5%AD%97&#43;LLM%E5%A4%84%E7%90%86&#43;RAG&#43;%E5%B7%A5%E4%BD%9C%E6%B5%81.assets/image-20250216162033059_hu_ce286ebb9e9b25a.png 480w, /p/yqwhispertest/%E9%9F%B3%E8%A7%86%E9%A2%91%E8%AF%AD%E9%9F%B3%E8%BD%AC%E5%BD%95%E6%96%87%E5%AD%97&#43;LLM%E5%A4%84%E7%90%86&#43;RAG&#43;%E5%B7%A5%E4%BD%9C%E6%B5%81.assets/image-20250216162033059_hu_21e6cccc77000348.png 1024w"
+	loading="lazy"
+	
+		alt="image-20250216162033059"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="376"
+		data-flex-basis="903px"
+	
+></p>
+<h4 id="模型表">模型表
+</h4><p>主要看RAM这里，最多尝试到medium和turbo这里</p>
+<p><img src="/p/yqwhispertest/%E9%9F%B3%E8%A7%86%E9%A2%91%E8%AF%AD%E9%9F%B3%E8%BD%AC%E5%BD%95%E6%96%87%E5%AD%97&#43;LLM%E5%A4%84%E7%90%86&#43;RAG&#43;%E5%B7%A5%E4%BD%9C%E6%B5%81.assets/image-20250216204209179.png"
+	width="831"
+	height="441"
+	srcset="/p/yqwhispertest/%E9%9F%B3%E8%A7%86%E9%A2%91%E8%AF%AD%E9%9F%B3%E8%BD%AC%E5%BD%95%E6%96%87%E5%AD%97&#43;LLM%E5%A4%84%E7%90%86&#43;RAG&#43;%E5%B7%A5%E4%BD%9C%E6%B5%81.assets/image-20250216204209179_hu_d69c39c51cb8a9d9.png 480w, /p/yqwhispertest/%E9%9F%B3%E8%A7%86%E9%A2%91%E8%AF%AD%E9%9F%B3%E8%BD%AC%E5%BD%95%E6%96%87%E5%AD%97&#43;LLM%E5%A4%84%E7%90%86&#43;RAG&#43;%E5%B7%A5%E4%BD%9C%E6%B5%81.assets/image-20250216204209179_hu_c892b8b900e09e16.png 1024w"
+	loading="lazy"
+	
+		alt="image-20250216204209179"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="188"
+		data-flex-basis="452px"
+	
+></p>
+<h4 id="安装使用">安装使用
+</h4><p>按照Github项目说明pip安装</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">pip install -U openai-whisper
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>太慢了就更换国内源</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">pip install -U openai-whisper -i https://pypi.tuna.tsinghua.edu.cn/simple
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>安装完毕即可使用，但是发现是跑的CPU</p>
+<p>whisper &ndash;help  命令查看帮助</p>
+<p>比如下面这条 指定model 类型为small</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">whisper test.m4a --model small --language Chinese --model_dir L:<span class="se">\W</span>hisper
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>默认走的是CPU，转录的很慢，要走GPU还需要安装CUDA对应版本的Pytouch</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">whisper test.m4a --model medium --language Chinese --model_dir L:<span class="se">\W</span>hisper
+</span></span></code></pre></td></tr></table>
+</div>
+</div><ul>
+<li>如果使用的模型第一次使用会先下载模型到本地</li>
+</ul>
+<p><img src="/p/yqwhispertest/%E9%9F%B3%E8%A7%86%E9%A2%91%E8%AF%AD%E9%9F%B3%E8%BD%AC%E5%BD%95%E6%96%87%E5%AD%97&#43;LLM%E5%A4%84%E7%90%86&#43;RAG&#43;%E5%B7%A5%E4%BD%9C%E6%B5%81.assets/image-20250217011207189.png"
+	width="976"
+	height="169"
+	srcset="/p/yqwhispertest/%E9%9F%B3%E8%A7%86%E9%A2%91%E8%AF%AD%E9%9F%B3%E8%BD%AC%E5%BD%95%E6%96%87%E5%AD%97&#43;LLM%E5%A4%84%E7%90%86&#43;RAG&#43;%E5%B7%A5%E4%BD%9C%E6%B5%81.assets/image-20250217011207189_hu_96ff807402ee82d7.png 480w, /p/yqwhispertest/%E9%9F%B3%E8%A7%86%E9%A2%91%E8%AF%AD%E9%9F%B3%E8%BD%AC%E5%BD%95%E6%96%87%E5%AD%97&#43;LLM%E5%A4%84%E7%90%86&#43;RAG&#43;%E5%B7%A5%E4%BD%9C%E6%B5%81.assets/image-20250217011207189_hu_40e117ff11034ab0.png 1024w"
+	loading="lazy"
+	
+		alt="image-20250217011207189"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="577"
+		data-flex-basis="1386px"
+	
+></p>
+<h4 id="需pytorch才能跑gpu">需PyTorch才能跑GPU
+</h4><h5 id="安装pytorch">安装PyTorch
+</h5><p>到官网<a class="link" href="https://pytorch.org/get-started/locally/"  target="_blank" rel="noopener"
+    >Start Locally | PyTorch</a>选择安装对应CUDA版本的版本，官网CUDA目前到126</p>
+<p><img src="/p/yqwhispertest/%E9%9F%B3%E8%A7%86%E9%A2%91%E8%AF%AD%E9%9F%B3%E8%BD%AC%E5%BD%95%E6%96%87%E5%AD%97&#43;LLM%E5%A4%84%E7%90%86&#43;RAG&#43;%E5%B7%A5%E4%BD%9C%E6%B5%81.assets/image-20250217014037544.png"
+	width="1718"
+	height="932"
+	srcset="/p/yqwhispertest/%E9%9F%B3%E8%A7%86%E9%A2%91%E8%AF%AD%E9%9F%B3%E8%BD%AC%E5%BD%95%E6%96%87%E5%AD%97&#43;LLM%E5%A4%84%E7%90%86&#43;RAG&#43;%E5%B7%A5%E4%BD%9C%E6%B5%81.assets/image-20250217014037544_hu_5e9994b16f5e655a.png 480w, /p/yqwhispertest/%E9%9F%B3%E8%A7%86%E9%A2%91%E8%AF%AD%E9%9F%B3%E8%BD%AC%E5%BD%95%E6%96%87%E5%AD%97&#43;LLM%E5%A4%84%E7%90%86&#43;RAG&#43;%E5%B7%A5%E4%BD%9C%E6%B5%81.assets/image-20250217014037544_hu_c2f16d16bfb162da.png 1024w"
+	loading="lazy"
+	
+		alt="image-20250217014037544"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="184"
+		data-flex-basis="442px"
+	
+></p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">pip3 install torch torchvision torchaudio --index-url https://download.pytorch.org/whl/cu126
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>太慢了，用国内源尝试，还是慢。。。</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"> pip install torch torchvision torchaudio --extra-index-url https://download.pytorch.org/whl/cu126 -i https://pypi.tuna.tsinghua.edu.cn/simple
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p><img src="/p/yqwhispertest/%E9%9F%B3%E8%A7%86%E9%A2%91%E8%AF%AD%E9%9F%B3%E8%BD%AC%E5%BD%95%E6%96%87%E5%AD%97&#43;LLM%E5%A4%84%E7%90%86&#43;RAG&#43;%E5%B7%A5%E4%BD%9C%E6%B5%81.assets/image-20250217002240443.png"
+	width="878"
+	height="474"
+	srcset="/p/yqwhispertest/%E9%9F%B3%E8%A7%86%E9%A2%91%E8%AF%AD%E9%9F%B3%E8%BD%AC%E5%BD%95%E6%96%87%E5%AD%97&#43;LLM%E5%A4%84%E7%90%86&#43;RAG&#43;%E5%B7%A5%E4%BD%9C%E6%B5%81.assets/image-20250217002240443_hu_f0189a347138b001.png 480w, /p/yqwhispertest/%E9%9F%B3%E8%A7%86%E9%A2%91%E8%AF%AD%E9%9F%B3%E8%BD%AC%E5%BD%95%E6%96%87%E5%AD%97&#43;LLM%E5%A4%84%E7%90%86&#43;RAG&#43;%E5%B7%A5%E4%BD%9C%E6%B5%81.assets/image-20250217002240443_hu_95d5d76bf5bb695a.png 1024w"
+	loading="lazy"
+	
+		alt="image-20250217002240443"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="185"
+		data-flex-basis="444px"
+	
+></p>
+<p>最终安装成功</p>
+<p>注意安装之后是默认走CUDA，走GPU转录</p>
+<p>如果要走CPU ，命令加上<code>-- device cpu</code>，CPU时可以加<code>--threads 8</code>指定线程数</p>
+<h4 id="测试验证-1">测试验证
+</h4><p>进入python，用以下命令测试，查看是否正常安装</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="kn">import</span> <span class="nn">torch</span>
+</span></span><span class="line"><span class="cl"><span class="nb">print</span><span class="p">(</span><span class="n">torch</span><span class="o">.</span><span class="n">__version__</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="nb">print</span><span class="p">(</span><span class="n">torch</span><span class="o">.</span><span class="n">cuda</span><span class="o">.</span><span class="n">is_available</span><span class="p">())</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p><img src="/p/yqwhispertest/%E9%9F%B3%E8%A7%86%E9%A2%91%E8%AF%AD%E9%9F%B3%E8%BD%AC%E5%BD%95%E6%96%87%E5%AD%97&#43;LLM%E5%A4%84%E7%90%86&#43;RAG&#43;%E5%B7%A5%E4%BD%9C%E6%B5%81.assets/image-20250217010606981.png"
+	width="718"
+	height="182"
+	srcset="/p/yqwhispertest/%E9%9F%B3%E8%A7%86%E9%A2%91%E8%AF%AD%E9%9F%B3%E8%BD%AC%E5%BD%95%E6%96%87%E5%AD%97&#43;LLM%E5%A4%84%E7%90%86&#43;RAG&#43;%E5%B7%A5%E4%BD%9C%E6%B5%81.assets/image-20250217010606981_hu_dbdcaa5b334393fe.png 480w, /p/yqwhispertest/%E9%9F%B3%E8%A7%86%E9%A2%91%E8%AF%AD%E9%9F%B3%E8%BD%AC%E5%BD%95%E6%96%87%E5%AD%97&#43;LLM%E5%A4%84%E7%90%86&#43;RAG&#43;%E5%B7%A5%E4%BD%9C%E6%B5%81.assets/image-20250217010606981_hu_ac4a697cae8da3c9.png 1024w"
+	loading="lazy"
+	
+		alt="image-20250217010606981"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="394"
+		data-flex-basis="946px"
+	
+></p>
+<h3 id="whispergpu测试">Whisper+GPU测试
+</h3><h4 id="音频测试">音频测试
+</h4><blockquote>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">whisper test.m4a --model medium --language Chinese --model_dir L:<span class="se">\W</span>hisper
+</span></span></code></pre></td></tr></table>
+</div>
+</div></blockquote>
+<p>如果不是N卡或者显存不够，可以用CPU跑，速度会慢很多。
+用GPU的话速度会快一些，不过8G的GPU实测最多也就跑到medium的模型，因为Pytorch会占用内存</p>
+<p><img src="/p/yqwhispertest/%E9%9F%B3%E8%A7%86%E9%A2%91%E8%AF%AD%E9%9F%B3%E8%BD%AC%E5%BD%95%E6%96%87%E5%AD%97&#43;LLM%E5%A4%84%E7%90%86&#43;RAG&#43;%E5%B7%A5%E4%BD%9C%E6%B5%81.assets/image-20250217013504350.png"
+	width="972"
+	height="254"
+	srcset="/p/yqwhispertest/%E9%9F%B3%E8%A7%86%E9%A2%91%E8%AF%AD%E9%9F%B3%E8%BD%AC%E5%BD%95%E6%96%87%E5%AD%97&#43;LLM%E5%A4%84%E7%90%86&#43;RAG&#43;%E5%B7%A5%E4%BD%9C%E6%B5%81.assets/image-20250217013504350_hu_ddbadffd11778110.png 480w, /p/yqwhispertest/%E9%9F%B3%E8%A7%86%E9%A2%91%E8%AF%AD%E9%9F%B3%E8%BD%AC%E5%BD%95%E6%96%87%E5%AD%97&#43;LLM%E5%A4%84%E7%90%86&#43;RAG&#43;%E5%B7%A5%E4%BD%9C%E6%B5%81.assets/image-20250217013504350_hu_84ae34ca71a775d4.png 1024w"
+	loading="lazy"
+	
+		alt="image-20250217013504350"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="382"
+		data-flex-basis="918px"
+	
+></p>
+<p>清理了之后，勉强跑起来了，实测效果会比small的模型要好一些，不过也好的不多，见下图</p>
+<ul>
+<li>
+<p>这是medium的</p>
+<p><img src="/p/yqwhispertest/%E9%9F%B3%E8%A7%86%E9%A2%91%E8%AF%AD%E9%9F%B3%E8%BD%AC%E5%BD%95%E6%96%87%E5%AD%97&#43;LLM%E5%A4%84%E7%90%86&#43;RAG&#43;%E5%B7%A5%E4%BD%9C%E6%B5%81.assets/image-20250217013612852.png"
+	width="1555"
+	height="823"
+	srcset="/p/yqwhispertest/%E9%9F%B3%E8%A7%86%E9%A2%91%E8%AF%AD%E9%9F%B3%E8%BD%AC%E5%BD%95%E6%96%87%E5%AD%97&#43;LLM%E5%A4%84%E7%90%86&#43;RAG&#43;%E5%B7%A5%E4%BD%9C%E6%B5%81.assets/image-20250217013612852_hu_13eb620854e8df8.png 480w, /p/yqwhispertest/%E9%9F%B3%E8%A7%86%E9%A2%91%E8%AF%AD%E9%9F%B3%E8%BD%AC%E5%BD%95%E6%96%87%E5%AD%97&#43;LLM%E5%A4%84%E7%90%86&#43;RAG&#43;%E5%B7%A5%E4%BD%9C%E6%B5%81.assets/image-20250217013612852_hu_13224b74c2d7120c.png 1024w"
+	loading="lazy"
+	
+		alt="image-20250217013612852"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="188"
+		data-flex-basis="453px"
+	
+></p>
+</li>
+<li>
+<p>这是small的</p>
+<p><img src="/p/yqwhispertest/%E9%9F%B3%E8%A7%86%E9%A2%91%E8%AF%AD%E9%9F%B3%E8%BD%AC%E5%BD%95%E6%96%87%E5%AD%97&#43;LLM%E5%A4%84%E7%90%86&#43;RAG&#43;%E5%B7%A5%E4%BD%9C%E6%B5%81.assets/image-20250217013724776.png"
+	width="951"
+	height="827"
+	srcset="/p/yqwhispertest/%E9%9F%B3%E8%A7%86%E9%A2%91%E8%AF%AD%E9%9F%B3%E8%BD%AC%E5%BD%95%E6%96%87%E5%AD%97&#43;LLM%E5%A4%84%E7%90%86&#43;RAG&#43;%E5%B7%A5%E4%BD%9C%E6%B5%81.assets/image-20250217013724776_hu_f3be5571ea85656d.png 480w, /p/yqwhispertest/%E9%9F%B3%E8%A7%86%E9%A2%91%E8%AF%AD%E9%9F%B3%E8%BD%AC%E5%BD%95%E6%96%87%E5%AD%97&#43;LLM%E5%A4%84%E7%90%86&#43;RAG&#43;%E5%B7%A5%E4%BD%9C%E6%B5%81.assets/image-20250217013724776_hu_bce123c5d0b3d707.png 1024w"
+	loading="lazy"
+	
+		alt="image-20250217013724776"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="114"
+		data-flex-basis="275px"
+	
+></p>
+</li>
+</ul>
+<h4 id="视频测试">视频测试
+</h4><div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">whisper test.mp4 --model small --language Chinese --model_dir L:<span class="se">\W</span>hisper
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p><img src="/p/yqwhispertest/%E9%9F%B3%E8%A7%86%E9%A2%91%E8%AF%AD%E9%9F%B3%E8%BD%AC%E5%BD%95%E6%96%87%E5%AD%97&#43;LLM%E5%A4%84%E7%90%86&#43;RAG&#43;%E5%B7%A5%E4%BD%9C%E6%B5%81.assets/image-20250217020811042.png"
+	width="808"
+	height="140"
+	srcset="/p/yqwhispertest/%E9%9F%B3%E8%A7%86%E9%A2%91%E8%AF%AD%E9%9F%B3%E8%BD%AC%E5%BD%95%E6%96%87%E5%AD%97&#43;LLM%E5%A4%84%E7%90%86&#43;RAG&#43;%E5%B7%A5%E4%BD%9C%E6%B5%81.assets/image-20250217020811042_hu_811818229e9b1ff3.png 480w, /p/yqwhispertest/%E9%9F%B3%E8%A7%86%E9%A2%91%E8%AF%AD%E9%9F%B3%E8%BD%AC%E5%BD%95%E6%96%87%E5%AD%97&#43;LLM%E5%A4%84%E7%90%86&#43;RAG&#43;%E5%B7%A5%E4%BD%9C%E6%B5%81.assets/image-20250217020811042_hu_134071b06c0032a5.png 1024w"
+	loading="lazy"
+	
+		alt="image-20250217020811042"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="577"
+		data-flex-basis="1385px"
+	
+></p>
+<p>看着是正常能直接透过FFmpeg去解析MP4文件的，默认生成所有格式的，如果只想生成某种格式的文件可以&ndash;output_format命令指定，格式如下</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">--output_format<span class="o">{</span>txt,vtt,srt,tsv，json,a11<span class="o">}</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h2 id="llm总结内容">LLM总结内容
+</h2><p>实测Kimi的文章总结能力要比豆包强一些</p>
+<p><img src="/p/yqwhispertest/%E9%9F%B3%E8%A7%86%E9%A2%91%E8%AF%AD%E9%9F%B3%E8%BD%AC%E5%BD%95%E6%96%87%E5%AD%97&#43;LLM%E5%A4%84%E7%90%86&#43;RAG&#43;%E5%B7%A5%E4%BD%9C%E6%B5%81.assets/image-20250217021905822.png"
+	width="904"
+	height="818"
+	srcset="/p/yqwhispertest/%E9%9F%B3%E8%A7%86%E9%A2%91%E8%AF%AD%E9%9F%B3%E8%BD%AC%E5%BD%95%E6%96%87%E5%AD%97&#43;LLM%E5%A4%84%E7%90%86&#43;RAG&#43;%E5%B7%A5%E4%BD%9C%E6%B5%81.assets/image-20250217021905822_hu_7b2c6aa6d6354bd3.png 480w, /p/yqwhispertest/%E9%9F%B3%E8%A7%86%E9%A2%91%E8%AF%AD%E9%9F%B3%E8%BD%AC%E5%BD%95%E6%96%87%E5%AD%97&#43;LLM%E5%A4%84%E7%90%86&#43;RAG&#43;%E5%B7%A5%E4%BD%9C%E6%B5%81.assets/image-20250217021905822_hu_522ec9c3cac0bfdd.png 1024w"
+	loading="lazy"
+	
+		alt="image-20250217021905822"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="110"
+		data-flex-basis="265px"
+	
+></p>
+<p>DeepSeek R1的结果也比较，而且DeepSeek可以识别tsv格式文件</p>
+<p><img src="/p/yqwhispertest/%E9%9F%B3%E8%A7%86%E9%A2%91%E8%AF%AD%E9%9F%B3%E8%BD%AC%E5%BD%95%E6%96%87%E5%AD%97&#43;LLM%E5%A4%84%E7%90%86&#43;RAG&#43;%E5%B7%A5%E4%BD%9C%E6%B5%81.assets/image-20250217022520001.png"
+	width="957"
+	height="610"
+	srcset="/p/yqwhispertest/%E9%9F%B3%E8%A7%86%E9%A2%91%E8%AF%AD%E9%9F%B3%E8%BD%AC%E5%BD%95%E6%96%87%E5%AD%97&#43;LLM%E5%A4%84%E7%90%86&#43;RAG&#43;%E5%B7%A5%E4%BD%9C%E6%B5%81.assets/image-20250217022520001_hu_bc5fb0be7978a82.png 480w, /p/yqwhispertest/%E9%9F%B3%E8%A7%86%E9%A2%91%E8%AF%AD%E9%9F%B3%E8%BD%AC%E5%BD%95%E6%96%87%E5%AD%97&#43;LLM%E5%A4%84%E7%90%86&#43;RAG&#43;%E5%B7%A5%E4%BD%9C%E6%B5%81.assets/image-20250217022520001_hu_86bcd2ba6b45e28e.png 1024w"
+	loading="lazy"
+	
+		alt="image-20250217022520001"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="156"
+		data-flex-basis="376px"
+	
+></p>
+<h3 id="gui工具">GUI工具
+</h3><p><a class="link" href="./WhisperGUI.md" >单独文档记录</a></p>
+<p>做UI界面工具验证接口和相关功能；简化功能验证操作，半自动化，为后续全自动工作流做基础工作。</p>
+<ul>
+<li>转录部分效果
+<img src="/p/yqwhispertest/AI-Whisper%E9%9F%B3%E8%A7%86%E9%A2%91%E8%BD%AC%E6%96%87%E5%AD%97&#43;LLM%E6%80%BB%E7%BB%93&#43;RAG&#43;%E5%B7%A5%E4%BD%9C%E6%B5%81.assets/%E5%BE%AE%E4%BF%A1%E5%9B%BE%E7%89%87_20250220174836.png"
+	width="1000"
+	height="720"
+	srcset="/p/yqwhispertest/AI-Whisper%E9%9F%B3%E8%A7%86%E9%A2%91%E8%BD%AC%E6%96%87%E5%AD%97&#43;LLM%E6%80%BB%E7%BB%93&#43;RAG&#43;%E5%B7%A5%E4%BD%9C%E6%B5%81.assets/%E5%BE%AE%E4%BF%A1%E5%9B%BE%E7%89%87_20250220174836_hu_88010f83864660a0.png 480w, /p/yqwhispertest/AI-Whisper%E9%9F%B3%E8%A7%86%E9%A2%91%E8%BD%AC%E6%96%87%E5%AD%97&#43;LLM%E6%80%BB%E7%BB%93&#43;RAG&#43;%E5%B7%A5%E4%BD%9C%E6%B5%81.assets/%E5%BE%AE%E4%BF%A1%E5%9B%BE%E7%89%87_20250220174836_hu_7f9fce2a52cf9b8b.png 1024w"
+	loading="lazy"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="138"
+		data-flex-basis="333px"
+	
+></li>
+<li>AI处理部分
+<img src="/p/yqwhispertest/AI-Whisper%E9%9F%B3%E8%A7%86%E9%A2%91%E8%BD%AC%E6%96%87%E5%AD%97&#43;LLM%E6%80%BB%E7%BB%93&#43;RAG&#43;%E5%B7%A5%E4%BD%9C%E6%B5%81.assets/image-20250224023358455.png"
+	width="1002"
+	height="752"
+	srcset="/p/yqwhispertest/AI-Whisper%E9%9F%B3%E8%A7%86%E9%A2%91%E8%BD%AC%E6%96%87%E5%AD%97&#43;LLM%E6%80%BB%E7%BB%93&#43;RAG&#43;%E5%B7%A5%E4%BD%9C%E6%B5%81.assets/image-20250224023358455_hu_63e27eb3146075c9.png 480w, /p/yqwhispertest/AI-Whisper%E9%9F%B3%E8%A7%86%E9%A2%91%E8%BD%AC%E6%96%87%E5%AD%97&#43;LLM%E6%80%BB%E7%BB%93&#43;RAG&#43;%E5%B7%A5%E4%BD%9C%E6%B5%81.assets/image-20250224023358455_hu_dd1b8db65eeef210.png 1024w"
+	loading="lazy"
+	
+		alt="image-20250224023358455"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="133"
+		data-flex-basis="319px"
+	
+></li>
+</ul>
+<h2 id="工作流">工作流
+</h2><p>目前已经完成用GUI界面（代码）验证：音视频转录为文本文件 &mdash;&gt; 再用LLM的API接口处理文本文件内容流程</p>
+<p>下一步进行工作流的验证，还在学习中</p>
+
+</section>
+
+
+    <footer class="article-footer">
+    
+    <section class="article-tags">
+        
+            <a href="/tags/whisper/">Whisper</a>
+        
+            <a href="/tags/%E9%9F%B3%E8%A7%86%E9%A2%91/">音视频</a>
+        
+            <a href="/tags/%E6%96%87%E5%AD%97/">文字</a>
+        
+            <a href="/tags/openai/">Openai</a>
+        
+    </section>
+
+
+    
+    <section class="article-copyright">
+        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-copyright" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="12" cy="12" r="9" />
+  <path d="M14.5 9a3.5 4 0 1 0 0 6" />
+</svg>
+
+
+
+        <span>Licensed under CC BY-NC-SA 4.0</span>
+    </section>
+    </footer>
+
+
+    
+</article>
+
+    
+
+    
+
+<aside class="related-content--wrapper">
+    <h2 class="section-title">相关文章</h2>
+    <div class="related-content">
+        <div class="flex article-list--tile">
+            
+                
+<article class="has-image">
+    <a href="/p/yqsparktts/">
+        
+        
+            <div class="article-image">
+                <img src="/p/yqsparktts/page.df7a551fd9640951271ef512b78ff73e_hu_574fceadac6499e2.png" 
+                        width="250" 
+                        height="150" 
+                        loading="lazy"
+                        alt="Featured image of post SparkTTS本地部署"
+                        data-key="yqsparktts" 
+                        data-hash="md5-33pVH9lkCVEnHvUSt4/3Pg==">
+                
+            </div>
+        
+
+        <div class="article-details">
+            <h2 class="article-title">SparkTTS本地部署</h2>
+        </div>
+    </a>
+</article>
+
+            
+                
+<article class="has-image">
+    <a href="/p/rag-dify/">
+        
+        
+            <div class="article-image">
+                <img src="/p/rag-dify/page.4cd634e2644c7152ce481b3c43be1f05_hu_f7a656727863d9f4.png" 
+                        width="250" 
+                        height="150" 
+                        loading="lazy"
+                        alt="Featured image of post Deepseek&#43;Ollama&#43;Dify搭建本地RAG知识库"
+                        data-key="RAG-Dify" 
+                        data-hash="md5-TNY04mRMcVLOSBs8Q74fBQ==">
+                
+            </div>
+        
+
+        <div class="article-details">
+            <h2 class="article-title">Deepseek&#43;Ollama&#43;Dify搭建本地RAG知识库</h2>
+        </div>
+    </a>
+</article>
+
+            
+                
+<article class="">
+    <a href="/p/yqtesttts/">
+        
+        
+
+        <div class="article-details">
+            <h2 class="article-title">SparkTTS-腾讯CloudStudio部署</h2>
+        </div>
+    </a>
+</article>
+
+            
+                
+<article class="has-image">
+    <a href="/p/yeqings/">
+        
+        
+            <div class="article-image">
+                <img src="/p/yeqings/page.442cbd09dcf430fe54090749ea8f2fc2_hu_c236ef46af76740f.png" 
+                        width="250" 
+                        height="150" 
+                        loading="lazy"
+                        alt="Featured image of post WhisperGUI"
+                        data-key="yeqing`s" 
+                        data-hash="md5-RCy9Cdz0MP5UCQdJ6o8vwg==">
+                
+            </div>
+        
+
+        <div class="article-details">
+            <h2 class="article-title">WhisperGUI</h2>
+        </div>
+    </a>
+</article>
+
+            
+        </div>
+    </div>
+</aside>
+
+     
+    
+        
+    <div class="disqus-container">
+    <div id="disqus_thread"></div>
+<script>
+    window.disqus_config = function () {
+    
+    
+    
+    };
+    (function() {
+        if (["localhost", "127.0.0.1"].indexOf(window.location.hostname) != -1) {
+            document.getElementById('disqus_thread').innerHTML = 'Disqus comments not available by default when the website is previewed locally.';
+            return;
+        }
+        var d = document, s = d.createElement('script'); s.async = true;
+        s.src = '//' + "hugo-theme-stack" + '.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="https://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+</div>
+
+<style>
+    .disqus-container {
+        background-color: var(--card-background);
+        border-radius: var(--card-border-radius);
+        box-shadow: var(--shadow-l1);
+        padding: var(--card-padding);
+    }
+</style>
+
+<script>
+    window.addEventListener('onColorSchemeChange', (e) => {
+        if (typeof DISQUS == 'object') {
+            DISQUS.reset({
+                reload: true
+            });
+        }
+    })
+</script>
+
+    
+
+    <footer class="site-footer">
+    <section class="copyright">
+        &copy; 
+        
+            2024 - 
+        
+        2025 Yeqing17
+    </section>
+    
+    <section class="powerby">
+        使用 <a href="https://gohugo.io/" target="_blank" rel="noopener">Hugo</a> 构建 <br />
+        主题 <b><a href="https://github.com/CaiJimmy/hugo-theme-stack" target="_blank" rel="noopener" data-version="3.30.0">Stack</a></b> 由 <a href="https://jimmycai.com" target="_blank" rel="noopener">Jimmy</a> 设计
+    </section>
+</footer>
+
+
+    
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+
+    
+    <div class="pswp__bg"></div>
+
+    
+    <div class="pswp__scroll-wrap">
+
+        
+        <div class="pswp__container">
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+        </div>
+
+        
+        <div class="pswp__ui pswp__ui--hidden">
+
+            <div class="pswp__top-bar">
+
+                
+
+                <div class="pswp__counter"></div>
+
+                <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+
+                <button class="pswp__button pswp__button--share" title="Share"></button>
+
+                <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+
+                <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+
+                
+                
+                <div class="pswp__preloader">
+                    <div class="pswp__preloader__icn">
+                        <div class="pswp__preloader__cut">
+                            <div class="pswp__preloader__donut"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+                <div class="pswp__share-tooltip"></div>
+            </div>
+
+            <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+            </button>
+
+            <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+            </button>
+
+            <div class="pswp__caption">
+                <div class="pswp__caption__center"></div>
+            </div>
+
+        </div>
+
+    </div>
+
+</div><script 
+                src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.min.js"integrity="sha256-ePwmChbbvXbsO02lbM3HoHbSHTHFAeChekF1xKJdleo="crossorigin="anonymous"
+                defer
+                >
+            </script><script 
+                src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe-ui-default.min.js"integrity="sha256-UKkzOn/w1mBxRmLLGrSeyB4e1xbrp4xylgAWb3M42pU="crossorigin="anonymous"
+                defer
+                >
+            </script><link 
+                rel="stylesheet" 
+                href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/default-skin/default-skin.min.css"crossorigin="anonymous"
+            ><link 
+                rel="stylesheet" 
+                href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.min.css"crossorigin="anonymous"
+            >
+
+            </main>
+        </div>
+        <script 
+                src="https://cdn.jsdelivr.net/npm/node-vibrant@3.1.6/dist/vibrant.min.js"integrity="sha256-awcR2jno4kI5X0zL8ex0vi2z&#43;KMkF24hUW8WePSA9HM="crossorigin="anonymous"
+                
+                >
+            </script><script type="text/javascript" src="/ts/main.399f6a5fbafc0fcb37b5d7890ca781a6243e2c3ea5c25ab565e2275341305794.js" defer></script>
+<script>
+    (function () {
+        const customFont = document.createElement('link');
+        customFont.href = "https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&display=swap";
+
+        customFont.type = "text/css";
+        customFont.rel = "stylesheet";
+
+        document.head.appendChild(customFont);
+    }());
+</script>
+
+    </body>
+</html>

@@ -7,14 +7,42 @@
     <generator>Hugo</generator>
     <language>zh-cn</language>
     <copyright>Yeqing17</copyright>
-    <lastBuildDate>Tue, 04 Feb 2025 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Tue, 11 Mar 2025 00:00:00 +0000</lastBuildDate>
     <atom:link href="https://example.com/categories/ai/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>SparkTTS本地部署</title>
+      <link>https://example.com/p/yqsparktts/</link>
+      <pubDate>Tue, 11 Mar 2025 00:00:00 +0000</pubDate>
+      <guid>https://example.com/p/yqsparktts/</guid>
+      <description>&lt;h2 id=&#34;一github-clone项目镜像&#34;&gt;一、Github Clone项目镜像&lt;/h2&gt;&#xA;&lt;p&gt;Spark-TTS项目&lt;code&gt;https://github.com/SparkAudio/Spark-TTS.git&lt;/code&gt;&lt;/p&gt;&#xA;&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;&#xA;&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;&#xA;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1&#xA;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&#xA;&lt;td class=&#34;lntd&#34;&gt;&#xA;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;git clone https://github.com/SparkAudio/Spark-TTS.git&#xA;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&#xA;&lt;/div&gt;&#xA;&lt;/div&gt;&lt;p&gt;&lt;img src=&#34;https://example.com/p/yqsparktts/sparktts.assets/image-20250309130742950.png&#34; alt=&#34;image-20250309130742950&#34;&gt;&lt;/p&gt;</description>
+    </item>
     <item>
       <title>Deepseek&#43;Ollama&#43;Dify搭建本地RAG知识库</title>
       <link>https://example.com/p/rag-dify/</link>
       <pubDate>Tue, 04 Feb 2025 00:00:00 +0000</pubDate>
       <guid>https://example.com/p/rag-dify/</guid>
       <description>&lt;h1 id=&#34;deepseek-r1ollamadify搭建本地rag知识库&#34;&gt;Deepseek R1+Ollama+Dify搭建本地RAG知识库&lt;/h1&gt;&#xA;&lt;blockquote&gt;&#xA;&lt;p&gt;注：以下为Windows10系统操作记录，16G内存，NVIDA 4060 8G显卡&lt;/p&gt;&lt;/blockquote&gt;&#xA;&lt;h2 id=&#34;dify&#34;&gt;Dify&lt;/h2&gt;&#xA;&lt;p&gt;Dify 是低代码一站式大模型应用开发平台。它有可视化界面，降低开发门槛，支持集成多种主流大语言模型。可上传数据微调模型、编排工作流，还能快速部署应用并提供运维监控。支持RAG知识库和AI Agenta 适用于智能客服、内容创作等场景，高效灵活又安全。&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>AI-Whisper音视频转文字&#43;LLM总结&#43;RAG&#43;工作流.md</title>
+      <link>https://example.com/p/yqwhispertest/</link>
+      <pubDate>Wed, 01 Jan 2025 00:00:00 +0000</pubDate>
+      <guid>https://example.com/p/yqwhispertest/</guid>
+      <description>&lt;p&gt;[TOC]{float}&lt;/p&gt;&#xA;&lt;h1 id=&#34;音视频转录文字llm总结rag工作流自动化&#34;&gt;音视频转录文字+LLM总结+RAG+工作流自动化&lt;/h1&gt;&#xA;&lt;blockquote&gt;&#xA;&lt;ol&gt;&#xA;&lt;li&gt;Win10   8G 显存GPU&lt;/li&gt;&#xA;&lt;li&gt;为什么使用md格式，了解到向量模型在分段切割时，是对md格式比较友好的，如果是纯txt或者word、PDF格式的文档，切割、分段（块）的效果不好&lt;/li&gt;&#xA;&lt;li&gt;最终目标，尝试用Dify或其他工具建立工作流，自动化处理音视频转录文字+AI总结+生成文档+保存RAG知识库全套流程&lt;/li&gt;&#xA;&lt;/ol&gt;&lt;/blockquote&gt;&#xA;&lt;h2 id=&#34;目标&#34;&gt;目标&lt;/h2&gt;&#xA;&lt;p&gt;视频资料的文本提取-&amp;gt;AI总结&amp;gt;知识入库&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>SparkTTS-腾讯CloudStudio部署</title>
+      <link>https://example.com/p/yqtesttts/</link>
+      <pubDate>Wed, 01 Jan 2025 00:00:00 +0000</pubDate>
+      <guid>https://example.com/p/yqtesttts/</guid>
+      <description>&lt;p&gt;[TOC]{float}&lt;/p&gt;&#xA;&lt;h2 id=&#34;一登录cloud-studio创建服务器&#34;&gt;一、登录Cloud Studio创建服务器&lt;/h2&gt;&#xA;&lt;p&gt;&lt;a href=&#34;https://ide.cloud.tencent.com/dashboard/ai&#34;&gt;腾讯Cloud Studio&lt;/a&gt;&lt;/p&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;微信扫码或者PC微信授权登录即可，通用空间每月免费赠送50000分钟，高性能带GPU的每月免费10000分钟&lt;/li&gt;&#xA;&lt;li&gt;按下图所示选择创建服务器，据说是这个模板GPU和存储空间最优；16G的GPU显存，32G 内存，8核CPU，300G左右存储空间。&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;p&gt;&lt;img src=&#34;https://example.com/p/yqtesttts/%E8%85%BE%E8%AE%AFCloudStudio%E9%83%A8%E7%BD%B2SparkTTS.assets/image-20250309225726726.png&#34; alt=&#34;image-20250309225726726&#34;&gt;&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>WhisperGUI</title>
+      <link>https://example.com/p/yeqings/</link>
+      <pubDate>Wed, 01 Jan 2025 00:00:00 +0000</pubDate>
+      <guid>https://example.com/p/yeqings/</guid>
+      <description>&lt;p&gt;[TOC]{float}&lt;/p&gt;&#xA;&lt;h1 id=&#34;whisper-gui简单工具&#34;&gt;Whisper GUI简单工具&lt;/h1&gt;&#xA;&lt;p&gt;目标是验证本地部署Whisper环境部署后，使用Python程序调用的情况。&lt;/p&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;功能是否正常&lt;/li&gt;&#xA;&lt;li&gt;输出结果与命令行方式是否有差异&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;h2 id=&#34;开发过程&#34;&gt;开发过程&lt;/h2&gt;&#xA;&lt;p&gt;使用cursor工具，Python语言开发&lt;/p&gt;</description>
     </item>
   </channel>
 </rss>

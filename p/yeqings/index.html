@@ -1,0 +1,956 @@
+<!DOCTYPE html>
+<html lang="zh-cn" dir="ltr">
+    <head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script><meta charset='utf-8'>
+<meta name='viewport' content='width=device-width, initial-scale=1'><meta name='description' content="yeqing`s blog file">
+<title>WhisperGUI</title>
+
+<link rel='canonical' href='http://localhost:1313/p/yeqings/'>
+
+<link rel="stylesheet" href="/scss/style.min.b9c8156d464c343bdacaf14a871581fb94cbbdb9dd5cbce4ba017361187cc930.css"><meta property='og:title' content="WhisperGUI">
+<meta property='og:description' content="yeqing`s blog file">
+<meta property='og:url' content='http://localhost:1313/p/yeqings/'>
+<meta property='og:site_name' content='一些记录'>
+<meta property='og:type' content='article'><meta property='article:section' content='Post' /><meta property='article:tag' content='AI' /><meta property='article:tag' content='测试' /><meta property='article:published_time' content='2025-01-01T00:00:00&#43;00:00'/><meta property='article:modified_time' content='2025-01-01T00:00:00&#43;00:00'/><meta property='og:image' content='http://localhost:1313/p/yeqings/page.png' />
+<meta name="twitter:title" content="WhisperGUI">
+<meta name="twitter:description" content="yeqing`s blog file"><meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:image" content='http://localhost:1313/p/yeqings/page.png' />
+    <link rel="shortcut icon" href="/favicon.ico" />
+
+    </head>
+    <body class="
+    article-page
+    ">
+    <script>
+        (function() {
+            const colorSchemeKey = 'StackColorScheme';
+            if(!localStorage.getItem(colorSchemeKey)){
+                localStorage.setItem(colorSchemeKey, "auto");
+            }
+        })();
+    </script><script>
+    (function() {
+        const colorSchemeKey = 'StackColorScheme';
+        const colorSchemeItem = localStorage.getItem(colorSchemeKey);
+        const supportDarkMode = window.matchMedia('(prefers-color-scheme: dark)').matches === true;
+
+        if (colorSchemeItem == 'dark' || colorSchemeItem === 'auto' && supportDarkMode) {
+            
+
+            document.documentElement.dataset.scheme = 'dark';
+        } else {
+            document.documentElement.dataset.scheme = 'light';
+        }
+    })();
+</script>
+<div class="container main-container flex on-phone--column extended"><aside class="sidebar left-sidebar sticky ">
+    <button class="hamburger hamburger--spin" type="button" id="toggle-menu" aria-label="切换菜单">
+        <span class="hamburger-box">
+            <span class="hamburger-inner"></span>
+        </span>
+    </button>
+
+    <header>
+        
+            
+            <figure class="site-avatar">
+                <a href="/">
+                
+                    
+                    
+                    
+                        
+                        <img src="/img/avatar_hu_eca03cccf3fd19ef.png" width="300"
+                            height="300" class="site-logo" loading="lazy" alt="Avatar">
+                    
+                
+                </a>
+                
+                    <span class="emoji">🙃</span>
+                
+            </figure>
+            
+        
+        
+        <div class="site-meta">
+            <h1 class="site-name"><a href="/">一些记录</a></h1>
+            <h2 class="site-description">Yeqing17个人记录</h2>
+        </div>
+    </header><ol class="menu-social">
+            
+                <li>
+                    <a 
+                        href='https://github.com/CaiJimmy/hugo-theme-stack'
+                        target="_blank"
+                        title="GitHub"
+                        rel="me"
+                    >
+                        
+                        
+                            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-brand-github" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+  <path d="M9 19c-4.3 1.4 -4.3 -2.5 -6 -3m12 5v-3.5c0 -1 .1 -1.4 -.5 -2c2.8 -.3 5.5 -1.4 5.5 -6a4.6 4.6 0 0 0 -1.3 -3.2a4.2 4.2 0 0 0 -.1 -3.2s-1.1 -.3 -3.5 1.3a12.3 12.3 0 0 0 -6.2 0c-2.4 -1.6 -3.5 -1.3 -3.5 -1.3a4.2 4.2 0 0 0 -.1 3.2a4.6 4.6 0 0 0 -1.3 3.2c0 4.6 2.7 5.7 5.5 6c-.6 .6 -.6 1.2 -.5 2v3.5" />
+</svg>
+
+
+
+                        
+                    </a>
+                </li>
+            
+                <li>
+                    <a 
+                        href='https://twitter.com'
+                        target="_blank"
+                        title="Twitter"
+                        rel="me"
+                    >
+                        
+                        
+                            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-brand-twitter" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+  <path d="M22 4.01c-1 .49 -1.98 .689 -3 .99c-1.121 -1.265 -2.783 -1.335 -4.38 -.737s-2.643 2.06 -2.62 3.737v1c-3.245 .083 -6.135 -1.395 -8 -4c0 0 -4.182 7.433 4 11c-1.872 1.247 -3.739 2.088 -6 2c3.308 1.803 6.913 2.423 10.034 1.517c3.58 -1.04 6.522 -3.723 7.651 -7.742a13.84 13.84 0 0 0 .497 -3.753c-.002 -.249 1.51 -2.772 1.818 -4.013z" />
+</svg>
+
+
+
+                        
+                    </a>
+                </li>
+            
+        </ol><ol class="menu" id="main-menu">
+        
+        
+        
+        <li >
+            <a href='/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-home" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <polyline points="5 12 3 12 12 3 21 12 19 12" />
+  <path d="M5 12v7a2 2 0 0 0 2 2h10a2 2 0 0 0 2 -2v-7" />
+  <path d="M9 21v-6a2 2 0 0 1 2 -2h2a2 2 0 0 1 2 2v6" />
+</svg>
+
+
+
+                
+                <span>主页</span>
+            </a>
+        </li>
+        
+        
+        <li >
+            <a href='/%E5%85%B3%E4%BA%8E/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-user" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="12" cy="7" r="4" />
+  <path d="M6 21v-2a4 4 0 0 1 4 -4h4a4 4 0 0 1 4 4v2" />
+</svg>
+
+
+
+                
+                <span>关于</span>
+            </a>
+        </li>
+        
+        
+        <li >
+            <a href='/archives/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-archive" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <rect x="3" y="4" width="18" height="4" rx="2" />
+  <path d="M5 8v10a2 2 0 0 0 2 2h10a2 2 0 0 0 2 -2v-10" />
+  <line x1="10" y1="12" x2="14" y2="12" />
+</svg>
+
+
+
+                
+                <span>Archives</span>
+            </a>
+        </li>
+        
+        
+        <li >
+            <a href='/search/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-search" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="10" cy="10" r="7" />
+  <line x1="21" y1="21" x2="15" y2="15" />
+</svg>
+
+
+
+                
+                <span>Search</span>
+            </a>
+        </li>
+        
+        
+        <li >
+            <a href='/links/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-link" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <path d="M10 14a3.5 3.5 0 0 0 5 0l4 -4a3.5 3.5 0 0 0 -5 -5l-.5 .5" />
+  <path d="M14 10a3.5 3.5 0 0 0 -5 0l-4 4a3.5 3.5 0 0 0 5 5l.5 -.5" />
+</svg>
+
+
+
+                
+                <span>Links</span>
+            </a>
+        </li>
+        
+        <li class="menu-bottom-section">
+            <ol class="menu">
+                    
+                        <li id="i18n-switch">  
+                            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-language" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+  <path d="M4 5h7" />
+  <path d="M9 3v2c0 4.418 -2.239 8 -5 8" />
+  <path d="M5 9c-.003 2.144 2.952 3.908 6.7 4" />
+  <path d="M12 20l4 -9l4 9" />
+  <path d="M19.1 18h-6.2" />
+</svg>
+
+
+
+                            <select name="language" title="language" onchange="window.location.href = this.selectedOptions[0].value">
+                                
+                                    <option value="http://localhost:1313/en/" >English</option>
+                                
+                                    <option value="http://localhost:1313/" selected>简体中文</option>
+                                
+                            </select>
+                        </li>
+                    
+                
+
+                
+                    <li id="dark-mode-toggle">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-toggle-left" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="8" cy="12" r="2" />
+  <rect x="2" y="6" width="20" height="12" rx="6" />
+</svg>
+
+
+
+                        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-toggle-right" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="16" cy="12" r="2" />
+  <rect x="2" y="6" width="20" height="12" rx="6" />
+</svg>
+
+
+
+                        <span>暗色模式</span>
+                    </li>
+                
+            </ol>
+        </li>
+    </ol>
+</aside>
+
+    <aside class="sidebar right-sidebar sticky">
+        
+            
+                
+    <section class="widget archives">
+        <div class="widget-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-hash" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <line x1="5" y1="9" x2="19" y2="9" />
+  <line x1="5" y1="15" x2="19" y2="15" />
+  <line x1="11" y1="4" x2="7" y2="20" />
+  <line x1="17" y1="4" x2="13" y2="20" />
+</svg>
+
+
+
+        </div>
+        <h2 class="widget-title section-title">目录</h2>
+        
+        <div class="widget--toc">
+            <nav id="TableOfContents">
+  <ol>
+    <li><a href="#开发过程">开发过程</a></li>
+    <li><a href="#工具使用">工具使用</a>
+      <ol>
+        <li><a href="#录音方式">录音方式</a></li>
+        <li><a href="#文件方式">文件方式</a></li>
+        <li><a href="#结果导入ai总结-在线网站">结果导入AI总结-在线网站</a></li>
+      </ol>
+    </li>
+    <li><a href="#功能扩展1">功能扩展1</a>
+      <ol>
+        <li><a href="#ai总结-api方式">AI总结-API方式</a></li>
+      </ol>
+    </li>
+  </ol>
+</nav>
+        </div>
+    </section>
+
+            
+        
+    </aside>
+
+
+            <main class="main full-width">
+    <article class="has-image main-article">
+    <header class="article-header">
+        <div class="article-image">
+            <a href="/p/yeqings/">
+                <img src="/p/yeqings/page_hu_8124a34152b5dbaa.png"
+                        srcset="/p/yeqings/page_hu_8124a34152b5dbaa.png 800w, /p/yeqings/page_hu_538335c0cad8c1e2.png 1600w"
+                        width="800" 
+                        height="341" 
+                        loading="lazy"
+                        alt="Featured image of post WhisperGUI" />
+                
+            </a>
+        </div>
+    
+
+    <div class="article-details">
+    
+    <header class="article-category">
+        
+            <a href="/categories/ai/" >
+                AI
+            </a>
+        
+            <a href="/categories/%E5%BC%80%E5%8F%91/" >
+                开发
+            </a>
+        
+    </header>
+    
+
+    <div class="article-title-wrapper">
+        <h2 class="article-title">
+            <a href="/p/yeqings/">WhisperGUI</a>
+        </h2>
+    
+        
+        <h3 class="article-subtitle">
+            yeqing`s blog file
+        </h3>
+        
+    </div>
+
+    
+    
+    
+    
+    <footer class="article-time">
+        
+            <div>
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-calendar-time" width="56" height="56" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <path d="M11.795 21h-6.795a2 2 0 0 1 -2 -2v-12a2 2 0 0 1 2 -2h12a2 2 0 0 1 2 2v4" />
+  <circle cx="18" cy="18" r="4" />
+  <path d="M15 3v4" />
+  <path d="M7 3v4" />
+  <path d="M3 11h16" />
+  <path d="M18 16.496v1.504l1 1" />
+</svg>
+                <time class="article-time--published">Jan 01, 2025</time>
+            </div>
+        
+
+        
+            <div>
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-clock" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="12" cy="12" r="9" />
+  <polyline points="12 7 12 12 15 15" />
+</svg>
+
+
+
+                <time class="article-time--reading">
+                    阅读时长: 3 分钟
+                </time>
+            </div>
+        
+    </footer>
+    
+
+    
+</div>
+
+</header>
+
+    <section class="article-content">
+    
+    
+    <p>[TOC]{float}</p>
+<h1 id="whisper-gui简单工具">Whisper GUI简单工具
+</h1><p>目标是验证本地部署Whisper环境部署后，使用Python程序调用的情况。</p>
+<ul>
+<li>功能是否正常</li>
+<li>输出结果与命令行方式是否有差异</li>
+</ul>
+<h2 id="开发过程">开发过程
+</h2><p>使用cursor工具，Python语言开发</p>
+<ol>
+<li>
+<p>新建项目目录（预计功能不多没有初始化Git去管理该项目），Cursor打开，制作好.cursorrules，项目要求不高可直接用相关插件直接生成即可。
+<img src="/p/yeqings/Whisper_GUI.assets/%E5%BE%AE%E4%BF%A1%E5%9B%BE%E7%89%87_20250220174830.png"
+	width="1920"
+	height="907"
+	srcset="/p/yeqings/Whisper_GUI.assets/%E5%BE%AE%E4%BF%A1%E5%9B%BE%E7%89%87_20250220174830_hu_db458788b969d8f4.png 480w, /p/yeqings/Whisper_GUI.assets/%E5%BE%AE%E4%BF%A1%E5%9B%BE%E7%89%87_20250220174830_hu_aaa8336d6134195a.png 1024w"
+	loading="lazy"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="211"
+		data-flex-basis="508px"
+	
+></p>
+</li>
+<li>
+<p>梳理项目功能需求逻辑，可用NOTEPADS功能直接记录备用；遇到关键需求，记录到NOTEPADS；
+<img src="/p/yeqings/Whisper_GUI.assets/%E5%BE%AE%E4%BF%A1%E5%9B%BE%E7%89%87_20250220174829.png"
+	width="1918"
+	height="1034"
+	srcset="/p/yeqings/Whisper_GUI.assets/%E5%BE%AE%E4%BF%A1%E5%9B%BE%E7%89%87_20250220174829_hu_a467d53766ff3563.png 480w, /p/yeqings/Whisper_GUI.assets/%E5%BE%AE%E4%BF%A1%E5%9B%BE%E7%89%87_20250220174829_hu_dd3a86cfc9f9f4c.png 1024w"
+	loading="lazy"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="185"
+		data-flex-basis="445px"
+	
+></p>
+<p><img src="/p/yeqings/Whisper_GUI.assets/%E5%BE%AE%E4%BF%A1%E5%9B%BE%E7%89%87_20250220174827.png"
+	width="1920"
+	height="985"
+	srcset="/p/yeqings/Whisper_GUI.assets/%E5%BE%AE%E4%BF%A1%E5%9B%BE%E7%89%87_20250220174827_hu_26fe61a970b60083.png 480w, /p/yeqings/Whisper_GUI.assets/%E5%BE%AE%E4%BF%A1%E5%9B%BE%E7%89%87_20250220174827_hu_830bc28f9913e74a.png 1024w"
+	loading="lazy"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="194"
+		data-flex-basis="467px"
+	
+></p>
+</li>
+<li>
+<p>调试测试，处理麦克风初始化、GPU资源占用、释放、界面逻辑优化等等，最终做出符合目标的稳定可用版本；过程省略</p>
+</li>
+</ol>
+<h2 id="工具使用">工具使用
+</h2><p>功能主要是音视频文件转录为文字，支持麦克风输入和文件两种方式，详见项目源码目录的<a class="link" href="Whisper_GUI/README.md" >README.md</a></p>
+<p>实际效果如下：</p>
+<h3 id="录音方式">录音方式
+</h3><p>调用系统麦克风设备，实时转录为文字显示</p>
+<p><img src="/p/yeqings/Whisper_GUI.assets/%E5%BE%AE%E4%BF%A1%E5%9B%BE%E7%89%87_20250220174824.png"
+	width="1002"
+	height="752"
+	srcset="/p/yeqings/Whisper_GUI.assets/%E5%BE%AE%E4%BF%A1%E5%9B%BE%E7%89%87_20250220174824_hu_c6fe3902db14e130.png 480w, /p/yeqings/Whisper_GUI.assets/%E5%BE%AE%E4%BF%A1%E5%9B%BE%E7%89%87_20250220174824_hu_783e42915e23c382.png 1024w"
+	loading="lazy"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="133"
+		data-flex-basis="319px"
+	
+></p>
+<h3 id="文件方式">文件方式
+</h3><p>支持单个，多个音视频文件（格式未全部测试），进度条显示处理进度。</p>
+<p><img src="/p/yeqings/Whisper_GUI.assets/%E5%BE%AE%E4%BF%A1%E5%9B%BE%E7%89%87_20250220174835.png"
+	width="1184"
+	height="746"
+	srcset="/p/yeqings/Whisper_GUI.assets/%E5%BE%AE%E4%BF%A1%E5%9B%BE%E7%89%87_20250220174835_hu_a75b768e038ebd0.png 480w, /p/yeqings/Whisper_GUI.assets/%E5%BE%AE%E4%BF%A1%E5%9B%BE%E7%89%87_20250220174835_hu_55239c8eaa2d8bfd.png 1024w"
+	loading="lazy"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="158"
+		data-flex-basis="380px"
+	
+></p>
+<p><img src="/p/yeqings/Whisper_GUI.assets/%E5%BE%AE%E4%BF%A1%E5%9B%BE%E7%89%87_20250220174836.png"
+	width="1000"
+	height="720"
+	srcset="/p/yeqings/Whisper_GUI.assets/%E5%BE%AE%E4%BF%A1%E5%9B%BE%E7%89%87_20250220174836_hu_88010f83864660a0.png 480w, /p/yeqings/Whisper_GUI.assets/%E5%BE%AE%E4%BF%A1%E5%9B%BE%E7%89%87_20250220174836_hu_7f9fce2a52cf9b8b.png 1024w"
+	loading="lazy"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="138"
+		data-flex-basis="333px"
+	
+></p>
+<p><img src="/p/yeqings/Whisper_GUI.assets/%E5%BE%AE%E4%BF%A1%E5%9B%BE%E7%89%87_20250220174838.png"
+	width="1037"
+	height="312"
+	srcset="/p/yeqings/Whisper_GUI.assets/%E5%BE%AE%E4%BF%A1%E5%9B%BE%E7%89%87_20250220174838_hu_42cf003e986838ca.png 480w, /p/yeqings/Whisper_GUI.assets/%E5%BE%AE%E4%BF%A1%E5%9B%BE%E7%89%87_20250220174838_hu_365813facf63f8ed.png 1024w"
+	loading="lazy"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="332"
+		data-flex-basis="797px"
+	
+></p>
+<p><img src="/p/yeqings/Whisper_GUI.assets/image-20250220182959990.png"
+	width="1885"
+	height="863"
+	srcset="/p/yeqings/Whisper_GUI.assets/image-20250220182959990_hu_7d2bd883ad04fcf5.png 480w, /p/yeqings/Whisper_GUI.assets/image-20250220182959990_hu_9a9e1bb7ddeca64b.png 1024w"
+	loading="lazy"
+	
+		alt="image-20250220182959990"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="218"
+		data-flex-basis="524px"
+	
+></p>
+<h3 id="结果导入ai总结-在线网站">结果导入AI总结-在线网站
+</h3><blockquote>
+<p>这部分应该是包含在程序功能中，例如增加按钮调用AI大模型的API来处理文本结果文件，或是在自动化的工作流中，整体功能还在进行中，未开发完</p></blockquote>
+<p>先用的网页总结，例如上面的福田AI公务员新闻（注意整个项目的目标和场景是针对长视频而非短视频）：
+<a class="link" href="./%e7%a6%8f%e7%94%b0%e5%85%ac%e5%8a%a1%e5%91%98%e6%96%b0%e9%97%bb-AI%e6%80%bb%e7%bb%93.md" >深圳福田公务员AI总结结果</a></p>
+<p><img src="/p/yeqings/Whisper_GUI.assets/image-20250220183602133.png"
+	width="1233"
+	height="2120"
+	srcset="/p/yeqings/Whisper_GUI.assets/image-20250220183602133_hu_5b647df8c9933022.png 480w, /p/yeqings/Whisper_GUI.assets/image-20250220183602133_hu_b4b0f44061c40f8.png 1024w"
+	loading="lazy"
+	
+		alt="image-20250220183602133"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="58"
+		data-flex-basis="139px"
+	
+></p>
+<h2 id="功能扩展1">功能扩展1
+</h2><blockquote>
+<p>增加使用API方式的AI总结功能，测试验证</p></blockquote>
+<h3 id="ai总结-api方式">AI总结-API方式
+</h3><p><strong>AI处理模块功能</strong>：通过输入提示词，调用AI大模型（如DeepSeek）进行处理。</p>
+<ul>
+<li>
+<p>界面输入 API Base URL   API Key  模型名称三个关键参数。</p>
+<ul>
+<li>
+<p>BaseURL支持添加、保存、管理，按名称选择</p>
+</li>
+<li>
+<p>API KEY 密文显示，不支持存储和管理</p>
+</li>
+<li>
+<p>模型名称支持存储并且与API BaseURL关联</p>
+</li>
+<li>
+<p>点击&quot;获取模型列表&quot;按钮获取可用模型（发现第三方厂家接口不统一，没必要继续做，目前只支持硅基流动）
+<img src="/p/yeqings/WhisperGUI.assets/image-20250224023038707.png"
+	width="1002"
+	height="752"
+	srcset="/p/yeqings/WhisperGUI.assets/image-20250224023038707_hu_c70c7af34ae33a6c.png 480w, /p/yeqings/WhisperGUI.assets/image-20250224023038707_hu_1e133c111d92ff40.png 1024w"
+	loading="lazy"
+	
+		alt="image-20250224023038707"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="133"
+		data-flex-basis="319px"
+	
+></p>
+</li>
+</ul>
+</li>
+<li>
+<p>选择要处理的转录文本文件，点击&quot;AI处理&quot;按钮即可触发API调用。支持单独提示词交互。支持保存常用提示词</p>
+<p><img src="/p/yeqings/WhisperGUI.assets/image-20250224023132840.png"
+	width="1002"
+	height="752"
+	srcset="/p/yeqings/WhisperGUI.assets/image-20250224023132840_hu_432ff940840acbbc.png 480w, /p/yeqings/WhisperGUI.assets/image-20250224023132840_hu_c75a302fc2cca529.png 1024w"
+	loading="lazy"
+	
+		alt="image-20250224023132840"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="133"
+		data-flex-basis="319px"
+	
+></p>
+</li>
+<li>
+<p>处理结果将实时显示在状态信息框中。可选流式输出和非流式输出（验证API使用）</p>
+<p><img src="/p/yeqings/WhisperGUI.assets/image-20250224023358455.png"
+	width="1002"
+	height="752"
+	srcset="/p/yeqings/WhisperGUI.assets/image-20250224023358455_hu_63e27eb3146075c9.png 480w, /p/yeqings/WhisperGUI.assets/image-20250224023358455_hu_dd1b8db65eeef210.png 1024w"
+	loading="lazy"
+	
+		alt="image-20250224023358455"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="133"
+		data-flex-basis="319px"
+	
+></p>
+</li>
+<li>
+<p>如果选择转录文件，将处理结果保存为同名的md格式文件；如果是未选中转录文本文件，则保存聊天的返回结果，需命名和选择位置。（已实现，已验证，截图略）</p>
+</li>
+<li>
+<p>加入环境监测，如果不支持Whisper环境，也可打开程序，支持运行AI处理模块。（已实现，未验证，截图略）</p>
+</li>
+<li>
+<p>记录一个Cursor技巧，配置 <code>Cursor</code> 的 <code>@Docs</code> 数据源，可以很方便的将本文档丢给 <code>Cursor</code> 使用。如果文档站支持 <a class="link" href="https://llmstxt.org/"  target="_blank" rel="noopener"
+    >llms.txt 协议</a>那效果更好。
+以硅基流动的API文档为例：</p>
+<ul>
+<li>配置之后，可以在对话时@Docs 让AI去查看对应的API或其他文档，更准确的开发，例如上述硅基流动的模型获取功能就是如下图所示这样去实现的。</li>
+</ul>
+<p><img src="/p/yeqings/WhisperGUI.assets/image-20250224054236577.png"
+	width="1920"
+	height="1040"
+	srcset="/p/yeqings/WhisperGUI.assets/image-20250224054236577_hu_a3ceed9d548de18d.png 480w, /p/yeqings/WhisperGUI.assets/image-20250224054236577_hu_423ddba9b1a07174.png 1024w"
+	loading="lazy"
+	
+		alt="image-20250224054236577"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="184"
+		data-flex-basis="443px"
+	
+></p>
+<p><img src="/p/yeqings/WhisperGUI.assets/image-20250224054604321.png"
+	width="844"
+	height="294"
+	srcset="/p/yeqings/WhisperGUI.assets/image-20250224054604321_hu_39cf49a53c48ac25.png 480w, /p/yeqings/WhisperGUI.assets/image-20250224054604321_hu_60b5e893ac0dfdfe.png 1024w"
+	loading="lazy"
+	
+		alt="image-20250224054604321"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="287"
+		data-flex-basis="688px"
+	
+></p>
+</li>
+</ul>
+
+</section>
+
+
+    <footer class="article-footer">
+    
+    <section class="article-tags">
+        
+            <a href="/tags/ai/">AI</a>
+        
+            <a href="/tags/%E6%B5%8B%E8%AF%95/">测试</a>
+        
+    </section>
+
+
+    
+    <section class="article-copyright">
+        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-copyright" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="12" cy="12" r="9" />
+  <path d="M14.5 9a3.5 4 0 1 0 0 6" />
+</svg>
+
+
+
+        <span>Licensed under CC BY-NC-SA 4.0</span>
+    </section>
+    </footer>
+
+
+    
+</article>
+
+    
+
+    
+
+<aside class="related-content--wrapper">
+    <h2 class="section-title">相关文章</h2>
+    <div class="related-content">
+        <div class="flex article-list--tile">
+            
+                
+<article class="has-image">
+    <a href="/p/yqsparktts/">
+        
+        
+            <div class="article-image">
+                <img src="/p/yqsparktts/page.df7a551fd9640951271ef512b78ff73e_hu_574fceadac6499e2.png" 
+                        width="250" 
+                        height="150" 
+                        loading="lazy"
+                        alt="Featured image of post SparkTTS本地部署"
+                        data-key="yqsparktts" 
+                        data-hash="md5-33pVH9lkCVEnHvUSt4/3Pg==">
+                
+            </div>
+        
+
+        <div class="article-details">
+            <h2 class="article-title">SparkTTS本地部署</h2>
+        </div>
+    </a>
+</article>
+
+            
+                
+<article class="has-image">
+    <a href="/p/rag-dify/">
+        
+        
+            <div class="article-image">
+                <img src="/p/rag-dify/page.4cd634e2644c7152ce481b3c43be1f05_hu_f7a656727863d9f4.png" 
+                        width="250" 
+                        height="150" 
+                        loading="lazy"
+                        alt="Featured image of post Deepseek&#43;Ollama&#43;Dify搭建本地RAG知识库"
+                        data-key="RAG-Dify" 
+                        data-hash="md5-TNY04mRMcVLOSBs8Q74fBQ==">
+                
+            </div>
+        
+
+        <div class="article-details">
+            <h2 class="article-title">Deepseek&#43;Ollama&#43;Dify搭建本地RAG知识库</h2>
+        </div>
+    </a>
+</article>
+
+            
+                
+<article class="has-image">
+    <a href="/p/yqwhispertest/">
+        
+        
+            <div class="article-image">
+                <img src="/p/yqwhispertest/page.39efcba4e9b355d3cd4150f97d7fbc12_hu_6f1fabd432fa99aa.png" 
+                        width="250" 
+                        height="150" 
+                        loading="lazy"
+                        alt="Featured image of post AI-Whisper音视频转文字&#43;LLM总结&#43;RAG&#43;工作流.md"
+                        data-key="yqwhispertest" 
+                        data-hash="md5-Oe/LpOmzVdPNQVD5fX&#43;8Eg==">
+                
+            </div>
+        
+
+        <div class="article-details">
+            <h2 class="article-title">AI-Whisper音视频转文字&#43;LLM总结&#43;RAG&#43;工作流.md</h2>
+        </div>
+    </a>
+</article>
+
+            
+                
+<article class="">
+    <a href="/p/yqtesttts/">
+        
+        
+
+        <div class="article-details">
+            <h2 class="article-title">SparkTTS-腾讯CloudStudio部署</h2>
+        </div>
+    </a>
+</article>
+
+            
+        </div>
+    </div>
+</aside>
+
+     
+    
+        
+    <div class="disqus-container">
+    <div id="disqus_thread"></div>
+<script>
+    window.disqus_config = function () {
+    
+    
+    
+    };
+    (function() {
+        if (["localhost", "127.0.0.1"].indexOf(window.location.hostname) != -1) {
+            document.getElementById('disqus_thread').innerHTML = 'Disqus comments not available by default when the website is previewed locally.';
+            return;
+        }
+        var d = document, s = d.createElement('script'); s.async = true;
+        s.src = '//' + "hugo-theme-stack" + '.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="https://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+</div>
+
+<style>
+    .disqus-container {
+        background-color: var(--card-background);
+        border-radius: var(--card-border-radius);
+        box-shadow: var(--shadow-l1);
+        padding: var(--card-padding);
+    }
+</style>
+
+<script>
+    window.addEventListener('onColorSchemeChange', (e) => {
+        if (typeof DISQUS == 'object') {
+            DISQUS.reset({
+                reload: true
+            });
+        }
+    })
+</script>
+
+    
+
+    <footer class="site-footer">
+    <section class="copyright">
+        &copy; 
+        
+            2024 - 
+        
+        2025 Yeqing17
+    </section>
+    
+    <section class="powerby">
+        使用 <a href="https://gohugo.io/" target="_blank" rel="noopener">Hugo</a> 构建 <br />
+        主题 <b><a href="https://github.com/CaiJimmy/hugo-theme-stack" target="_blank" rel="noopener" data-version="3.30.0">Stack</a></b> 由 <a href="https://jimmycai.com" target="_blank" rel="noopener">Jimmy</a> 设计
+    </section>
+</footer>
+
+
+    
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+
+    
+    <div class="pswp__bg"></div>
+
+    
+    <div class="pswp__scroll-wrap">
+
+        
+        <div class="pswp__container">
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+        </div>
+
+        
+        <div class="pswp__ui pswp__ui--hidden">
+
+            <div class="pswp__top-bar">
+
+                
+
+                <div class="pswp__counter"></div>
+
+                <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+
+                <button class="pswp__button pswp__button--share" title="Share"></button>
+
+                <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+
+                <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+
+                
+                
+                <div class="pswp__preloader">
+                    <div class="pswp__preloader__icn">
+                        <div class="pswp__preloader__cut">
+                            <div class="pswp__preloader__donut"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+                <div class="pswp__share-tooltip"></div>
+            </div>
+
+            <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+            </button>
+
+            <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+            </button>
+
+            <div class="pswp__caption">
+                <div class="pswp__caption__center"></div>
+            </div>
+
+        </div>
+
+    </div>
+
+</div><script 
+                src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.min.js"integrity="sha256-ePwmChbbvXbsO02lbM3HoHbSHTHFAeChekF1xKJdleo="crossorigin="anonymous"
+                defer
+                >
+            </script><script 
+                src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe-ui-default.min.js"integrity="sha256-UKkzOn/w1mBxRmLLGrSeyB4e1xbrp4xylgAWb3M42pU="crossorigin="anonymous"
+                defer
+                >
+            </script><link 
+                rel="stylesheet" 
+                href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/default-skin/default-skin.min.css"crossorigin="anonymous"
+            ><link 
+                rel="stylesheet" 
+                href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.min.css"crossorigin="anonymous"
+            >
+
+            </main>
+        </div>
+        <script 
+                src="https://cdn.jsdelivr.net/npm/node-vibrant@3.1.6/dist/vibrant.min.js"integrity="sha256-awcR2jno4kI5X0zL8ex0vi2z&#43;KMkF24hUW8WePSA9HM="crossorigin="anonymous"
+                
+                >
+            </script><script type="text/javascript" src="/ts/main.399f6a5fbafc0fcb37b5d7890ca781a6243e2c3ea5c25ab565e2275341305794.js" defer></script>
+<script>
+    (function () {
+        const customFont = document.createElement('link');
+        customFont.href = "https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&display=swap";
+
+        customFont.type = "text/css";
+        customFont.rel = "stylesheet";
+
+        document.head.appendChild(customFont);
+    }());
+</script>
+
+    </body>
+</html>

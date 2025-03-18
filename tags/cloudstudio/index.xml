@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>CloudStudio on 一些记录</title>
+    <link>https://example.com/tags/cloudstudio/</link>
+    <description>Recent content in CloudStudio on 一些记录</description>
+    <generator>Hugo</generator>
+    <language>zh-cn</language>
+    <copyright>Yeqing17</copyright>
+    <lastBuildDate>Wed, 01 Jan 2025 00:00:00 +0000</lastBuildDate>
+    <atom:link href="https://example.com/tags/cloudstudio/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>SparkTTS-腾讯CloudStudio部署</title>
+      <link>https://example.com/p/yqtesttts/</link>
+      <pubDate>Wed, 01 Jan 2025 00:00:00 +0000</pubDate>
+      <guid>https://example.com/p/yqtesttts/</guid>
+      <description>&lt;p&gt;[TOC]{float}&lt;/p&gt;&#xA;&lt;h2 id=&#34;一登录cloud-studio创建服务器&#34;&gt;一、登录Cloud Studio创建服务器&lt;/h2&gt;&#xA;&lt;p&gt;&lt;a href=&#34;https://ide.cloud.tencent.com/dashboard/ai&#34;&gt;腾讯Cloud Studio&lt;/a&gt;&lt;/p&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;微信扫码或者PC微信授权登录即可，通用空间每月免费赠送50000分钟，高性能带GPU的每月免费10000分钟&lt;/li&gt;&#xA;&lt;li&gt;按下图所示选择创建服务器，据说是这个模板GPU和存储空间最优；16G的GPU显存，32G 内存，8核CPU，300G左右存储空间。&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;p&gt;&lt;img src=&#34;https://example.com/p/yqtesttts/%E8%85%BE%E8%AE%AFCloudStudio%E9%83%A8%E7%BD%B2SparkTTS.assets/image-20250309225726726.png&#34; alt=&#34;image-20250309225726726&#34;&gt;&lt;/p&gt;</description>
+    </item>
+  </channel>
+</rss>

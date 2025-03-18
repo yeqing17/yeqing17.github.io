@@ -33,8 +33,15 @@
     <item>
       <title>AI</title>
       <link>https://example.com/categories/ai/</link>
-      <pubDate>Tue, 04 Feb 2025 00:00:00 +0000</pubDate>
+      <pubDate>Tue, 11 Mar 2025 00:00:00 +0000</pubDate>
       <guid>https://example.com/categories/ai/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>声音处理</title>
+      <link>https://example.com/categories/%E5%A3%B0%E9%9F%B3%E5%A4%84%E7%90%86/</link>
+      <pubDate>Tue, 11 Mar 2025 00:00:00 +0000</pubDate>
+      <guid>https://example.com/categories/%E5%A3%B0%E9%9F%B3%E5%A4%84%E7%90%86/</guid>
       <description></description>
     </item>
     <item>
@@ -42,6 +49,27 @@
       <link>https://example.com/categories/rag/</link>
       <pubDate>Tue, 04 Feb 2025 00:00:00 +0000</pubDate>
       <guid>https://example.com/categories/rag/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Voice</title>
+      <link>https://example.com/categories/voice/</link>
+      <pubDate>Wed, 01 Jan 2025 00:00:00 +0000</pubDate>
+      <guid>https://example.com/categories/voice/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>开发</title>
+      <link>https://example.com/categories/%E5%BC%80%E5%8F%91/</link>
+      <pubDate>Wed, 01 Jan 2025 00:00:00 +0000</pubDate>
+      <guid>https://example.com/categories/%E5%BC%80%E5%8F%91/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>音视频</title>
+      <link>https://example.com/categories/%E9%9F%B3%E8%A7%86%E9%A2%91/</link>
+      <pubDate>Wed, 01 Jan 2025 00:00:00 +0000</pubDate>
+      <guid>https://example.com/categories/%E9%9F%B3%E8%A7%86%E9%A2%91/</guid>
       <description></description>
     </item>
     <item>

@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>音视频 on 一些记录</title>
+    <link>https://example.com/categories/%E9%9F%B3%E8%A7%86%E9%A2%91/</link>
+    <description>Recent content in 音视频 on 一些记录</description>
+    <generator>Hugo</generator>
+    <language>zh-cn</language>
+    <copyright>Yeqing17</copyright>
+    <lastBuildDate>Wed, 01 Jan 2025 00:00:00 +0000</lastBuildDate>
+    <atom:link href="https://example.com/categories/%E9%9F%B3%E8%A7%86%E9%A2%91/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>AI-Whisper音视频转文字&#43;LLM总结&#43;RAG&#43;工作流.md</title>
+      <link>https://example.com/p/yqwhispertest/</link>
+      <pubDate>Wed, 01 Jan 2025 00:00:00 +0000</pubDate>
+      <guid>https://example.com/p/yqwhispertest/</guid>
+      <description>&lt;p&gt;[TOC]{float}&lt;/p&gt;&#xA;&lt;h1 id=&#34;音视频转录文字llm总结rag工作流自动化&#34;&gt;音视频转录文字+LLM总结+RAG+工作流自动化&lt;/h1&gt;&#xA;&lt;blockquote&gt;&#xA;&lt;ol&gt;&#xA;&lt;li&gt;Win10   8G 显存GPU&lt;/li&gt;&#xA;&lt;li&gt;为什么使用md格式，了解到向量模型在分段切割时，是对md格式比较友好的，如果是纯txt或者word、PDF格式的文档，切割、分段（块）的效果不好&lt;/li&gt;&#xA;&lt;li&gt;最终目标，尝试用Dify或其他工具建立工作流，自动化处理音视频转录文字+AI总结+生成文档+保存RAG知识库全套流程&lt;/li&gt;&#xA;&lt;/ol&gt;&lt;/blockquote&gt;&#xA;&lt;h2 id=&#34;目标&#34;&gt;目标&lt;/h2&gt;&#xA;&lt;p&gt;视频资料的文本提取-&amp;gt;AI总结&amp;gt;知识入库&lt;/p&gt;</description>
+    </item>
+  </channel>
+</rss>

@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>开发 on 一些记录</title>
+    <link>https://example.com/categories/%E5%BC%80%E5%8F%91/</link>
+    <description>Recent content in 开发 on 一些记录</description>
+    <generator>Hugo</generator>
+    <language>zh-cn</language>
+    <copyright>Yeqing17</copyright>
+    <lastBuildDate>Wed, 01 Jan 2025 00:00:00 +0000</lastBuildDate>
+    <atom:link href="https://example.com/categories/%E5%BC%80%E5%8F%91/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>WhisperGUI</title>
+      <link>https://example.com/p/yeqings/</link>
+      <pubDate>Wed, 01 Jan 2025 00:00:00 +0000</pubDate>
+      <guid>https://example.com/p/yeqings/</guid>
+      <description>&lt;p&gt;[TOC]{float}&lt;/p&gt;&#xA;&lt;h1 id=&#34;whisper-gui简单工具&#34;&gt;Whisper GUI简单工具&lt;/h1&gt;&#xA;&lt;p&gt;目标是验证本地部署Whisper环境部署后，使用Python程序调用的情况。&lt;/p&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;功能是否正常&lt;/li&gt;&#xA;&lt;li&gt;输出结果与命令行方式是否有差异&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;h2 id=&#34;开发过程&#34;&gt;开发过程&lt;/h2&gt;&#xA;&lt;p&gt;使用cursor工具，Python语言开发&lt;/p&gt;</description>
+    </item>
+  </channel>
+</rss>
