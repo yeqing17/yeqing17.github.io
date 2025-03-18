@@ -1,0 +1,1100 @@
+<!DOCTYPE html>
+<html lang="zh-cn" dir="ltr">
+    <head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script><meta charset='utf-8'>
+<meta name='viewport' content='width=device-width, initial-scale=1'><meta name='description' content="Deepseek R1+Ollama+Dify搭建本地RAG知识库\r注：以下为Windows10系统操作记录，16G内存，NVIDA 4060 8G显卡\nDify\rDify 是低代码一站式大模型应用开发平台。它有可视化界面，降低开发门槛，支持集成多种主流大语言模型。可上传数据微调模型、编排工作流，还能快速部署应用并提供运维监控。支持RAG知识库和AI Agenta 适用于智能客服、内容创作等场景，高效灵活又安全。\n">
+<title>Deepseek&#43;Ollama&#43;Dify搭建本地RAG知识库</title>
+
+<link rel='canonical' href='http://localhost:1313/p/rag-dify/'>
+
+<link rel="stylesheet" href="/scss/style.min.b9c8156d464c343bdacaf14a871581fb94cbbdb9dd5cbce4ba017361187cc930.css"><meta property='og:title' content="Deepseek+Ollama+Dify搭建本地RAG知识库">
+<meta property='og:description' content="Deepseek R1+Ollama+Dify搭建本地RAG知识库\r注：以下为Windows10系统操作记录，16G内存，NVIDA 4060 8G显卡\nDify\rDify 是低代码一站式大模型应用开发平台。它有可视化界面，降低开发门槛，支持集成多种主流大语言模型。可上传数据微调模型、编排工作流，还能快速部署应用并提供运维监控。支持RAG知识库和AI Agenta 适用于智能客服、内容创作等场景，高效灵活又安全。\n">
+<meta property='og:url' content='http://localhost:1313/p/rag-dify/'>
+<meta property='og:site_name' content='一些记录'>
+<meta property='og:type' content='article'><meta property='article:section' content='Post' /><meta property='article:tag' content='dify' /><meta property='article:tag' content='本地部署' /><meta property='article:published_time' content='2025-02-04T00:00:00&#43;00:00'/><meta property='article:modified_time' content='2025-02-04T00:00:00&#43;00:00'/><meta property='og:image' content='http://localhost:1313/p/rag-dify/page.png' />
+<meta name="twitter:title" content="Deepseek+Ollama+Dify搭建本地RAG知识库">
+<meta name="twitter:description" content="Deepseek R1+Ollama+Dify搭建本地RAG知识库\r注：以下为Windows10系统操作记录，16G内存，NVIDA 4060 8G显卡\nDify\rDify 是低代码一站式大模型应用开发平台。它有可视化界面，降低开发门槛，支持集成多种主流大语言模型。可上传数据微调模型、编排工作流，还能快速部署应用并提供运维监控。支持RAG知识库和AI Agenta 适用于智能客服、内容创作等场景，高效灵活又安全。\n"><meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:image" content='http://localhost:1313/p/rag-dify/page.png' />
+    <link rel="shortcut icon" href="/favicon.ico" />
+
+    </head>
+    <body class="
+    article-page
+    ">
+    <script>
+        (function() {
+            const colorSchemeKey = 'StackColorScheme';
+            if(!localStorage.getItem(colorSchemeKey)){
+                localStorage.setItem(colorSchemeKey, "auto");
+            }
+        })();
+    </script><script>
+    (function() {
+        const colorSchemeKey = 'StackColorScheme';
+        const colorSchemeItem = localStorage.getItem(colorSchemeKey);
+        const supportDarkMode = window.matchMedia('(prefers-color-scheme: dark)').matches === true;
+
+        if (colorSchemeItem == 'dark' || colorSchemeItem === 'auto' && supportDarkMode) {
+            
+
+            document.documentElement.dataset.scheme = 'dark';
+        } else {
+            document.documentElement.dataset.scheme = 'light';
+        }
+    })();
+</script>
+<div class="container main-container flex on-phone--column extended"><aside class="sidebar left-sidebar sticky ">
+    <button class="hamburger hamburger--spin" type="button" id="toggle-menu" aria-label="切换菜单">
+        <span class="hamburger-box">
+            <span class="hamburger-inner"></span>
+        </span>
+    </button>
+
+    <header>
+        
+            
+            <figure class="site-avatar">
+                <a href="/">
+                
+                    
+                    
+                    
+                        
+                        <img src="/img/avatar_hu_eca03cccf3fd19ef.png" width="300"
+                            height="300" class="site-logo" loading="lazy" alt="Avatar">
+                    
+                
+                </a>
+                
+                    <span class="emoji">🙃</span>
+                
+            </figure>
+            
+        
+        
+        <div class="site-meta">
+            <h1 class="site-name"><a href="/">一些记录</a></h1>
+            <h2 class="site-description">Yeqing17个人记录</h2>
+        </div>
+    </header><ol class="menu-social">
+            
+                <li>
+                    <a 
+                        href='https://github.com/CaiJimmy/hugo-theme-stack'
+                        target="_blank"
+                        title="GitHub"
+                        rel="me"
+                    >
+                        
+                        
+                            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-brand-github" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+  <path d="M9 19c-4.3 1.4 -4.3 -2.5 -6 -3m12 5v-3.5c0 -1 .1 -1.4 -.5 -2c2.8 -.3 5.5 -1.4 5.5 -6a4.6 4.6 0 0 0 -1.3 -3.2a4.2 4.2 0 0 0 -.1 -3.2s-1.1 -.3 -3.5 1.3a12.3 12.3 0 0 0 -6.2 0c-2.4 -1.6 -3.5 -1.3 -3.5 -1.3a4.2 4.2 0 0 0 -.1 3.2a4.6 4.6 0 0 0 -1.3 3.2c0 4.6 2.7 5.7 5.5 6c-.6 .6 -.6 1.2 -.5 2v3.5" />
+</svg>
+
+
+
+                        
+                    </a>
+                </li>
+            
+                <li>
+                    <a 
+                        href='https://twitter.com'
+                        target="_blank"
+                        title="Twitter"
+                        rel="me"
+                    >
+                        
+                        
+                            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-brand-twitter" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+  <path d="M22 4.01c-1 .49 -1.98 .689 -3 .99c-1.121 -1.265 -2.783 -1.335 -4.38 -.737s-2.643 2.06 -2.62 3.737v1c-3.245 .083 -6.135 -1.395 -8 -4c0 0 -4.182 7.433 4 11c-1.872 1.247 -3.739 2.088 -6 2c3.308 1.803 6.913 2.423 10.034 1.517c3.58 -1.04 6.522 -3.723 7.651 -7.742a13.84 13.84 0 0 0 .497 -3.753c-.002 -.249 1.51 -2.772 1.818 -4.013z" />
+</svg>
+
+
+
+                        
+                    </a>
+                </li>
+            
+        </ol><ol class="menu" id="main-menu">
+        
+        
+        
+        <li >
+            <a href='/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-home" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <polyline points="5 12 3 12 12 3 21 12 19 12" />
+  <path d="M5 12v7a2 2 0 0 0 2 2h10a2 2 0 0 0 2 -2v-7" />
+  <path d="M9 21v-6a2 2 0 0 1 2 -2h2a2 2 0 0 1 2 2v6" />
+</svg>
+
+
+
+                
+                <span>主页</span>
+            </a>
+        </li>
+        
+        
+        <li >
+            <a href='/%E5%85%B3%E4%BA%8E/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-user" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="12" cy="7" r="4" />
+  <path d="M6 21v-2a4 4 0 0 1 4 -4h4a4 4 0 0 1 4 4v2" />
+</svg>
+
+
+
+                
+                <span>关于</span>
+            </a>
+        </li>
+        
+        
+        <li >
+            <a href='/archives/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-archive" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <rect x="3" y="4" width="18" height="4" rx="2" />
+  <path d="M5 8v10a2 2 0 0 0 2 2h10a2 2 0 0 0 2 -2v-10" />
+  <line x1="10" y1="12" x2="14" y2="12" />
+</svg>
+
+
+
+                
+                <span>Archives</span>
+            </a>
+        </li>
+        
+        
+        <li >
+            <a href='/search/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-search" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="10" cy="10" r="7" />
+  <line x1="21" y1="21" x2="15" y2="15" />
+</svg>
+
+
+
+                
+                <span>Search</span>
+            </a>
+        </li>
+        
+        
+        <li >
+            <a href='/links/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-link" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <path d="M10 14a3.5 3.5 0 0 0 5 0l4 -4a3.5 3.5 0 0 0 -5 -5l-.5 .5" />
+  <path d="M14 10a3.5 3.5 0 0 0 -5 0l-4 4a3.5 3.5 0 0 0 5 5l.5 -.5" />
+</svg>
+
+
+
+                
+                <span>Links</span>
+            </a>
+        </li>
+        
+        <li class="menu-bottom-section">
+            <ol class="menu">
+                    
+                        <li id="i18n-switch">  
+                            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-language" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+  <path d="M4 5h7" />
+  <path d="M9 3v2c0 4.418 -2.239 8 -5 8" />
+  <path d="M5 9c-.003 2.144 2.952 3.908 6.7 4" />
+  <path d="M12 20l4 -9l4 9" />
+  <path d="M19.1 18h-6.2" />
+</svg>
+
+
+
+                            <select name="language" title="language" onchange="window.location.href = this.selectedOptions[0].value">
+                                
+                                    <option value="http://localhost:1313/en/" >English</option>
+                                
+                                    <option value="http://localhost:1313/" selected>简体中文</option>
+                                
+                            </select>
+                        </li>
+                    
+                
+
+                
+                    <li id="dark-mode-toggle">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-toggle-left" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="8" cy="12" r="2" />
+  <rect x="2" y="6" width="20" height="12" rx="6" />
+</svg>
+
+
+
+                        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-toggle-right" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="16" cy="12" r="2" />
+  <rect x="2" y="6" width="20" height="12" rx="6" />
+</svg>
+
+
+
+                        <span>暗色模式</span>
+                    </li>
+                
+            </ol>
+        </li>
+    </ol>
+</aside>
+
+    <aside class="sidebar right-sidebar sticky">
+        
+            
+                
+    <section class="widget archives">
+        <div class="widget-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-hash" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <line x1="5" y1="9" x2="19" y2="9" />
+  <line x1="5" y1="15" x2="19" y2="15" />
+  <line x1="11" y1="4" x2="7" y2="20" />
+  <line x1="17" y1="4" x2="13" y2="20" />
+</svg>
+
+
+
+        </div>
+        <h2 class="widget-title section-title">目录</h2>
+        
+        <div class="widget--toc">
+            <nav id="TableOfContents">
+  <ol>
+    <li><a href="#dify">Dify</a>
+      <ol>
+        <li><a href="#前置准备">前置准备</a>
+          <ol>
+            <li><a href="#windows安装docker-desktop">Windows安装Docker Desktop</a></li>
+          </ol>
+        </li>
+        <li><a href="#安装">安装</a>
+          <ol>
+            <li><a href="#git-clone-dify项目源码">git clone dify项目源码</a></li>
+            <li><a href="#使用docker安装">使用docker安装</a></li>
+          </ol>
+        </li>
+        <li><a href="#知识库功能初测">知识库功能初测</a>
+          <ol>
+            <li><a href="#知识库创建">知识库创建</a></li>
+            <li><a href="#聊天应用创建">聊天应用创建</a></li>
+            <li><a href="#测试">测试</a></li>
+          </ol>
+        </li>
+        <li><a href="#关于chatbot">关于Chatbot</a></li>
+        <li><a href="#文档召回测试">文档召回测试</a></li>
+        <li><a href="#监测功能">监测功能</a></li>
+      </ol>
+    </li>
+    <li><a href="#总结">总结</a></li>
+  </ol>
+</nav>
+        </div>
+    </section>
+
+            
+        
+    </aside>
+
+
+            <main class="main full-width">
+    <article class="has-image main-article">
+    <header class="article-header">
+        <div class="article-image">
+            <a href="/p/rag-dify/">
+                <img src="/p/rag-dify/page_hu_ea809f0638f30fac.png"
+                        srcset="/p/rag-dify/page_hu_ea809f0638f30fac.png 800w, /p/rag-dify/page_hu_ea25082605b0a0eb.png 1600w"
+                        width="800" 
+                        height="341" 
+                        loading="lazy"
+                        alt="Featured image of post Deepseek&#43;Ollama&#43;Dify搭建本地RAG知识库" />
+                
+            </a>
+        </div>
+    
+
+    <div class="article-details">
+    
+    <header class="article-category">
+        
+            <a href="/categories/ai/" >
+                AI
+            </a>
+        
+            <a href="/categories/rag/" >
+                RAG
+            </a>
+        
+    </header>
+    
+
+    <div class="article-title-wrapper">
+        <h2 class="article-title">
+            <a href="/p/rag-dify/">Deepseek&#43;Ollama&#43;Dify搭建本地RAG知识库</a>
+        </h2>
+    
+        
+    </div>
+
+    
+    
+    
+    
+    <footer class="article-time">
+        
+            <div>
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-calendar-time" width="56" height="56" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <path d="M11.795 21h-6.795a2 2 0 0 1 -2 -2v-12a2 2 0 0 1 2 -2h12a2 2 0 0 1 2 2v4" />
+  <circle cx="18" cy="18" r="4" />
+  <path d="M15 3v4" />
+  <path d="M7 3v4" />
+  <path d="M3 11h16" />
+  <path d="M18 16.496v1.504l1 1" />
+</svg>
+                <time class="article-time--published">Feb 04, 2025</time>
+            </div>
+        
+
+        
+            <div>
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-clock" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="12" cy="12" r="9" />
+  <polyline points="12 7 12 12 15 15" />
+</svg>
+
+
+
+                <time class="article-time--reading">
+                    阅读时长: 6 分钟
+                </time>
+            </div>
+        
+    </footer>
+    
+
+    
+</div>
+
+</header>
+
+    <section class="article-content">
+    
+    
+    <h1 id="deepseek-r1ollamadify搭建本地rag知识库">Deepseek R1+Ollama+Dify搭建本地RAG知识库
+</h1><blockquote>
+<p>注：以下为Windows10系统操作记录，16G内存，NVIDA 4060 8G显卡</p></blockquote>
+<h2 id="dify">Dify
+</h2><p>Dify 是低代码一站式大模型应用开发平台。它有可视化界面，降低开发门槛，支持集成多种主流大语言模型。可上传数据微调模型、编排工作流，还能快速部署应用并提供运维监控。支持RAG知识库和AI Agenta 适用于智能客服、内容创作等场景，高效灵活又安全。</p>
+<hr>
+<p>中文官网<a class="link" href="https://dify.ai/zh"  target="_blank" rel="noopener"
+    >Dify.AI · 生成式 AI 应用创新引擎</a></p>
+<p>Github项目地址<a class="link" href="https://github.com/langgenius/dify"  target="_blank" rel="noopener"
+    >Github-Dify</a></p>
+<h3 id="前置准备">前置准备
+</h3><p>本文工具和模型</p>
+<ul>
+<li>Ollama&mdash;-开源软件，本地部署大模型</li>
+<li>Deepseek R1&mdash;- 开源LLM模型</li>
+<li>Nomic-Embed-Text&mdash;-开源嵌入向量模型</li>
+<li>Dify&mdash;-开源，低代码LLM应用、agent应用平台</li>
+<li>Docker Desktop&mdash;Docker官网提供，Windows下运行Docker的工具</li>
+<li>Git&mdash;免费开源的分布式版本控制系统，拉取开源项目源码</li>
+</ul>
+<h4 id="windows安装docker-desktop">Windows安装Docker Desktop
+</h4><h5 id="打开hyper-v-功能">打开Hyper-V 功能
+</h5><p>通过控制面板的方法：</p>
+<ol>
+<li><strong>打开控制面板</strong>：可以通过左下方 “开始” 菜单直接搜索 “控制面板” 打开；也可以使用 “Win+R” 快捷键开启运行，输入 “control” 回车进入 “控制面板”。</li>
+<li><strong>进入程序和功能</strong>：在控制面板中，将查看方式设置为 “大图标” 或 “小图标”，找到并点击 “程序和功能”。</li>
+<li><strong>启用或关闭 Windows 功能</strong>：在 “程序和功能” 窗口的左侧，点击 “启用或关闭 Windows 功能”。</li>
+<li><strong>勾选 Hyper-V</strong>：在弹出的 “Windows 功能” 窗口中，找到 “Hyper-V” 选项并勾选，勾选后下方会出现一系列相关的子功能，通常建议全部勾选以确保功能的完整性。</li>
+<li><strong>安装并重启</strong>：点击 “确定” 后，Windows 将开始下载并安装 Hyper-V 所需的文件，安装完成后，系统会提示需要重启电脑以完成配置。</li>
+</ol>
+<h5 id="在-windows-10-上安装wsl2-以支持安装-docker">在 Windows 10 上安装WSL2 以支持安装 Docker
+</h5><p>可参考以下步骤：</p>
+<h6 id="启用适用于-linux-的-windows-子系统">启用适用于 Linux 的 Windows 子系统
+</h6><ol>
+<li>以管理员身份打开 PowerShell，可以通过 “开始” 菜单找到 “PowerShell”，单击右键选择 “以管理员身份运行”。</li>
+<li>在 PowerShell 中输入命令：<code>dism.exe /online /enable-feature /featurename:Microsoft-Windows-Subsystem-Linux /all /norestart</code>，该命令用于启用适用于 Linux 的 Windows 子系统功能。</li>
+</ol>
+<h6 id="启用虚拟机平台">启用虚拟机平台
+</h6><ol>
+<li>继续在管理员权限的 PowerShell 中输入：<code>dism.exe /online /enable-feature /featurename:VirtualMachinePlatform /all /norestart</code>，此命令用于启用虚拟机平台，为 WSL2 提供支持。</li>
+<li>输入完上述命令后，重启计算机，以完成 WSL 相关功能的安装和配置。</li>
+</ol>
+<h6 id="下载-linux-内核更新包">下载 Linux 内核更新包
+</h6><p>可前往<a class="link" href="https://wslstorestorage.blob.core.windows.net/wslblob/wsl_update_x64.msi"  target="_blank" rel="noopener"
+    >WSL2 Linux 内核更新包下载页面</a>下载适用于 x64 计算机的 WSL2 Linux 内核更新包。</p>
+<p>也可使用<code>wsl.exe --install</code>或<code>wsl.exe --update</code>命令</p>
+<h6 id="验证-wsl2-安装">验证 WSL2 安装
+</h6><p>在 PowerShell 中输入<code>wsl --list --verbose</code>，可以查看已安装的 WSL 及其版本信息，确认是否成功安装 WSL2。</p>
+<p>安装好 WSL2 后，就可以进行 Docker 的安装。如果要安装 Docker Desktop for Windows，可前往<a class="link" href="https://docs.docker.com/desktop/install/windows-install/"  target="_blank" rel="noopener"
+    >Docker 官方下载页面</a>下载安装程序，然后按照提示完成安装，并在 Docker Desktop 的设置中配置 WSL Integration，勾选安装的 Linux 发行版，以实现 Docker 与 WSL2 的集成。</p>
+<hr>
+<h5 id="实际操作">实际操作
+</h5><p>以上为一些大模型回答的信息汇总，实际操作时，在WSL2这部分遇到问题，处理解决，一些记录如下</p>
+<ul>
+<li>dism 方式启动虚拟化相关</li>
+</ul>
+<p><img src="/p/rag-dify/index.zh-cn.assets/image-20250202182507425.png"
+	width="840"
+	height="306"
+	srcset="/p/rag-dify/index.zh-cn.assets/image-20250202182507425_hu_88cf780d9951648c.png 480w, /p/rag-dify/index.zh-cn.assets/image-20250202182507425_hu_23260e29295c06f5.png 1024w"
+	loading="lazy"
+	
+		alt="image-20250202182507425"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="274"
+		data-flex-basis="658px"
+	
+></p>
+<ul>
+<li>
+<p>docker启动后如果有wsl update的报错，需要下载msi文件先安装下</p>
+<p><img src="/p/rag-dify/index.zh-cn.assets/image-20250202234049067.png"
+	width="837"
+	height="72"
+	srcset="/p/rag-dify/index.zh-cn.assets/image-20250202234049067_hu_27ba0fa591d97d3b.png 480w, /p/rag-dify/index.zh-cn.assets/image-20250202234049067_hu_27378e175f160a5d.png 1024w"
+	loading="lazy"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="1162"
+		data-flex-basis="2790px"
+	
+></p>
+</li>
+<li>
+<p>Docker如果正常跑起来，命令行检查结果</p>
+</li>
+</ul>
+<p><img src="/p/rag-dify/index.zh-cn.assets/image-20250202234255647.png"
+	width="843"
+	height="63"
+	srcset="/p/rag-dify/index.zh-cn.assets/image-20250202234255647_hu_db0990b5788a3dfd.png 480w, /p/rag-dify/index.zh-cn.assets/image-20250202234255647_hu_fd1e3abefade178b.png 1024w"
+	loading="lazy"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="1338"
+		data-flex-basis="3211px"
+	
+></p>
+<h3 id="安装">安装
+</h3><p>采用源码方式安装，需要进行git clone dify源码，docker</p>
+<h4 id="git-clone-dify项目源码">git clone dify项目源码
+</h4><p>由于不可抗力无法访问Github</p>
+<p>使用国内镜像源，例如使用 <code>git clone https://gitcode.com/gh_mirrors/di/dify.git</code></p>
+<h4 id="使用docker安装">使用docker安装
+</h4><p>clone完成后，命令行进入到dify的docker目录，然后按项目官方说明执行命令进行安装</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-cmd" data-lang="cmd"><span class="line"><span class="cl"><span class="k">cd</span> dify
+</span></span><span class="line"><span class="cl"><span class="k">cd</span> docker
+</span></span><span class="line"><span class="cl">cp .env.example .env
+</span></span><span class="line"><span class="cl">docker compose up -d
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>这里docker compose up这一步会有如下报错，也是因为不可抗力造成无法访问docker的官方镜像仓库地址</p>
+<p>也需要更换国内的镜像仓库解决，例如https://1ms.run 网站提供的</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">PS C:\WINDOWS\system32&gt; docker compose up -d
+</span></span><span class="line"><span class="cl">no configuration file provided: not found
+</span></span><span class="line"><span class="cl">PS C:\WINDOWS\system32&gt; cd L:\RAG\Dify\dify\docker
+</span></span><span class="line"><span class="cl">PS L:\RAG\Dify\dify\docker&gt; docker compose up -d
+</span></span><span class="line"><span class="cl">[+] Running 9/9
+</span></span><span class="line"><span class="cl"> ✘ db Error         context canceled                                                                              17.4s
+</span></span><span class="line"><span class="cl"> ✘ ssrf_proxy Error context canceled                                                                              17.4s
+</span></span><span class="line"><span class="cl"> ✘ web Error        context canceled                                                                              17.4s
+</span></span><span class="line"><span class="cl"> ✘ redis Error      context canceled                                                                              17.4s
+</span></span><span class="line"><span class="cl"> ✘ api Error        Get &#34;https://registry-1.docker.io/v2/&#34;: dialing registry-1.docker.io:443 contain...           17.4s
+</span></span><span class="line"><span class="cl"> ✘ weaviate Error   context canceled                                                                              17.4s
+</span></span><span class="line"><span class="cl"> ✘ nginx Error      context canceled                                                                              17.4s
+</span></span><span class="line"><span class="cl"> ✘ sandbox Error    context canceled                                                                              17.4s
+</span></span><span class="line"><span class="cl"> ✘ worker Error     context canceled                                                                              17.4s
+</span></span><span class="line"><span class="cl">Error response from daemon: Get &#34;https://registry-1.docker.io/v2/&#34;: dialing registry-1.docker.io:443 container via direct connection because  has no HTTPS proxy: connecting to registry-1.docker.io:443: dial tcp 162.125.32.13:443: connectex: No connection could be made because the target machine actively refused it.
+</span></span><span class="line"><span class="cl">PS L:\RAG\Dify\dify\docker&gt;
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>Windows的docker desktop版本修改镜像仓库地址的方法是直接在图形界面设置中修改，在Docker Engine中增加<code>registry-mirrors</code>配置项，apply&amp;restart重启生效</p>
+<p><img src="/p/rag-dify/index.zh-cn.assets/image-20250203024529771.png"
+	width="1655"
+	height="626"
+	srcset="/p/rag-dify/index.zh-cn.assets/image-20250203024529771_hu_4fd82d4e64ae4225.png 480w, /p/rag-dify/index.zh-cn.assets/image-20250203024529771_hu_b6987c8d643d70e1.png 1024w"
+	loading="lazy"
+	
+		alt="image-20250203024529771"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="264"
+		data-flex-basis="634px"
+	
+></p>
+<p><code>docker info</code>命令检查镜像仓库配置是否生效</p>
+<p><img src="/p/rag-dify/index.zh-cn.assets/image-20250203025112742.png"
+	width="1145"
+	height="151"
+	srcset="/p/rag-dify/index.zh-cn.assets/image-20250203025112742_hu_c307c10acdbe73e3.png 480w, /p/rag-dify/index.zh-cn.assets/image-20250203025112742_hu_eac98ee1f8736112.png 1024w"
+	loading="lazy"
+	
+		alt="image-20250203025112742"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="758"
+		data-flex-basis="1819px"
+	
+></p>
+<p><strong>如果镜像仓库可用，修改后可正常安装，如果不能用，还是一样的报错，注意不是因为新配的镜像仓库地址没生效，而是默认和新配的都不可用；</strong></p>
+<p><strong>看上去它这个报错的打印只会显示默认镜像地址的不可用报错。</strong></p>
+<p>安装成功后docker可以看到容器在正常运行</p>
+<p><img src="/p/rag-dify/index.zh-cn.assets/image-20250203120318603.png"
+	width="1270"
+	height="969"
+	srcset="/p/rag-dify/index.zh-cn.assets/image-20250203120318603_hu_228086f14bb0243.png 480w, /p/rag-dify/index.zh-cn.assets/image-20250203120318603_hu_4e20193d005eb3a2.png 1024w"
+	loading="lazy"
+	
+		alt="image-20250203120318603"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="131"
+		data-flex-basis="314px"
+	
+></p>
+<p>浏览器访问http://localhost/install进入dify的web界面，配置用户信息。</p>
+<p><img src="/p/rag-dify/index.zh-cn.assets/image-20250203022651117.png"
+	width="936"
+	height="684"
+	srcset="/p/rag-dify/index.zh-cn.assets/image-20250203022651117_hu_848cb48b1328926.png 480w, /p/rag-dify/index.zh-cn.assets/image-20250203022651117_hu_f0d03aeac2e9b6ee.png 1024w"
+	loading="lazy"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="136"
+		data-flex-basis="328px"
+	
+></p>
+<p>设置完后登录正常显示主界面，至此Dify安装成功，可以看到对比anythingLLM界面差距比较大，Dify功能更丰富，工具agent有很多</p>
+<p><img src="/p/rag-dify/index.zh-cn.assets/image-20250203025805642.png"
+	width="1912"
+	height="1034"
+	srcset="/p/rag-dify/index.zh-cn.assets/image-20250203025805642_hu_ffce64b2a2f2afff.png 480w, /p/rag-dify/index.zh-cn.assets/image-20250203025805642_hu_3761eca74fc1b190.png 1024w"
+	loading="lazy"
+	
+		alt="image-20250203025805642"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="184"
+		data-flex-basis="443px"
+	
+></p>
+<h3 id="知识库功能初测">知识库功能初测
+</h3><p>进行模型设置，和anythingLLM配置一样，也是选择本地ollama，配置LLM和向量模型，把这两个模型配置好。</p>
+<p><img src="/p/rag-dify/index.zh-cn.assets/image-20250203030731376.png"
+	width="1919"
+	height="605"
+	srcset="/p/rag-dify/index.zh-cn.assets/image-20250203030731376_hu_274a02be60f127e6.png 480w, /p/rag-dify/index.zh-cn.assets/image-20250203030731376_hu_4cbfe6d075d0b1f3.png 1024w"
+	loading="lazy"
+	
+		alt="image-20250203030731376"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="317"
+		data-flex-basis="761px"
+	
+></p>
+<p><img src="/p/rag-dify/index.zh-cn.assets/image-20250203031801176.png"
+	width="1912"
+	height="939"
+	srcset="/p/rag-dify/index.zh-cn.assets/image-20250203031801176_hu_8e31987f60a73aee.png 480w, /p/rag-dify/index.zh-cn.assets/image-20250203031801176_hu_48229ef70f12288.png 1024w"
+	loading="lazy"
+	
+		alt="image-20250203031801176"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="203"
+		data-flex-basis="488px"
+	
+></p>
+<p><img src="/p/rag-dify/index.zh-cn.assets/image-20250203032404258.png"
+	width="920"
+	height="645"
+	srcset="/p/rag-dify/index.zh-cn.assets/image-20250203032404258_hu_895d928f9c3f0339.png 480w, /p/rag-dify/index.zh-cn.assets/image-20250203032404258_hu_76d36735c2eb6b54.png 1024w"
+	loading="lazy"
+	
+		alt="image-20250203032404258"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="142"
+		data-flex-basis="342px"
+	
+></p>
+<p>可以看看帮助文档做参考，本文是docker安装方式，所以填<code>http://host.docker.internal:11434</code></p>
+<p><img src="/p/rag-dify/index.zh-cn.assets/image-20250203031533128.png"
+	width="1736"
+	height="835"
+	srcset="/p/rag-dify/index.zh-cn.assets/image-20250203031533128_hu_f17ab048d2f23e50.png 480w, /p/rag-dify/index.zh-cn.assets/image-20250203031533128_hu_ec2eddaf4807a8af.png 1024w"
+	loading="lazy"
+	
+		alt="image-20250203031533128"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="207"
+		data-flex-basis="498px"
+	
+></p>
+<p>关于知识库上传文档大小限制，可以根据需要修改dify的docker目录下的<code>.env</code>重启Docker服务生效</p>
+<p><strong>有两处配置需要修改</strong></p>
+<p>上传文件默认15M<code>UPLOAD_FILE_SIZE_LIMIT=15</code></p>
+<p>nginx的配置客户端上传文件限制15M<code>NGINX_CLIENT_MAX_BODY_SIZE=15M</code></p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-sh" data-lang="sh"><span class="line"><span class="cl"><span class="c1"># Upload file size limit, default 15M.</span>
+</span></span><span class="line"><span class="cl"><span class="nv">UPLOAD_FILE_SIZE_LIMIT</span><span class="o">=</span><span class="m">15</span>
+</span></span><span class="line"><span class="cl"><span class="c1"># Nginx performance tuning</span>
+</span></span><span class="line"><span class="cl"><span class="nv">NGINX_WORKER_PROCESSES</span><span class="o">=</span>auto
+</span></span><span class="line"><span class="cl"><span class="nv">NGINX_CLIENT_MAX_BODY_SIZE</span><span class="o">=</span>15M
+</span></span><span class="line"><span class="cl"><span class="nv">NGINX_KEEPALIVE_TIMEOUT</span><span class="o">=</span><span class="m">65</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h4 id="知识库创建">知识库创建
+</h4><p><img src="/p/rag-dify/index.zh-cn.assets/image-20250319005443063.png"
+	width="1199"
+	height="795"
+	srcset="/p/rag-dify/index.zh-cn.assets/image-20250319005443063_hu_acd3faa8e680b408.png 480w, /p/rag-dify/index.zh-cn.assets/image-20250319005443063_hu_aa4d10804da02fd2.png 1024w"
+	loading="lazy"
+	
+		alt="image-20250319005443063"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="150"
+		data-flex-basis="361px"
+	
+></p>
+<p><img src="/Deepseek%20R1%e6%90%ad%e5%bb%ba%e6%9c%ac%e5%9c%b0RAG%e7%9f%a5%e8%af%86%e5%ba%93-Dify.assets/image-20250203033254306.png"
+	
+	
+	
+	loading="lazy"
+	
+		alt="image-20250203033254306"
+	
+	
+></p>
+<blockquote>
+<p>可改为选择推荐混合检索</p></blockquote>
+<p><img src="/p/rag-dify/index.zh-cn.assets/image-20250319003723002.png"
+	width="1314"
+	height="726"
+	srcset="/p/rag-dify/index.zh-cn.assets/image-20250319003723002_hu_660a99ae84ef08ed.png 480w, /p/rag-dify/index.zh-cn.assets/image-20250319003723002_hu_74951efb17bc62d9.png 1024w"
+	loading="lazy"
+	
+		alt="image-20250319003723002"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="180"
+		data-flex-basis="434px"
+	
+></p>
+<h4 id="聊天应用创建">聊天应用创建
+</h4><p><img src="/p/rag-dify/index.zh-cn.assets/image-20250203033659479.png"
+	width="1368"
+	height="716"
+	srcset="/p/rag-dify/index.zh-cn.assets/image-20250203033659479_hu_8a176943c03c7b85.png 480w, /p/rag-dify/index.zh-cn.assets/image-20250203033659479_hu_fc3d527a643bad80.png 1024w"
+	loading="lazy"
+	
+		alt="image-20250203033659479"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="191"
+		data-flex-basis="458px"
+	
+></p>
+<h4 id="测试">测试
+</h4><p>目前能看到是去读取了相关知识库的文件，检查ollama也正常跑了本地的大模型，后续再继续研究回答与AnythingLLM有差异的问题。</p>
+<p><img src="/p/rag-dify/index.zh-cn.assets/image-20250319003922728.png"
+	width="1915"
+	height="886"
+	srcset="/p/rag-dify/index.zh-cn.assets/image-20250319003922728_hu_d5e0a5e52e2b87af.png 480w, /p/rag-dify/index.zh-cn.assets/image-20250319003922728_hu_3eef680eca2a5949.png 1024w"
+	loading="lazy"
+	
+		alt="image-20250319003922728"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="216"
+		data-flex-basis="518px"
+	
+></p>
+<h3 id="关于chatbot">关于Chatbot
+</h3><p>进过调试预览问答后的结果，进行发布更新后，在单独Chat窗口就能得到新发布的结合知识库检索的结果</p>
+<p><img src="/p/rag-dify/index.zh-cn.assets/image-20250319005236190.png"
+	width="1908"
+	height="961"
+	srcset="/p/rag-dify/index.zh-cn.assets/image-20250319005236190_hu_6cfe1911fcd0e892.png 480w, /p/rag-dify/index.zh-cn.assets/image-20250319005236190_hu_9989c509ab8af80e.png 1024w"
+	loading="lazy"
+	
+		alt="image-20250319005236190"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="198"
+		data-flex-basis="476px"
+	
+></p>
+<p><img src="/p/rag-dify/index.zh-cn.assets/image-20250319004344348.png"
+	width="1917"
+	height="619"
+	srcset="/p/rag-dify/index.zh-cn.assets/image-20250319004344348_hu_4fae071637f1aceb.png 480w, /p/rag-dify/index.zh-cn.assets/image-20250319004344348_hu_2d320fae97ba42c7.png 1024w"
+	loading="lazy"
+	
+		alt="image-20250319004344348"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="309"
+		data-flex-basis="743px"
+	
+></p>
+<p><img src="/p/rag-dify/index.zh-cn.assets/image-20250319004638954.png"
+	width="1802"
+	height="720"
+	srcset="/p/rag-dify/index.zh-cn.assets/image-20250319004638954_hu_4b40b9479f584e18.png 480w, /p/rag-dify/index.zh-cn.assets/image-20250319004638954_hu_b8aace4085d7db02.png 1024w"
+	loading="lazy"
+	
+		alt="image-20250319004638954"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="250"
+		data-flex-basis="600px"
+	
+></p>
+<h3 id="文档召回测试">文档召回测试
+</h3><p>这里可以输入测试文本在知识库的文档Chunk的命中的情况</p>
+<p><img src="/p/rag-dify/index.zh-cn.assets/image-20250319004814199.png"
+	width="1909"
+	height="901"
+	srcset="/p/rag-dify/index.zh-cn.assets/image-20250319004814199_hu_c1d00e30c1df7d50.png 480w, /p/rag-dify/index.zh-cn.assets/image-20250319004814199_hu_f6bee7a3039b29ef.png 1024w"
+	loading="lazy"
+	
+		alt="image-20250319004814199"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="211"
+		data-flex-basis="508px"
+	
+></p>
+<h3 id="监测功能">监测功能
+</h3><p><img src="/p/rag-dify/index.zh-cn.assets/image-20250204165806333.png"
+	width="1909"
+	height="952"
+	srcset="/p/rag-dify/index.zh-cn.assets/image-20250204165806333_hu_ef676d5b257ba3f0.png 480w, /p/rag-dify/index.zh-cn.assets/image-20250204165806333_hu_137ae74018596445.png 1024w"
+	loading="lazy"
+	
+		alt="image-20250204165806333"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="200"
+		data-flex-basis="481px"
+	
+></p>
+<h2 id="总结">总结
+</h2><ol>
+<li>Dify安装使用难点主要在于Windows下Docker Desktop软件问题，以及不可抗力导致的网络连接问题如何不科学上网的情况下解决
+<ul>
+<li>Windows 下docker的安装部署，WSL/WSL2相关安装时报错问题</li>
+<li>Dify源码安装，拉取Github镜像，会遇到网络问题；<code>docker compose up -d</code> 安装时大概率也会遇到docker镜像仓库不可访问的网络问题</li>
+<li>整理了几个网站，在不科学上网情况下，解决上述不可抗力网络问题
+<ul>
+<li>Github国内镜像站<a class="link" href="https://fcp7.com/github-mirror-daily-updates.html"  target="_blank" rel="noopener"
+    >2025最新可用！18个Github镜像站，国内更快部署下载(1月更新)</a></li>
+<li>Docker镜像加速网站服务状态<a class="link" href="https://status.1panel.top/status/docker"  target="_blank" rel="noopener"
+    >国内 Docker 服务状态 &amp; 镜像加速监控</a></li>
+<li>测试可用网络评价稳定的Docker镜像仓库<a class="link" href="https://1ms.run/"  target="_blank" rel="noopener"
+    >毫秒镜像</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li>Dify的功能很多，需要更深入的去了解和尝试，目前使用测试来看Dify的可用性，易用性，灵活度，是高于anythingLLM的。</li>
+<li>知识库中的文档内容，比如PDF以及文档中的图像，大模型是否分析、处理到了，如何处理图片以及图片上文字的，业务流程图大模型是否能读取分析，需要研究</li>
+</ol>
+
+</section>
+
+
+    <footer class="article-footer">
+    
+    <section class="article-tags">
+        
+            <a href="/tags/dify/">Dify</a>
+        
+            <a href="/tags/%E6%9C%AC%E5%9C%B0%E9%83%A8%E7%BD%B2/">本地部署</a>
+        
+    </section>
+
+
+    
+    <section class="article-copyright">
+        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-copyright" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="12" cy="12" r="9" />
+  <path d="M14.5 9a3.5 4 0 1 0 0 6" />
+</svg>
+
+
+
+        <span>Licensed under CC BY-NC-SA 4.0</span>
+    </section>
+    </footer>
+
+
+    
+</article>
+
+    
+
+    
+
+     
+    
+        
+    <div class="disqus-container">
+    <div id="disqus_thread"></div>
+<script>
+    window.disqus_config = function () {
+    
+    
+    
+    };
+    (function() {
+        if (["localhost", "127.0.0.1"].indexOf(window.location.hostname) != -1) {
+            document.getElementById('disqus_thread').innerHTML = 'Disqus comments not available by default when the website is previewed locally.';
+            return;
+        }
+        var d = document, s = d.createElement('script'); s.async = true;
+        s.src = '//' + "hugo-theme-stack" + '.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="https://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+</div>
+
+<style>
+    .disqus-container {
+        background-color: var(--card-background);
+        border-radius: var(--card-border-radius);
+        box-shadow: var(--shadow-l1);
+        padding: var(--card-padding);
+    }
+</style>
+
+<script>
+    window.addEventListener('onColorSchemeChange', (e) => {
+        if (typeof DISQUS == 'object') {
+            DISQUS.reset({
+                reload: true
+            });
+        }
+    })
+</script>
+
+    
+
+    <footer class="site-footer">
+    <section class="copyright">
+        &copy; 
+        
+            2024 - 
+        
+        2025 Yeqing17
+    </section>
+    
+    <section class="powerby">
+        使用 <a href="https://gohugo.io/" target="_blank" rel="noopener">Hugo</a> 构建 <br />
+        主题 <b><a href="https://github.com/CaiJimmy/hugo-theme-stack" target="_blank" rel="noopener" data-version="3.30.0">Stack</a></b> 由 <a href="https://jimmycai.com" target="_blank" rel="noopener">Jimmy</a> 设计
+    </section>
+</footer>
+
+
+    
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+
+    
+    <div class="pswp__bg"></div>
+
+    
+    <div class="pswp__scroll-wrap">
+
+        
+        <div class="pswp__container">
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+        </div>
+
+        
+        <div class="pswp__ui pswp__ui--hidden">
+
+            <div class="pswp__top-bar">
+
+                
+
+                <div class="pswp__counter"></div>
+
+                <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+
+                <button class="pswp__button pswp__button--share" title="Share"></button>
+
+                <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+
+                <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+
+                
+                
+                <div class="pswp__preloader">
+                    <div class="pswp__preloader__icn">
+                        <div class="pswp__preloader__cut">
+                            <div class="pswp__preloader__donut"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+                <div class="pswp__share-tooltip"></div>
+            </div>
+
+            <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+            </button>
+
+            <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+            </button>
+
+            <div class="pswp__caption">
+                <div class="pswp__caption__center"></div>
+            </div>
+
+        </div>
+
+    </div>
+
+</div><script 
+                src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.min.js"integrity="sha256-ePwmChbbvXbsO02lbM3HoHbSHTHFAeChekF1xKJdleo="crossorigin="anonymous"
+                defer
+                >
+            </script><script 
+                src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe-ui-default.min.js"integrity="sha256-UKkzOn/w1mBxRmLLGrSeyB4e1xbrp4xylgAWb3M42pU="crossorigin="anonymous"
+                defer
+                >
+            </script><link 
+                rel="stylesheet" 
+                href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/default-skin/default-skin.min.css"crossorigin="anonymous"
+            ><link 
+                rel="stylesheet" 
+                href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.min.css"crossorigin="anonymous"
+            >
+
+            </main>
+        </div>
+        <script 
+                src="https://cdn.jsdelivr.net/npm/node-vibrant@3.1.6/dist/vibrant.min.js"integrity="sha256-awcR2jno4kI5X0zL8ex0vi2z&#43;KMkF24hUW8WePSA9HM="crossorigin="anonymous"
+                
+                >
+            </script><script type="text/javascript" src="/ts/main.399f6a5fbafc0fcb37b5d7890ca781a6243e2c3ea5c25ab565e2275341305794.js" defer></script>
+<script>
+    (function () {
+        const customFont = document.createElement('link');
+        customFont.href = "https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&display=swap";
+
+        customFont.type = "text/css";
+        customFont.rel = "stylesheet";
+
+        document.head.appendChild(customFont);
+    }());
+</script>
+
+    </body>
+</html>

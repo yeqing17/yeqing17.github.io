@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>AI on 一些记录</title>
+    <link>https://example.com/categories/ai/</link>
+    <description>Recent content in AI on 一些记录</description>
+    <generator>Hugo</generator>
+    <language>zh-cn</language>
+    <copyright>Yeqing17</copyright>
+    <lastBuildDate>Tue, 04 Feb 2025 00:00:00 +0000</lastBuildDate>
+    <atom:link href="https://example.com/categories/ai/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Deepseek&#43;Ollama&#43;Dify搭建本地RAG知识库</title>
+      <link>https://example.com/p/rag-dify/</link>
+      <pubDate>Tue, 04 Feb 2025 00:00:00 +0000</pubDate>
+      <guid>https://example.com/p/rag-dify/</guid>
+      <description>&lt;h1 id=&#34;deepseek-r1ollamadify搭建本地rag知识库&#34;&gt;Deepseek R1+Ollama+Dify搭建本地RAG知识库&lt;/h1&gt;&#xA;&lt;blockquote&gt;&#xA;&lt;p&gt;注：以下为Windows10系统操作记录，16G内存，NVIDA 4060 8G显卡&lt;/p&gt;&lt;/blockquote&gt;&#xA;&lt;h2 id=&#34;dify&#34;&gt;Dify&lt;/h2&gt;&#xA;&lt;p&gt;Dify 是低代码一站式大模型应用开发平台。它有可视化界面，降低开发门槛，支持集成多种主流大语言模型。可上传数据微调模型、编排工作流，还能快速部署应用并提供运维监控。支持RAG知识库和AI Agenta 适用于智能客服、内容创作等场景，高效灵活又安全。&lt;/p&gt;</description>
+    </item>
+  </channel>
+</rss>

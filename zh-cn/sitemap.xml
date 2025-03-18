@@ -74,6 +74,21 @@
                 href="https://example.com/tags/"
                 />
   </url><url>
+    <loc>https://example.com/categories/ai/</loc>
+    <lastmod>2025-02-04T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://example.com/p/rag-dify/</loc>
+    <lastmod>2025-02-04T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://example.com/tags/dify/</loc>
+    <lastmod>2025-02-04T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://example.com/categories/rag/</loc>
+    <lastmod>2025-02-04T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://example.com/tags/%E6%9C%AC%E5%9C%B0%E9%83%A8%E7%BD%B2/</loc>
+    <lastmod>2025-02-04T00:00:00+00:00</lastmod>
+  </url><url>
     <loc>https://example.com/posts/1/</loc>
     <lastmod>2024-12-26T12:19:32-05:00</lastmod>
   </url><url>
