@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Gemini on 一些记录</title>
+    <link>https://example.com/tags/gemini/</link>
+    <description>Recent content in Gemini on 一些记录</description>
+    <generator>Hugo</generator>
+    <language>zh-cn</language>
+    <copyright>Yeqing17</copyright>
+    <lastBuildDate>Sun, 16 Mar 2025 00:00:00 +0000</lastBuildDate>
+    <atom:link href="https://example.com/tags/gemini/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Google Gemini-2.0-Flash-Exp Test</title>
+      <link>https://example.com/p/gemini2.0flashexptest/</link>
+      <pubDate>Sun, 16 Mar 2025 00:00:00 +0000</pubDate>
+      <guid>https://example.com/p/gemini2.0flashexptest/</guid>
+      <description>&lt;h1 id=&#34;google-gemini-20-flash-exp&#34;&gt;Google Gemini-2.0-Flash-Exp&lt;/h1&gt;&#xA;&lt;p&gt;2025 年 3 月 12 日，谷歌正式发布 Gemini 2.0 Flash Exp 全模态图像生成器，支持原生图像生成功能，所有开发者都可以通过 Gemini API 和 Google AI Studio 中的实验版本使用 Gemini 2.0 Flash 进行原生图像生成。&lt;/p&gt;</description>
+    </item>
+  </channel>
+</rss>

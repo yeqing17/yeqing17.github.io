@@ -21,6 +21,12 @@
     <loc>https://example.com/posts/4/</loc>
     <lastmod>2025-03-16T13:45:04+08:00</lastmod>
   </url><url>
+    <loc>https://example.com/categories/ai/</loc>
+    <lastmod>2025-03-16T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://example.com/categories/aigc/</loc>
+    <lastmod>2025-03-16T00:00:00+00:00</lastmod>
+  </url><url>
     <loc>https://example.com/categories/</loc>
     <lastmod>2025-03-16T00:00:00+00:00</lastmod>
     <xhtml:link
@@ -34,17 +40,33 @@
                 href="https://example.com/categories/"
                 />
   </url><url>
-    <loc>https://example.com/categories/gemini/</loc>
+    <loc>https://example.com/tags/gemini/</loc>
     <lastmod>2025-03-16T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>https://example.com/p/test-case/</loc>
+    <loc>https://example.com/tags/google/</loc>
+    <lastmod>2025-03-16T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://example.com/p/gemini2.0flashexptest/</loc>
+    <lastmod>2025-03-16T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://example.com/categories/image/</loc>
     <lastmod>2025-03-16T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://example.com/post/</loc>
     <lastmod>2025-03-16T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>https://example.com/categories/test/</loc>
+    <loc>https://example.com/tags/</loc>
     <lastmod>2025-03-16T00:00:00+00:00</lastmod>
+    <xhtml:link
+                rel="alternate"
+                hreflang="en"
+                href="https://example.com/en/tags/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="zh-cn"
+                href="https://example.com/tags/"
+                />
   </url><url>
     <loc>https://example.com/posts/2/</loc>
     <lastmod>2025-03-16T03:24:55+08:00</lastmod>
@@ -61,22 +83,6 @@
     <loc>https://example.com/tags/tag2/</loc>
     <lastmod>2025-03-16T03:24:55+08:00</lastmod>
   </url><url>
-    <loc>https://example.com/tags/</loc>
-    <lastmod>2025-03-16T03:24:55+08:00</lastmod>
-    <xhtml:link
-                rel="alternate"
-                hreflang="en"
-                href="https://example.com/en/tags/"
-                />
-    <xhtml:link
-                rel="alternate"
-                hreflang="zh-cn"
-                href="https://example.com/tags/"
-                />
-  </url><url>
-    <loc>https://example.com/categories/ai/</loc>
-    <lastmod>2025-03-11T00:00:00+00:00</lastmod>
-  </url><url>
     <loc>https://example.com/tags/github/</loc>
     <lastmod>2025-03-11T00:00:00+00:00</lastmod>
   </url><url>
@@ -89,13 +95,37 @@
     <loc>https://example.com/categories/%E5%A3%B0%E9%9F%B3%E5%A4%84%E7%90%86/</loc>
     <lastmod>2025-03-11T00:00:00+00:00</lastmod>
   </url><url>
+    <loc>https://example.com/tags/cherrystudio/</loc>
+    <lastmod>2025-02-17T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://example.com/tags/lm-studio/</loc>
+    <lastmod>2025-02-17T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://example.com/p/lmstudiorag/</loc>
+    <lastmod>2025-02-17T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://example.com/categories/rag/</loc>
+    <lastmod>2025-02-17T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://example.com/tags/rag/</loc>
+    <lastmod>2025-02-17T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://example.com/tags/%E7%9F%A5%E8%AF%86%E5%BA%93/</loc>
+    <lastmod>2025-02-17T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://example.com/tags/anythingllm/</loc>
+    <lastmod>2025-02-04T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://example.com/p/dsollamaanythingllm/</loc>
+    <lastmod>2025-02-04T00:00:00+00:00</lastmod>
+  </url><url>
     <loc>https://example.com/p/rag-dify/</loc>
     <lastmod>2025-02-04T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://example.com/tags/dify/</loc>
     <lastmod>2025-02-04T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>https://example.com/categories/rag/</loc>
+    <loc>https://example.com/tags/ollama/</loc>
     <lastmod>2025-02-04T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://example.com/tags/%E6%9C%AC%E5%9C%B0%E9%83%A8%E7%BD%B2/</loc>
@@ -156,6 +186,9 @@
     <lastmod>2024-12-26T12:19:32-05:00</lastmod>
   </url><url>
     <loc>https://example.com/p/test-chinese/</loc>
+    <lastmod>2020-09-09T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://example.com/categories/test/</loc>
     <lastmod>2020-09-09T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://example.com/categories/%E6%B5%8B%E8%AF%95/</loc>

@@ -18,9 +18,9 @@
     </item>
     <item>
       <title>Google Gemini-2.0-Flash-Exp Test</title>
-      <link>https://example.com/p/test-case/</link>
+      <link>https://example.com/p/gemini2.0flashexptest/</link>
       <pubDate>Sun, 16 Mar 2025 00:00:00 +0000</pubDate>
-      <guid>https://example.com/p/test-case/</guid>
+      <guid>https://example.com/p/gemini2.0flashexptest/</guid>
       <description>&lt;h1 id=&#34;google-gemini-20-flash-exp&#34;&gt;Google Gemini-2.0-Flash-Exp&lt;/h1&gt;&#xA;&lt;p&gt;2025 年 3 月 12 日，谷歌正式发布 Gemini 2.0 Flash Exp 全模态图像生成器，支持原生图像生成功能，所有开发者都可以通过 Gemini API 和 Google AI Studio 中的实验版本使用 Gemini 2.0 Flash 进行原生图像生成。&lt;/p&gt;</description>
     </item>
     <item>
@@ -43,6 +43,20 @@
       <pubDate>Tue, 11 Mar 2025 00:00:00 +0000</pubDate>
       <guid>https://example.com/p/yqsparktts/</guid>
       <description>&lt;h2 id=&#34;一github-clone项目镜像&#34;&gt;一、Github Clone项目镜像&lt;/h2&gt;&#xA;&lt;p&gt;Spark-TTS项目&lt;code&gt;https://github.com/SparkAudio/Spark-TTS.git&lt;/code&gt;&lt;/p&gt;&#xA;&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;&#xA;&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;&#xA;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1&#xA;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&#xA;&lt;td class=&#34;lntd&#34;&gt;&#xA;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;git clone https://github.com/SparkAudio/Spark-TTS.git&#xA;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&#xA;&lt;/div&gt;&#xA;&lt;/div&gt;&lt;p&gt;&lt;img src=&#34;https://example.com/p/yqsparktts/sparktts.assets/image-20250309130742950.png&#34; alt=&#34;image-20250309130742950&#34;&gt;&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>LM Studio &#43; CherryStudio RAG知识库使用记录</title>
+      <link>https://example.com/p/lmstudiorag/</link>
+      <pubDate>Mon, 17 Feb 2025 00:00:00 +0000</pubDate>
+      <guid>https://example.com/p/lmstudiorag/</guid>
+      <description>&lt;h1 id=&#34;lm-studio工具记录含cherrystudio-rag知识库测试&#34;&gt;LM Studio工具记录（含CherryStudio RAG知识库测试）&lt;/h1&gt;&#xA;&lt;h2 id=&#34;下载安装&#34;&gt;下载安装&lt;/h2&gt;&#xA;&lt;p&gt;&lt;a href=&#34;https://lmstudio.ai/&#34;&gt;LM Studio 官网- Discover, download, and run local LLMs&lt;/a&gt;&lt;/p&gt;&#xA;&lt;p&gt;官网点击下载安装即可，过程中可选择安装路径（这点比Ollama方便点）&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>Deepseek R1&#43;Ollama&#43;AnythingLLM搭建本地RAG知识库</title>
+      <link>https://example.com/p/dsollamaanythingllm/</link>
+      <pubDate>Tue, 04 Feb 2025 00:00:00 +0000</pubDate>
+      <guid>https://example.com/p/dsollamaanythingllm/</guid>
+      <description>&lt;h1 id=&#34;deepseek-r1ollamaanythingllm搭建本地rag知识库&#34;&gt;Deepseek R1+Ollama+AnythingLLM搭建本地RAG知识库&lt;/h1&gt;&#xA;&lt;blockquote&gt;&#xA;&lt;p&gt;注：以下为Windows10系统操作记录，16G内存，NVIDA 4060 8G显卡&lt;/p&gt;&lt;/blockquote&gt;&#xA;&lt;h2 id=&#34;什么是rag&#34;&gt;什么是RAG&lt;/h2&gt;&#xA;&lt;p&gt;&lt;strong&gt;RAG&lt;/strong&gt;（Retrieval-Augmented Generation）检索增强生成，是一种结合信息检索与生成式语言模型的混合架构，旨在提升生成式任务的事实性、准确性和可解释性。其核心思想是通过动态检索外部知识库中的相关文档片段，为生成模型提供上下文约束，从而缓解传统生成模型的“幻觉”问题，并支持对私有或动态更新的知识源的访问。&lt;/p&gt;</description>
     </item>
     <item>
       <title>Deepseek&#43;Ollama&#43;Dify搭建本地RAG知识库</title>

@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>LM Studio on 一些记录</title>
+    <link>https://example.com/tags/lm-studio/</link>
+    <description>Recent content in LM Studio on 一些记录</description>
+    <generator>Hugo</generator>
+    <language>zh-cn</language>
+    <copyright>Yeqing17</copyright>
+    <lastBuildDate>Mon, 17 Feb 2025 00:00:00 +0000</lastBuildDate>
+    <atom:link href="https://example.com/tags/lm-studio/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>LM Studio &#43; CherryStudio RAG知识库使用记录</title>
+      <link>https://example.com/p/lmstudiorag/</link>
+      <pubDate>Mon, 17 Feb 2025 00:00:00 +0000</pubDate>
+      <guid>https://example.com/p/lmstudiorag/</guid>
+      <description>&lt;h1 id=&#34;lm-studio工具记录含cherrystudio-rag知识库测试&#34;&gt;LM Studio工具记录（含CherryStudio RAG知识库测试）&lt;/h1&gt;&#xA;&lt;h2 id=&#34;下载安装&#34;&gt;下载安装&lt;/h2&gt;&#xA;&lt;p&gt;&lt;a href=&#34;https://lmstudio.ai/&#34;&gt;LM Studio 官网- Discover, download, and run local LLMs&lt;/a&gt;&lt;/p&gt;&#xA;&lt;p&gt;官网点击下载安装即可，过程中可选择安装路径（这点比Ollama方便点）&lt;/p&gt;</description>
+    </item>
+  </channel>
+</rss>

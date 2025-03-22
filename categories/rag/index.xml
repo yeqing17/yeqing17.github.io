@@ -7,8 +7,22 @@
     <generator>Hugo</generator>
     <language>zh-cn</language>
     <copyright>Yeqing17</copyright>
-    <lastBuildDate>Tue, 04 Feb 2025 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Mon, 17 Feb 2025 00:00:00 +0000</lastBuildDate>
     <atom:link href="https://example.com/categories/rag/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>LM Studio &#43; CherryStudio RAG知识库使用记录</title>
+      <link>https://example.com/p/lmstudiorag/</link>
+      <pubDate>Mon, 17 Feb 2025 00:00:00 +0000</pubDate>
+      <guid>https://example.com/p/lmstudiorag/</guid>
+      <description>&lt;h1 id=&#34;lm-studio工具记录含cherrystudio-rag知识库测试&#34;&gt;LM Studio工具记录（含CherryStudio RAG知识库测试）&lt;/h1&gt;&#xA;&lt;h2 id=&#34;下载安装&#34;&gt;下载安装&lt;/h2&gt;&#xA;&lt;p&gt;&lt;a href=&#34;https://lmstudio.ai/&#34;&gt;LM Studio 官网- Discover, download, and run local LLMs&lt;/a&gt;&lt;/p&gt;&#xA;&lt;p&gt;官网点击下载安装即可，过程中可选择安装路径（这点比Ollama方便点）&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>Deepseek R1&#43;Ollama&#43;AnythingLLM搭建本地RAG知识库</title>
+      <link>https://example.com/p/dsollamaanythingllm/</link>
+      <pubDate>Tue, 04 Feb 2025 00:00:00 +0000</pubDate>
+      <guid>https://example.com/p/dsollamaanythingllm/</guid>
+      <description>&lt;h1 id=&#34;deepseek-r1ollamaanythingllm搭建本地rag知识库&#34;&gt;Deepseek R1+Ollama+AnythingLLM搭建本地RAG知识库&lt;/h1&gt;&#xA;&lt;blockquote&gt;&#xA;&lt;p&gt;注：以下为Windows10系统操作记录，16G内存，NVIDA 4060 8G显卡&lt;/p&gt;&lt;/blockquote&gt;&#xA;&lt;h2 id=&#34;什么是rag&#34;&gt;什么是RAG&lt;/h2&gt;&#xA;&lt;p&gt;&lt;strong&gt;RAG&lt;/strong&gt;（Retrieval-Augmented Generation）检索增强生成，是一种结合信息检索与生成式语言模型的混合架构，旨在提升生成式任务的事实性、准确性和可解释性。其核心思想是通过动态检索外部知识库中的相关文档片段，为生成模型提供上下文约束，从而缓解传统生成模型的“幻觉”问题，并支持对私有或动态更新的知识源的访问。&lt;/p&gt;</description>
+    </item>
     <item>
       <title>Deepseek&#43;Ollama&#43;Dify搭建本地RAG知识库</title>
       <link>https://example.com/p/rag-dify/</link>
