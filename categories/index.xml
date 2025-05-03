@@ -7,13 +7,20 @@
     <generator>Hugo</generator>
     <language>zh-cn</language>
     <copyright>Yeqing17</copyright>
-    <lastBuildDate>Sun, 16 Mar 2025 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Tue, 22 Apr 2025 00:00:00 +0000</lastBuildDate>
     <atom:link href="https://example.com/categories/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>AI</title>
       <link>https://example.com/categories/ai/</link>
-      <pubDate>Sun, 16 Mar 2025 00:00:00 +0000</pubDate>
+      <pubDate>Tue, 22 Apr 2025 00:00:00 +0000</pubDate>
       <guid>https://example.com/categories/ai/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Agent</title>
+      <link>https://example.com/categories/agent/</link>
+      <pubDate>Sat, 29 Mar 2025 00:00:00 +0000</pubDate>
+      <guid>https://example.com/categories/agent/</guid>
       <description></description>
     </item>
     <item>

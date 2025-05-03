@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Agent on Little by little, one goes far</title>
+    <link>https://example.com/categories/agent/</link>
+    <description>Recent content in Agent on Little by little, one goes far</description>
+    <generator>Hugo</generator>
+    <language>zh-cn</language>
+    <copyright>Yeqing17</copyright>
+    <lastBuildDate>Sat, 29 Mar 2025 00:00:00 +0000</lastBuildDate>
+    <atom:link href="https://example.com/categories/agent/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>MCP学习记录</title>
+      <link>https://example.com/p/mcptest/</link>
+      <pubDate>Sat, 29 Mar 2025 00:00:00 +0000</pubDate>
+      <guid>https://example.com/p/mcptest/</guid>
+      <description>&lt;h1 id=&#34;mcp学习&#34;&gt;MCP学习&lt;/h1&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;&#xA;&lt;p&gt;2024年11月25日  Anthropic   公司发布了一种新的开放协议Model Context Protocol  ，简称MCP（模型上下文协议）&lt;/p&gt;&#xA;&lt;/li&gt;&#xA;&lt;li&gt;&#xA;&lt;p&gt;2025年3月27日，OpenAI宣布对其Agents SDK进行了重大更新，支持了对手Anthropic推出的MCP服务协议的消息。&#xA;OpenAI研究员&lt;a href=&#34;https://x.com/stevenheidel&#34;&gt;Steven Heide&lt;/a&gt;使用最近OpenAI最火爆GPT-4o的原生图像生成了吉卜力风格图片，解释MCP的架构。&#xA;&lt;img src=&#34;https://example.com/p/mcptest/MCP%E5%AD%A6%E4%B9%A0.assets/Gm_MSp6a4AAWTa7-17431783941461.jpg&#34; alt=&#34;&#34;&gt;&lt;/p&gt;</description>
+    </item>
+  </channel>
+</rss>

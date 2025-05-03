@@ -7,8 +7,22 @@
     <generator>Hugo</generator>
     <language>zh-cn</language>
     <copyright>Yeqing17</copyright>
-    <lastBuildDate>Sun, 16 Mar 2025 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Tue, 22 Apr 2025 00:00:00 +0000</lastBuildDate>
     <atom:link href="https://example.com/post/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Trae-v1.3.0-大更新MCP实测</title>
+      <link>https://example.com/p/trae-v1.3.0/</link>
+      <pubDate>Tue, 22 Apr 2025 00:00:00 +0000</pubDate>
+      <guid>https://example.com/p/trae-v1.3.0/</guid>
+      <description>&lt;h1 id=&#34;更新日志&#34;&gt;更新日志&lt;/h1&gt;&#xA;&lt;blockquote&gt;&#xA;&lt;p&gt;Trae v1.3.0 版本更新，大更新，MCP支持，rules，自定义Agent等&lt;/p&gt;&lt;/blockquote&gt;&#xA;&lt;h2 id=&#34;2025-年-4-月-21-日&#34;&gt;2025 年 4 月 21 日&lt;/h2&gt;&#xA;&lt;p&gt;Trae v1.3.0 版本正式发布。以下是变更细节：&lt;/p&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;统一对话体验：Chat 与 Builder 面板合并，支持通过 @Builder 进入 Builder Agent 模式。&lt;/li&gt;&#xA;&lt;li&gt;上下文能力增强：新增支持 #Web 和 #Doc 两种 Context。&#xA;&lt;ul&gt;&#xA;&lt;li&gt;#Web：支持联网搜索，可直接粘贴链接，AI 自动提取网页内容作为上下文。&lt;/li&gt;&#xA;&lt;li&gt;#Doc：支持通过 URL 或上传 .md / .txt 文件添加文档集，最多支持 1000 个文件（50MB）。&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;/li&gt;&#xA;&lt;li&gt;自定义规则上线：支持为 Trae 配置个人与项目规则。&#xA;&lt;ul&gt;&#xA;&lt;li&gt;个人规则：创建 user_rules.md，跨项目生效。&lt;/li&gt;&#xA;&lt;li&gt;项目规则：放置于 .trae/rules/project_rules.md，规范当前项目内 AI 行为。&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;/li&gt;&#xA;&lt;li&gt;Agent 能力全面升级：&#xA;&lt;ul&gt;&#xA;&lt;li&gt;支持通过 prompt 和 tools 自定义 Agent。&lt;/li&gt;&#xA;&lt;li&gt;内置 Builder Agent 及 Builder with MCP，支持使用历史配置成功的全部 MCP 工具执行复杂任务。&lt;/li&gt;&#xA;&lt;li&gt;Agent 支持开启“自动运行”模式，自动执行命令和工具调用，支持配置命令黑名单。&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;/li&gt;&#xA;&lt;li&gt;MCP 支持上线：&#xA;&lt;ul&gt;&#xA;&lt;li&gt;内置 MCP 市场，支持快速添加第三方 MCP Servers。&lt;/li&gt;&#xA;&lt;li&gt;Agent 可灵活调用 MCP 工具，拓展执行能力。&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;h2 id=&#34;mcp-功能测试&#34;&gt;MCP 功能测试&lt;/h2&gt;&#xA;&lt;p&gt;从AI侧栏点击右上角①齿轮从AI设置选择MCP进行配置。或者点击②处个人中心图标选择AI功能管理选择MCP进行配置&#xA;&lt;img src=&#34;https://example.com/p/trae-v1.3.0/trae1.3.0%E7%89%88%E6%9C%AC%E6%9B%B4%E6%96%B0.assets/image-20250422132953088.png&#34; alt=&#34;image-20250422132953088&#34;&gt;&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>MCP学习记录</title>
+      <link>https://example.com/p/mcptest/</link>
+      <pubDate>Sat, 29 Mar 2025 00:00:00 +0000</pubDate>
+      <guid>https://example.com/p/mcptest/</guid>
+      <description>&lt;h1 id=&#34;mcp学习&#34;&gt;MCP学习&lt;/h1&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;&#xA;&lt;p&gt;2024年11月25日  Anthropic   公司发布了一种新的开放协议Model Context Protocol  ，简称MCP（模型上下文协议）&lt;/p&gt;&#xA;&lt;/li&gt;&#xA;&lt;li&gt;&#xA;&lt;p&gt;2025年3月27日，OpenAI宣布对其Agents SDK进行了重大更新，支持了对手Anthropic推出的MCP服务协议的消息。&#xA;OpenAI研究员&lt;a href=&#34;https://x.com/stevenheidel&#34;&gt;Steven Heide&lt;/a&gt;使用最近OpenAI最火爆GPT-4o的原生图像生成了吉卜力风格图片，解释MCP的架构。&#xA;&lt;img src=&#34;https://example.com/p/mcptest/MCP%E5%AD%A6%E4%B9%A0.assets/Gm_MSp6a4AAWTa7-17431783941461.jpg&#34; alt=&#34;&#34;&gt;&lt;/p&gt;</description>
+    </item>
     <item>
       <title>Google Gemini-2.0-Flash-Exp Test</title>
       <link>https://example.com/p/gemini2.0flashexptest/</link>

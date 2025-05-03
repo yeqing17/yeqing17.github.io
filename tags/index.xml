@@ -7,8 +7,36 @@
     <generator>Hugo</generator>
     <language>zh-cn</language>
     <copyright>Yeqing17</copyright>
-    <lastBuildDate>Sun, 16 Mar 2025 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Tue, 22 Apr 2025 00:00:00 +0000</lastBuildDate>
     <atom:link href="https://example.com/tags/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>MCP</title>
+      <link>https://example.com/tags/mcp/</link>
+      <pubDate>Tue, 22 Apr 2025 00:00:00 +0000</pubDate>
+      <guid>https://example.com/tags/mcp/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Trae</title>
+      <link>https://example.com/tags/trae/</link>
+      <pubDate>Tue, 22 Apr 2025 00:00:00 +0000</pubDate>
+      <guid>https://example.com/tags/trae/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>CherryStudio</title>
+      <link>https://example.com/tags/cherrystudio/</link>
+      <pubDate>Sat, 29 Mar 2025 00:00:00 +0000</pubDate>
+      <guid>https://example.com/tags/cherrystudio/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Cline</title>
+      <link>https://example.com/tags/cline/</link>
+      <pubDate>Sat, 29 Mar 2025 00:00:00 +0000</pubDate>
+      <guid>https://example.com/tags/cline/</guid>
+      <description></description>
+    </item>
     <item>
       <title>Gemini</title>
       <link>https://example.com/tags/gemini/</link>
@@ -49,13 +77,6 @@
       <link>https://example.com/tags/%E5%A3%B0%E9%9F%B3/</link>
       <pubDate>Tue, 11 Mar 2025 00:00:00 +0000</pubDate>
       <guid>https://example.com/tags/%E5%A3%B0%E9%9F%B3/</guid>
-      <description></description>
-    </item>
-    <item>
-      <title>CherryStudio</title>
-      <link>https://example.com/tags/cherrystudio/</link>
-      <pubDate>Mon, 17 Feb 2025 00:00:00 +0000</pubDate>
-      <guid>https://example.com/tags/cherrystudio/</guid>
       <description></description>
     </item>
     <item>
